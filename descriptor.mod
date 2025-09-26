@@ -4,5 +4,5 @@ tags={
 	"Religion"
 	"Events"
 }
-name="Interracial Takeover 3rd Edition?"
+name="Interracial Takeover 3rd Edition? - CBO"
 supported_version="1.17.*"
