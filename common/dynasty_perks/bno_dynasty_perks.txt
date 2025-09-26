@@ -1,0 +1,167 @@
+﻿bno_embrace_african_1 = {
+    legacy = bno_embrace_african_track
+    
+    can_be_picked = {
+        is_bno_actor = yes
+    }
+    #Unlock Embrace Migrant event chain/decision
+    #Conflict between locals and migrant
+    #Demand to join court
+    #Gain Prestige
+    #Gain Gold, for betting against them in a duel
+    #Siding with locals give income, but lowering the control
+    #Repeatedly ignoring Migrant can spark a rebellion
+    effect = {
+        custom_description_no_bullet = {
+			text = bno_embrace_african_1_effect
+		}
+    }
+    character_modifier = {
+        development_growth_factor = 0.5
+        monthly_county_control_growth_add = 0.25
+        levy_reinforcement_rate = 0.25
+        levy_reinforcement_rate_same_faith = 0.5
+    }
+
+    ai_chance = {
+        value = 10000
+    }
+}
+
+bno_embrace_african_2 = {
+    legacy = bno_embrace_african_track
+    
+    can_be_picked = {
+        is_bno_actor = yes
+    }
+    #unlock requirement for BBC Camp Building
+    #New Court position for BBC Camp representative
+    #Send Female or BBC Character to Pacify migrants
+    #Trigger event for increased levies, control, or development
+    effect = {
+        custom_description_no_bullet = {
+            text = bno_embrace_african_2_building_unlock
+        }
+        custom_description_no_bullet = {
+            text = bno_embrace_african_2_court_position_unlock
+        }
+        custom_description_no_bullet = {
+            text = bno_embrace_african_2_event_and_decision
+        }
+        #Certain trait will appear more
+        custom_description_no_bullet = {
+			text = bno_embrace_african_2_effect
+		}
+    }
+    character_modifier = {
+        knight_limit = 10
+        knight_effectiveness_mult = 0.5
+        men_at_arms_limit = 1
+        men_at_arms_cap = 1
+    }
+    traits = {
+        bno_curious = 100
+        bno_bbc = 100
+    }
+    ai_chance = {
+        value = 10000
+    }
+}
+
+bno_embrace_african_3 = {
+    legacy = bno_embrace_african_track
+    
+    can_be_picked = {
+        is_bno_actor = yes
+    }
+
+    effect = {
+        #Learn about migrant decision delve into BBC strength
+        #increase innovation
+        #cultural acceptance
+        #dynasty prestige
+        custom_description_no_bullet = {
+			text = bno_embrace_african_3_effect
+		}
+        custom_description_no_bullet = {
+            #sex will gain dynasty prestige
+			text = bno_embrace_african_3_sex_effect
+		}
+    }
+
+    character_modifier = {
+        cultural_head_acceptance_gain_mult = 0.5
+        cultural_head_fascination_mult = 1
+        cultural_head_fascination_add = 10
+        max_learn_language_schemes_add = 1
+        learn_language_scheme_phase_duration_add = -10
+    }
+    ai_chance = {
+        value = 10000
+    }
+}
+
+bno_embrace_african_4 = {
+    legacy = bno_embrace_african_track
+    
+    can_be_picked = {
+        is_bno_actor = yes
+    }
+
+    effect = {
+        #BBC Marriage will gain dynasty prestige, and prestige, and legitimacy
+        custom_description_no_bullet = {
+			text = bno_embrace_african_4_effect
+		}
+    }
+
+    character_modifier = {
+        owned_hostile_scheme_success_chance_add = 25
+        owned_personal_scheme_success_chance_add = 25
+        hostile_scheme_phase_duration_add = -10
+		personal_scheme_phase_duration_add = -10
+		seduce_scheme_phase_duration_add = -10
+        scheme_discovery_chance_mult = 0.25
+        #bonus competency and efficiency for BBC Courtier
+    }
+    ai_chance = {
+        value = 10000
+    }
+}
+
+bno_embrace_african_5 = {
+    legacy = bno_embrace_african_track
+    
+    can_be_picked = {
+        is_bno_actor = yes
+    }
+
+    effect = {
+        #Unique MAA
+        #Share Power with a BBC if you re not BBC
+        #Failing to do so will cause discontent, periodic penalty events
+        #while having a BBC Diarch trigger some interesting events
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = bno_embrace_african_5_unlock_effect
+		}
+        custom_description_no_bullet = {
+            #custom MAA unlocked
+			text = bno_embrace_african_5_effect
+		}
+        custom_description_no_bullet = {
+            #sex gives prowess
+			text = bno_embrace_african_5_sex_effects
+		}
+    }
+
+    character_modifier = {
+        domain_limit = 5
+        domain_tax_mult = 0.1
+        domain_tax_same_faith_mult = 0.2
+        vassal_tax_mult = 0.2
+    }
+    ai_chance = {
+        value = 10000
+    }
+}

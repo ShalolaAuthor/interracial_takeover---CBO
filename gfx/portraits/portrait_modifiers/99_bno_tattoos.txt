@@ -1,0 +1,224 @@
+﻿pregnancy_tattoo = {
+	usage = game
+	
+	bno_pregnancy_1 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_1
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 1
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_2 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_2
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 2
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_3 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_3
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 3
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_4 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_4
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 4
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_5 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_5
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 5
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_6 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_6
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 6
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_7 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_7
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 7
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_8 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_8
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 8
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_9 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_9
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 9
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_10 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_10
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead = 10
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+	bno_pregnancy_11 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_11
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = bno_tattoo_yes
+				is_a_girl = yes
+				bno_num_mixed_children_plus_dead > 10
+				is_bno_mindless_bbc_slut = yes
+			}
+		}
+	}
+}

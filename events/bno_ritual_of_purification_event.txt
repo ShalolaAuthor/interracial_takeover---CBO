@@ -1,0 +1,520 @@
+﻿namespace = bno_ritual_of_purification
+
+#pop when child is 15
+bno_ritual_of_purification.1111 = {
+    hidden = yes
+    trigger = {
+        age >= 15
+        is_a_girl = yes
+        is_ai = yes
+        has_trait = bno_blood
+        NOT = { has_character_flag = bno_ritual_of_purification.1111 }
+        OR = {
+            mother ?= {
+                is_playable_character = yes
+                is_faith_bbcs = yes
+                is_bno_blacked_and_up = yes
+                any_councillor = {
+                    has_council_position = councillor_court_chaplain
+                }
+            }
+            real_father ?= {
+                is_playable_character = yes
+                is_faith_bbcs = yes
+                is_bbc = yes
+                any_councillor = {
+                    has_council_position = councillor_court_chaplain
+                }
+            }
+        }
+    }
+    immediate = {
+        save_scope_as = child
+        add_character_flag = bno_ritual_of_purification.1111
+        if = {
+            limit = {
+                mother ?= {
+                    is_playable_character = yes
+                    is_faith_bbcs = yes
+                    is_bno_blacked_and_up = yes
+                    any_councillor = {
+                        has_council_position = councillor_court_chaplain
+                    }
+                }
+            }
+            mother = {
+                trigger_event = bno_ritual_of_purification.0001
+            }
+        }
+        else_if = {
+            limit = {
+                real_father ?= {
+                    is_playable_character = yes
+                    is_faith_bbcs = yes
+                    is_bbc = yes
+                    any_councillor = {
+                        has_council_position = councillor_court_chaplain
+                    }
+                }
+            }
+            real_father = {
+                trigger_event = bno_ritual_of_purification.0001
+            }
+        }
+    }
+}
+#Priest disapprove your female child is black and suggesting ritual of purification
+bno_ritual_of_purification.0001 = {
+    type = character_event
+    title = bno_ritual_of_purification.0001.title
+    desc = bno_ritual_of_purification.0001.desc
+    theme = learning
+
+    override_background = {
+        reference = temple
+    }
+
+    left_portrait = {
+        character = scope:child
+        animation = shame
+    }
+
+    lower_center_portrait = {
+        character = root
+    }
+
+    right_portrait = {
+        character = scope:priest
+        animation = disapproval
+    }
+
+    immediate = {
+        random_councillor = {
+            limit = {
+                has_council_position = councillor_court_chaplain
+            }
+            save_scope_as = priest
+        }
+    }
+
+    option = {
+        name = bno_ritual_of_purification.0001.approved
+        ai_chance = {
+            base = 100
+        }
+        trigger_event = {
+            id = bno_ritual_of_purification.1001
+            days = 360
+            delayed = yes
+        }
+    }
+
+    option = {
+         ai_chance = {
+            base = 20
+        }
+        name = bno_ritual_of_purification.0001.rejected
+    }
+}
+
+#gang bang
+bno_ritual_of_purification.1001 = {
+    type = character_event
+    title = bno_ritual_of_purification.1001.title
+    desc = bno_ritual_of_purification.1001.desc
+    theme = learning
+
+    override_background = {
+        reference = temple
+    }
+
+    left_portrait = {
+        character = scope:child
+        animation = page_flipping 
+    }
+
+    right_portrait = {
+        character = root
+        animation = personality_content
+    }
+
+    trigger = {
+        is_alive = yes
+    }
+
+    immediate = {
+        every_courtier_or_guest = {
+            limit = {
+                is_ai_blackbull = yes
+            }
+            add_to_list = bbc_courtiers
+        }
+    }
+
+    option = {#invite BBCS to purify her 
+        name = bno_ritual_of_purification.1001.a
+        trigger_event = {
+            id = bno_ritual_of_purification.1101
+            days = 7
+            delayed = yes
+        }
+        ai_chance = {
+            base = 0
+            bno_white_girl_modifier_small = yes
+        }
+    }
+
+    option = {#have her consume your cum + all BBCS courtier cum
+        name = bno_ritual_of_purification.1001.b
+        trigger = {
+            is_bbc = yes
+            list_size = {
+                name = bbc_courtiers
+                value >= 3
+            }
+        }
+        trigger_event = {
+            id = bno_ritual_of_purification.1201
+            days = 7
+            delayed = yes
+        }
+        add_internal_flag = special
+        ai_chance = {
+            base = 0
+            bno_bbc_modifier = yes
+        }
+    }
+    option = {#have your BBC husband cum inside her
+        name = bno_ritual_of_purification.1001.c
+        trigger = {
+            has_trait = bno_whitegirl
+            trigger_if = {
+                limit = { is_married = yes }
+                any_spouse = {
+                    is_ai_blackbull = yes
+                }
+            }
+        }
+        get_bbc_husband_scope = {
+            SCOPE_NAME = bbc_husband
+        }
+        trigger_event = {
+            id = bno_ritual_of_purification.1301
+            days = 7
+            delayed = yes
+        }
+        add_internal_flag = special
+        ai_chance = {
+            base = 0
+            bno_white_girl_modifier_big = yes
+        }
+    }
+}
+
+bno_ritual_of_purification.1101 = {
+    type = character_event
+	title = bno_ritual_of_purification.1101.title
+	desc = bno_ritual_of_purification.1101.desc
+	theme = lover_relation
+	override_background = { reference = alley_night }
+    
+    left_portrait = {
+        character = scope:child
+        animation = ecstasy
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    right_portrait = {
+        character = root
+        animation = personality_content
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    lower_left_portrait = {
+        character = scope:bbc_1
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    lower_center_portrait = {
+        character = scope:bbc_2
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    lower_right_portrait = {
+        character = scope:bbc_3
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    trigger = {
+        is_alive = yes
+    }
+
+    immediate = {
+        create_bbc = {
+            age = 16
+            SCOPE_NAME = bbc_1
+        }
+        create_bbc = {
+            age = 16
+            SCOPE_NAME = bbc_2
+        }
+        create_bbc = {
+            age = 16
+            SCOPE_NAME = bbc_3
+        }
+    }
+
+    option = {
+        name = bno_ritual_of_purification.1101.a
+        trigger = {
+            is_bbc = yes
+        }
+        exclusive = yes
+        scope:child = {
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_1
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_2
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_3
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = root
+            }
+        }
+        trigger_event = {
+            id = bno_ritual_of_purification.2001
+            days = 2
+            delayed = yes
+        }
+    }
+    option = {
+        name = bno_ritual_of_purification.1101.b
+        trigger = {
+            has_trait = bno_whitegirl
+        }
+        exclusive = yes
+        scope:child = {
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_1
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_2
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_3
+            }
+        }
+        root = {
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_1
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_2
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_3
+            }
+        }
+        trigger_event = {
+            id = bno_ritual_of_purification.2001
+            days = 2
+            delayed = yes
+        }
+    }
+    after = {
+        hidden_effect = {
+            bno_kill_bbc_1_to_3 = yes
+        }
+    }
+}
+
+bno_ritual_of_purification.1201 = {
+    type = character_event
+	title = bno_ritual_of_purification.1201.title
+	desc = bno_ritual_of_purification.1201.desc
+	theme = lover_relation
+	override_background = { reference = bedchamber }
+    
+    left_portrait = {
+        character = scope:child
+        animation = ecstasy
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    right_portrait = {
+        character = root
+        animation = personality_content
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    lower_left_portrait = {
+        character = scope:bbc_1
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    lower_center_portrait = {
+        character = scope:bbc_2
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    lower_right_portrait = {
+        character = scope:bbc_3
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    trigger = {
+        is_alive = yes
+    }
+
+    immediate = {
+        random_in_list = {
+            list = bbc_courtiers
+            save_scope_as = bbc_1
+        }
+        random_in_list = {
+            list = bbc_courtiers
+            limit = {
+                NOT = { this = scope:bbc_1 }
+            }
+            save_scope_as = bbc_2
+        }
+        random_in_list = {
+            list = bbc_courtiers
+            limit = {
+                NOT = { this = scope:bbc_1 }
+                NOT = { this = scope:bbc_2 }
+            }
+            save_scope_as = bbc_3
+        }
+    }
+
+    option = {
+        name = bno_ritual_of_purification.1201.a
+        scope:child = {
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_1
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_2
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_3
+            }
+            bno_have_sex_with_effects = {
+                PARTNER = root
+            }
+        }
+        trigger_event = {
+            id = bno_ritual_of_purification.2001
+            days = 2
+            delayed = yes
+        }
+    }
+}
+
+bno_ritual_of_purification.1301 = {
+    type = character_event
+	title = bno_ritual_of_purification.1301.title
+	desc = bno_ritual_of_purification.1301.desc
+	theme = lover_relation
+	override_background = { reference = bedchamber }
+    
+    left_portrait = {
+        character = scope:child
+        animation = ecstasy
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    right_portrait = {
+        character = scope:bbc_husband
+        animation = personality_content
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    lower_center_portrait = {
+        character = root
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    trigger = {
+        is_alive = yes
+    }
+
+    option = {
+        name = bno_ritual_of_purification.1301.a
+
+        scope:child = {
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc_husband
+            }            
+        }
+
+        trigger_event = {
+            id = bno_ritual_of_purification.2001
+            days = 2
+            delayed = yes
+        }
+    }
+
+}
+
+#Emerge Pure white
+bno_ritual_of_purification.2001 = {
+    type = character_event
+	title = bno_ritual_of_purification.2001.title
+	desc = bno_ritual_of_purification.2001.desc
+	theme = witchcraft
+	override_background = { reference = temple }
+
+    left_portrait = {
+        character = scope:child
+        animation = prayer
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    trigger = {
+        is_alive = yes
+    }
+
+    immediate = {
+        scope:child = {
+            bno_remove_blood_traits = yes
+            add_trait = bno_pure_white
+        }
+    }
+
+    option = {
+        name = bno_ritual_of_purification.2001.a
+    }
+}

@@ -1,0 +1,1271 @@
+﻿namespace = bno_bull
+
+# BBC lays with liege's spouse
+bno_bull.0001 = {
+	type = character_event
+	title = bno_bull_0001.title
+	desc = bno_bull_0001.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		animation = eavesdrop
+	}
+	
+	cooldown = { months = { 24 36 } }
+	trigger = {
+		is_blackbull = yes
+		liege ?= {
+			is_ai_white_guy_married = yes
+			NOT = { has_character_flag = bno_bull.0001 } #prevent cuck from getting spammed too much if he has many bbc courtiers
+			is_spouse_blacked = yes
+		}
+	}
+	immediate = {
+		liege = {
+			save_scope_as = target1
+			get_blacked_wife_scope = {
+				SCOPE_NAME = target2
+			}
+		}
+	}
+	option = {
+		name = bno_bull_0001.a
+		
+		ai_chance = {
+			base = 100
+		}
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target2
+		}
+		scope:target1 = {
+			add_character_flag = {
+				flag = bno_bull.0001		#add flag to prevent this guy from getting spammed multiple times in same event pulse
+				years = 2
+			}
+		}
+		scope:target2 ?= {
+			bno_increase_sluttyness = yes
+		}
+	}
+	option = {
+		name = bno_bull_0001.b
+		become_lover_with_target = {
+			TARGET = scope:target2
+			LOCATION = root.location
+		}
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target2
+		}
+		scope:target1 = {
+			add_character_flag = {
+				flag = bno_bull.0001		#add flag to prevent this guy from getting spammed multiple times in same event pulse
+				years = 2
+			}
+		}
+	}
+	option = {
+		name = bno_bull_0001.c
+		ai_chance = {
+			base = 1000
+		}
+		trigger = {
+			scope:target2 ?= {
+				has_bad_trait = yes
+			}
+		}
+		add_prestige = 50
+	}
+	option = {
+		ai_chance = {
+			base = 0
+		}
+		name = bno_bull_0001.d
+	}
+}
+# bull anti-stress event
+bno_bull.0002 = {
+	type = character_event
+	title = bno_bull_0002.title
+	desc = bno_bull_0002.desc
+	theme = realm
+	
+	override_background = {
+		reference = feast
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = { 12 18 } }
+	
+	trigger = {
+		is_ruler = yes
+		is_blackbull = yes
+		is_stressed_out = yes
+		does_blacked_girl_exist = yes
+	}
+	
+	immediate = {
+		get_blacked_girl_scope = {
+			SCOPE_NAME = target1
+		}
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target1
+		}
+	}
+	
+	option = { #used slut to remove stress
+		name = bno_bull_0002.a
+		
+		bno_remove_stress = yes
+		add_character_modifier = {
+			modifier = bno_stress_relieved
+			years = 2
+		}
+	}
+}
+#bull gives food disordered slut a cum diet
+bno_bull.0003 = {
+	type = character_event
+	title = bno_bull_0003.title
+	desc = bno_bull_0003.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = drink_goblet
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = { 8 12 } }
+	
+	trigger = {
+		is_blackbull = yes
+		is_ruler = yes
+		does_blacked_with_eating_disorder_exist = yes
+	}
+	
+	immediate = {
+		get_blacked_girl_with_eating_disorder_scope = {
+			SCOPE_NAME = target1
+		}
+	}
+	option = {
+		name = bno_bull_0003.a
+		ai_chance = {
+			base = 100
+		}
+		trigger_event = {
+			id = bno_bull.1003
+			months = 2
+			delayed = yes
+		}
+	}
+	option = {
+		ai_chance = {
+			base = 10
+		}
+		name = bno_bull_0003.b
+	}
+}
+bno_bull.1003 = {
+	type = character_event
+	title = bno_bull_1003.title
+	desc = bno_bull_1003.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = drink_goblet
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	trigger = {
+		is_alive = yes
+		scope:target1 = {
+			is_alive = yes
+		}
+	}
+
+	option = {
+		name = bno_bull_1003.a
+		trigger_event = {
+			id = bno_bull.2003
+			months = 3
+			delayed = yes
+		}
+		add_stress = -20
+		scope:target1 ?= {
+			bno_remove_eating_disorder = {
+				TARGET = root
+			}
+		}
+	}
+}
+bno_bull.2003 = {
+	type = character_event
+	title = bno_bull_2003.title
+	desc = bno_bull_2003.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = drink_goblet
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	trigger = {
+		is_alive = yes
+		scope:target1 = {
+			is_alive = yes
+		}
+	}
+
+	option = {
+		name = bno_bull_2003.a
+		scope:target1 ?= {
+			gain_blacked_cum_slut_status_from_eating_disorder_effect = {
+				TARGET = root
+			}
+			if = {
+				limit = {
+					is_married = yes
+				}
+				every_spouse = {
+					limit = {
+						is_ai_white_guy = yes
+					}
+					trigger_event = {
+						id = bno_bull.3003
+						months = 2
+						delayed = yes
+					}
+				}
+			}
+		}
+	}
+}
+bno_bull.3003 = { #very basic flavor event if player is cumslut's husband, nothing actually happens for now
+	type = character_event
+	title = bno_bull_3003.title
+	desc = bno_bull_3003.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = drink_goblet
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	trigger = {
+		is_alive = yes
+		scope:target1 = {
+			is_alive = yes
+		}
+	}
+
+	option = {
+		name = bno_bull_3003.a
+	}
+}
+#black ruler fucks non-blacked courtier
+bno_bull.0004 = {
+	type = character_event
+	title = bno_bull_0004.title
+	desc = bno_bull_0004.desc
+	theme = love
+	
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = { 8 12 } }
+	
+	trigger = {
+		has_dynasty = yes
+		is_ruler = yes
+		is_blackbull = yes
+		does_pure_whitegirl_exist = yes
+	}
+
+	immediate = {
+		get_pure_whitegirl_scope = {
+			SCOPE_NAME = target1
+		}
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target1
+		}
+		scope:target1 = {
+			bno_increase_sluttyness = yes
+		}
+	}
+
+	option = {
+		name = bno_bull_0004.a
+		add_prestige = 100
+		dynasty = { add_dynasty_prestige = 50 }
+	}
+}
+#rando pretty white woman appears
+bno_bull.0005 = {
+	type = character_event
+	title = bno_bull_0005.title
+	desc = bno_bull_0005.desc
+	theme = love
+	
+	override_background = {
+		reference = corridor_day
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	cooldown = { months = { 36 48 } }
+
+	trigger = {
+		is_ruler = yes
+		is_blackbull = yes
+		does_wandering_curious_whitegirl_exist = yes
+	}
+	immediate = {
+		get_wandering_curious_whitegirl_scope = {
+			SCOPE_NAME = target1
+		}
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target1
+		}
+	}
+	option = {
+		name = bno_bull_0005.a
+	}
+}
+#Caging non bbc courtier
+bno_bull.0006 = {
+	type = character_event
+	title = bno_bull_0006.title
+	desc = bno_bull_0006.desc
+	theme = prison
+	
+	override_background = {
+		reference = dungeon
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = shame
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = { months = { 12 24 } }
+	trigger = {
+		is_ruler = yes
+		is_blackbull = yes
+		does_hated_non_black_courtier_exist = yes
+	}
+	immediate = {
+		save_scope_as = cager
+		get_hated_non_black_courtier_scope = {
+			SCOPE_NAME = target1
+		}
+	}
+	option = {
+		name = bno_bull_0006.a
+		scope:target1 ?= {
+			bno_caged_effect = {
+				CAGER = scope:cager
+			}
+		}
+	}
+}
+#get strong trait
+bno_bull.0007 = {
+	type = character_event
+	title = bno_bull_0007.title
+	desc = bno_bull_0007.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = marshal
+	}
+	trigger = {
+		is_ruler = yes
+		is_blackbull = yes
+		NOT = { has_trait = strong }
+	}
+	option = {
+		name = bno_bull_0007.a
+		add_trait = strong
+	}
+}
+#BBC pimps out lowborn white whore
+bno_bull.0008 = {
+	type = character_event
+	title = bno_bull_0008.title
+	desc = bno_bull_0008.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	cooldown = { months = { 8 12 } }
+	
+	trigger = {
+		is_blackbull = yes
+		does_blacked_peasant_exist = yes
+		does_wandering_male_exist = yes
+	}
+	immediate = {
+		get_blacked_peasant_scope = {
+			SCOPE_NAME = target1
+		}
+		find_5_sex_partner = yes
+	}
+	option = {
+		name = bno_bull_0008.a
+		ai_chance = {
+			base = 5
+		}
+		bbc_pimping = {
+			TARGET = scope:target1
+		}
+		scope:target1 ?= {
+			sex_with_5_sex_partner = yes
+			slut_whoring = {
+				TARGET = root
+			}
+		}
+	}
+	option = {
+		trigger = {
+			scope:target1 ?= {
+				has_desirable_looks_or_breast = yes
+			}
+		}
+		name = bno_bull_0008.b
+		bbc_pimping = {
+			TARGET = scope:target1
+		}
+		scope:target1 ?= {
+			sex_with_5_sex_partner = yes
+			slut_whoring = {
+				TARGET = root
+			}
+		}
+		ai_chance = {
+			base = 95
+		}
+	}
+	
+}
+#BBC ruler pimps out noble white whore
+bno_bull.0009 = {
+	type = character_event
+	title = bno_bull_0008.title  			#using same titles, desc, option names from .0008 since it's the same event but for non lowborns. Maybe come back and combine them later.
+	desc = bno_bull_0008.desc
+	theme = secret
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	cooldown = { months = { 12 18 } }
+
+	trigger = {
+		is_ruler = yes
+		is_blackbull = yes
+		does_blacked_noble_exist = yes
+		does_wandering_male_exist = yes
+	}
+	immediate = {
+		get_blacked_noble_scope = {
+			SCOPE_NAME = target1
+		}
+		find_5_sex_partner = yes
+	}
+	option = {
+		name = bno_bull_0008.a
+		ai_chance = {
+			base = 5
+		}
+
+		bbc_pimping = {
+			TARGET = scope:target1
+		}
+
+		scope:target1 ?= {
+			sex_with_5_sex_partner = yes
+			bno_have_sex_with_effects = {
+				PARTNER = root
+			}
+		}
+	}
+	option = {
+		trigger = {
+			scope:target1 ?= {
+				OR = {
+					has_trait = beauty_good_1
+					has_trait = beauty_good_2
+					has_trait = beauty_good_3
+				}
+			}
+		}
+		name = bno_bull_0008.b
+		bbc_pimping = {
+			TARGET = scope:target1
+		}
+
+		scope:target1 ?= {
+			sex_with_5_sex_partner = yes
+			bno_have_sex_with_effects = {
+				PARTNER = root
+			}
+		}
+		ai_chance = {
+			base = 95
+		}
+	}
+	
+}
+#liege's wife steals his money for BBC
+bno_bull.0010 = {
+	type = character_event
+	title = bno_bull_0010.title
+	desc = bno_bull_0010.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = {months = { 12 18 } }
+	trigger = {
+		is_blackbull = yes
+		does_white_guy_liege_has_money = yes
+	}
+	immediate = {
+		liege ?= {
+			save_scope_as = target2
+			get_blacked_wife_scope = {
+				SCOPE_NAME = target1
+			}
+		}
+	}
+	option = {
+		name = bno_bull_0010.a
+		scope:target1 ?= {
+			bno_steal_white_husband_gold_effect = {
+				VICTIM = scope:target2
+				TARGET = root
+			}
+		}
+	}
+}
+
+#bull learns female's and her spouse's secrets
+bno_bull.0012 = {
+	type = character_event
+	title = bno_bull_0012.title
+	desc = bno_bull_0012.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = {months = { 12 18 } }
+	trigger = {
+		is_blackbull = yes
+		is_ruler = yes
+		does_secret_haver_exist = yes
+	}
+	immediate = {
+		get_secret_haver_scope = {
+			SCOPE_NAME = target1
+		}
+		scope:target1 ?= {			#identify spouse for loc and notifications
+			get_white_husband_with_secret_scope = {
+				SCOPE_NAME = target2
+			}
+		}
+	}
+	option = {
+		name = bno_bull_0012.a
+		scope:target1 ?= {					#also reveal woman's secrets if she had any
+			bno_reveal_secret_effect = {
+				TARGET = root
+			}
+		}
+	}
+}
+#ruler bbc blacks wife if she's not blacked enough
+bno_bull.0013 = {
+	type = character_event
+	title = bno_bull_0013.title
+	desc = bno_bull_0013.desc
+	theme = love
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = happiness
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = {months = { 12 18 } }
+	trigger = {
+		is_blackbull = yes
+		is_ruler = yes
+		is_partner_not_blacked_enough = yes
+	}
+	immediate = {
+		get_not_blacked_enough_spouse = {
+			SCOPE_NAME = target1
+		}
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target1
+		}
+		scope:target1 ?= {
+			bno_becoming_lustful_effect = yes
+		}
+	}
+	option = {
+		name = bno_bull_0013.a
+	}
+}
+
+#bbc ruler works on foreign ruler's attractive wife over a few days, 3 options : fuck, love, marry
+bno_bull.0014 = {
+	type = character_event
+	title = bno_bull_0014.title
+	desc = bno_bull_0014.desc
+	theme = love
+	
+	override_background = {
+		reference = feast
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = admiration
+		
+	}
+	right_portrait = {
+		character = root
+		animation = toast_goblet
+		
+	}
+	cooldown = { months = { 12 18 } }
+	trigger = {
+		is_blackbull = yes
+		is_ruler = yes
+		allowed_more_spouses = yes
+		does_good_looking_ai_foreign_lady_exist = yes
+	}
+	immediate = {
+		get_married_pure_girl_scope = {
+			SCOPE_NAME = target1
+		}
+		scope:target1 ?= {
+			get_white_husband_scope = {
+				SCOPE_NAME = target2
+			}
+		}
+	}
+	option = { #fuck her and done focus
+		name = bno_bull_0014.a
+		ai_chance = {
+			base = 60
+		}
+		scope:target1 ?= {
+			bno_increase_sluttyness = yes
+		}
+		scope:target2 ?= {
+			trigger_event = {
+				id = bno_cuck.0015
+				days = 5
+				delayed = yes
+			}
+		}
+		trigger_event = {
+			id = bno_bull.1014
+			days = 5
+			delayed = yes
+		}
+	}
+	option = { #fuck her and be lovers focus
+		name = bno_bull_0014.b
+		ai_chance = {
+			base = 50
+		}
+		scope:target1 ?= {
+			bno_increase_sluttyness = yes
+		}
+		scope:target2 ?= {
+			trigger_event = {
+				id = bno_cuck.0015
+				days = 5
+				delayed = yes
+			}
+		}
+		trigger_event = {
+			id = bno_bull.2014
+			days = 5
+			delayed = yes
+		}
+	}
+	option = { #fuck her and steal her as wife focus
+		name = bno_bull_0014.c
+		ai_chance = {
+			base = 5
+		}
+		scope:target1 ?= {
+			bno_increase_sluttyness = yes
+		}
+		trigger_event = {
+			id = bno_bull.3014
+			days = 5
+			delayed = yes
+		}
+		scope:target2 ?= {
+			trigger_event = {
+				id = bno_cuck.0016
+				days = 5
+				delayed = yes
+			}
+		}
+	}
+	option = { #do nothing
+		name = bno_bull_0014.d
+	}
+}
+
+bno_bull.1014 = { #follow up event, fuck and done
+	type = character_event
+	title = bno_bull_1014.title
+	desc = bno_bull_1014.desc
+	theme = love
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = happiness
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	trigger = {
+		is_alive = yes
+		scope:target1 = {
+			is_alive = yes
+		}
+	}
+
+	immediate = {
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = root
+			}
+		}
+	}
+	option = {
+		name = bno_bull_1014.a
+	}
+}
+
+bno_bull.2014 = { #follow up event, fuck and become lovers
+	type = character_event
+	title = bno_bull_2014.title
+	desc = bno_bull_2014.desc
+	theme = love
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = happiness
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	trigger = {
+		is_alive = yes
+		scope:target1 = {
+			is_alive = yes
+		}
+	}
+
+	immediate = {
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = root
+			}
+		}
+	}
+	option = {
+		name = bno_bull_2014.a
+		scope:target1 ?= {
+			become_lover_with_target = {
+				TARGET = root
+				LOCATION = location
+			}
+		}
+	}
+}
+
+bno_bull.3014 = { #follow up event, fuck and steal as wife
+	type = character_event
+	title = bno_bull_3014.title
+	desc = bno_bull_3014.desc
+	theme = love
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = happiness
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	trigger = {
+		is_alive = yes
+	}
+
+	immediate = {
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = root
+			}
+		}
+	}
+	option = {
+		name = bno_bull_3014.a
+		scope:target1 ?= {
+			bno_marriage_effect = {
+				TARGET = root
+			}
+		}
+	}
+}
+
+#bbc ruler targets non-bbc fellow vassal's wife, for woman with no blacked xp
+bno_bull.0015 = {
+	type = character_event
+	title = bno_bull_0015.title
+	desc = bno_bull_0015.desc
+	theme = seduction
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = happiness
+		
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	cooldown = {
+		months = { 12 18 }
+	}
+
+	trigger = {
+		is_blackbull = yes
+		is_ruler = yes
+		does_white_vassal_has_non_blacked_wife = yes
+	}
+	immediate = {
+		get_white_vassal_with_non_blacked_wife_scope = {
+			SCOPE_NAME = target1
+		}
+		scope:target1 ?= {
+			get_pure_wife_scope = {
+				SCOPE_NAME = target2
+			}
+		}
+	}
+	option = { #let her long for bbc
+		name = bno_bull_0015.a
+		scope:target2 ?= {
+			bno_increase_sluttyness = yes
+		}
+	}
+}
+
+#test event, adds bimbo char flag which will turn hair blonde, add pink lipstick(if player has CBO mod), go up one tits size level, give QoS tattoo on face. COSMETIC ONLY. works but currently not in any event pulses.
+bno_bull.0016 = {
+	type = character_event
+	title = bno_bull_0016.title
+	desc = bno_bull_0016.desc
+	theme = seduction
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = happiness
+		
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	cooldown = {
+		months = { 12 18 }
+	}
+
+	trigger = {
+		is_ruler = yes
+		is_blackbull = yes
+		any_spouse = {
+			NOT = { has_character_flag = bimbo }
+			is_bno_mindless_bbc_slut = yes
+		}
+	}
+	immediate = {
+		random_spouse = {
+			limit = {
+				NOT = { has_character_flag = bimbo }
+				is_bno_mindless_bbc_slut = yes
+			}
+			save_scope_as = target1
+		}
+	}
+	option = { #make her a bimbo. Cosmetic only.
+		name = bno_bull_0016.a
+		scope:target1 ?= {
+			add_character_flag = bimbo
+			become_bigger_tits_effect = yes
+		}
+	}
+}

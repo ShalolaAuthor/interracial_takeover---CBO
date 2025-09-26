@@ -1,0 +1,371 @@
+﻿bno_good_female_modifier = {
+	modifier = {
+		has_trait = lustful
+		add = 10
+	}
+	modifier = {
+		OR = {
+			has_trait = gluttonous
+			has_trait = chaste
+		}
+		add = -15
+	}
+	modifier = {
+		has_trait = beauty_good_1
+		add = 25
+	}
+	modifier = {
+		has_trait = beauty_good_2
+		add = 50
+	}
+	modifier = {
+		has_trait = beauty_good_3
+		add = 100
+	}
+	modifier = {
+		has_trait = tits_big_good_1
+		add = 15
+	}
+	modifier = {
+		has_trait = tits_big_good_2
+		add = 30
+	}
+	modifier = {
+		has_trait = tits_big_good_3
+		add = 100
+	}
+	modifier = {
+		OR = {
+			has_trait = tits_small_bad_1
+			has_trait = tits_small_bad_2
+			has_trait = tits_small_bad_3
+		}
+		add = -10
+	}
+	modifier = {
+		OR = {
+			has_trait = physique_good_1
+			has_trait = physique_good_2
+			has_trait = physique_good_3
+		}
+		add = 25
+	}
+	modifier = {
+		has_trait = fecund
+		add = 10
+	}
+	modifier = {
+		OR = {
+			has_trait = disfigured
+			has_trait = beauty_bad_2
+			has_trait = beauty_bad_3
+			has_trait = scaly
+			has_trait = leper
+			has_trait = consumption
+			has_trait = cancer
+			has_trait = typhus
+			has_trait = smallpox
+			has_trait = gout_ridden
+			has_trait = bubonic_plague
+			has_trait = lovers_pox
+			has_trait = great_pox
+		}
+		add = -80
+	}
+	modifier = {
+		OR = {
+			has_trait = clubfooted
+			has_trait = lisping
+			has_trait = dwarf
+			has_trait = hunchbacked
+			has_trait = maimed
+			has_trait = beauty_bad_1
+			has_trait = one_legged
+			has_trait = one_eyed
+		}
+		add = -50
+	}
+	modifier = {
+		has_trait = scarred
+		add = -1
+	}
+	modifier = {
+		has_trait = zealous
+		add = 10
+	}
+	modifier = {
+		OR = {
+			has_trait = education_intrigue_3
+			has_trait = education_intrigue_4
+			has_trait = education_diplomacy_3
+			has_trait = education_diplomacy_4
+			has_trait = education_stewardship_3
+			has_trait = education_stewardship_4
+			has_trait = education_martial_3
+			has_trait = education_martial_4
+			has_trait = education_learning_3
+			has_trait = education_learning_4
+		}
+		add = 10
+	}
+	modifier = {
+		OR = {
+			has_trait = education_intrigue_5
+			has_trait = education_diplomacy_5
+			has_trait = education_stewardship_5
+			has_trait = education_martial_5
+			has_trait = education_learning_5
+		}
+		add = 30
+	}
+}
+
+bno_no_tattoo_game_rule = {
+	modifier = {
+        add = -1000
+        has_game_rule = bno_tattoo_no
+    }
+}
+
+bno_decision_modifier = {
+	modifier = {
+		add = 100
+		trigger = {
+			is_bbc = yes
+		}
+	}
+	modifier = {
+		add = 10
+		trigger = {
+			is_bno_curious_and_up = yes
+		}
+	}
+	modifier = {
+        add = 25
+        trigger = {
+            is_bno_blacked_and_up = yes
+        }
+    } #+25 cause she's horny
+    modifier = {
+        add = 50
+        trigger = {
+            is_bno_qos_and_up = yes
+		}
+    } #+50 cause she's horny
+    modifier = {
+        add = 20
+        trigger = {
+            number_of_knights < max_number_of_knights
+        }
+	} #+20 as there cheap knights
+    modifier = {
+        add = 100
+        trigger = {
+            is_bno_snowbunny_and_up = yes
+            number_of_knights < max_number_of_knights
+        }
+    } #+100, as there cheap knights and she's horny
+    modifier = {
+        factor = 5
+        trigger = {
+			location = {
+				geographical_region = world_europe
+			}
+        }
+    } #+5, as its the region the player is probably looking to see corrupted
+    modifier = {
+        add = 10
+        trigger = {
+            has_trait = compassionate
+        }
+    } #+10 falls for sob story
+    modifier = {
+        add = 10
+        trigger = {
+            has_trait = generous
+        }
+    } #+10 falls for sob story
+    modifier = {
+        add = 25
+        trigger = {
+            has_trait = bno_cuckish
+        }
+    } #+25 he's wife is whispering in his ear
+    modifier = {
+        add = 50
+        trigger = {
+            has_trait = bno_cuck
+        }
+    } #+50 he knows what he's into
+    modifier = {
+        add = 75
+        trigger = {
+            has_trait = bno_beta
+        }
+    } #+75 he knows what he's into
+    modifier = {
+        add = 100
+        trigger = {
+            has_trait = bno_jos
+        }
+    } #+100 he knows what he's into
+	modifier = {
+        add = -10
+        trigger = {
+            has_trait = cynical
+        }
+    } #-10 not believing sob story, helps cull number of AI inviting
+	modifier = {
+        add = -10
+        trigger = {
+            has_trait = greedy
+        }
+    } #-10 not wanting to hand out gold, helps cull number of AI inviting
+	modifier = {
+        add = -10
+        trigger = {
+            has_trait = paranoid
+        }
+    } #-10 not trusting strangers, helps cull number of AI inviting
+}
+
+bno_white_girl_modifier_small = {
+	modifier = {
+		add = 5
+		is_bno_curious = yes
+	}
+	modifier = {
+		add = 10
+		is_bno_blacked = yes
+	}
+	modifier = {
+		add = 15
+		is_bno_snowbunny = yes
+	}
+	modifier = {
+		add = 20
+		is_bno_qos = yes
+	}
+	modifier = {
+		add = 25
+		is_bno_mindless_bbc_slut = yes
+	}
+}
+
+bno_bbc_trait_occurrence_chance_modifier = {
+	# Pure Chances
+	modifier = {
+		add = {
+			value = 0
+			switch = {
+				trigger = has_game_rule
+				bno_bbc_very_rare_chance = { add = bno_bbc_very_rare_chance }
+				bno_bbc_rare_chance = { add = bno_bbc_rare_chance }
+				bno_bbc_uncommon_chance = { add = bno_bbc_uncommon_chance }
+				bno_bbc_common_chance = { add = bno_bbc_common_chance }
+				bno_bbc_very_common_chance = { add = bno_bbc_very_common_chance }
+				bno_bbc_very_rare_chance = { add = bno_bbc_very_rare_chance }
+			}
+		}
+	}
+	# Based on Size Only (African Blood Level be damned!)
+	modifier = {
+		add = bno_bbc_trait_occurrence_dicksize_modifier
+		has_game_rule = bno_rarity_size
+	}
+	# Based on Dick Size + African Blood Level!
+	modifier = {
+		add = bno_bbc_trait_occurrence_dicksize_modifier
+		factor = {
+			value = 0
+			switch = {
+				trigger = has_trait
+				bno_full_black = { add = bno_bbc_full_black_multiplier }
+				bno_mostly_black = { add = bno_bbc_mostly_black_multiplier }
+				bno_mixed = { add = bno_bbc_mixed_multiplier }
+				bno_barely_mixed = { add = bno_bbc_barely_mixed_multiplier }
+			}
+		}
+		has_game_rule = bno_rarity_race
+	}
+}
+
+bno_bbc_modifier = {
+	modifier = {
+		add = 100
+		is_bbc = yes
+	}
+}
+
+bno_white_girl_modifier_big = {
+	modifier = {
+		add = 10
+		is_bno_curious_and_up = yes
+	}
+	modifier = {
+		add = 20
+		is_bno_blacked_and_up = yes
+	}
+	modifier = {
+		add = 30
+		is_bno_snowbunny_and_up = yes
+	}
+	modifier = {
+		add = 40
+		is_bno_qos_and_up = yes
+	}
+	modifier = {
+		add = 50
+		is_bno_mindless_bbc_slut = yes
+	}
+}
+
+bno_white_girl_modifier_biggest = {
+	modifier = {
+		add = 100000
+		is_bbc = yes
+	}
+	modifier = {
+		add = 100000
+		is_slut = yes
+	}
+}
+
+bno_vanilla_trait_modifier = {
+	# Vanilla personality: who suffers MORE from lying
+	modifier = { add = 20 has_trait = honest }        # hates falsehood
+	modifier = { add = 10 has_trait = just }          # fairness vs. deception
+	modifier = { add = 8  has_trait = compassionate } # empathy, guilt
+	modifier = { add = 6  has_trait = brave }         # sees lying as cowardly
+	modifier = { add = 10 has_trait = zealous }       # moral offense
+	modifier = { add = 6  has_trait = paranoid }      # fear of exposure
+	modifier = { add = 4  has_trait = stubborn }      # doubling down breeds pressure
+	modifier = { add = 4  has_trait = ambitious }     # thwarted “true” legacy creates strain
+
+	# Vanilla personality: who suffers LESS from lying (reductions)
+	modifier = { add = -15 has_trait = deceitful }    # comfortable with lies
+	modifier = { add = -8  has_trait = cynical }      # truth is flexible
+	modifier = { add = -6  has_trait = arbitrary }    # doesn’t care about fairness
+	modifier = { add = -6  has_trait = callous }      # low guilt
+	modifier = { add = -5  has_trait = lustful }      # indulgence > honesty
+	modifier = { add = -5  has_trait = shy }          # prefers discretion; lie feels safer
+	modifier = { add = -4  has_trait = calm }         # internal buffering
+}
+
+bno_bbc_cum_addiction_success_modifier = {
+	modifier = {
+		add = {
+			value = 0
+			scope:target = {
+				switch = {
+					trigger = has_trait
+					bno_curious = { add = 5 }
+					bno_blacked = { add = 15 }
+					bno_snowbunny = { add = 30 }
+					bno_qos = { add = 50 }
+					bno_mindless_bbc_slut = { add = 75 }
+				}
+			}
+		}
+	}
+}

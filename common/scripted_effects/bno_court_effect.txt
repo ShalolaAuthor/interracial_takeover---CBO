@@ -1,0 +1,593 @@
+﻿#set_bbc_worshipper_effect
+#bbc_worshipper_whoring_around
+#bbc_worshipper_service_fee
+#bbc_worshipper_pay_gold
+#bbc_worshipper_pay_piety
+#bbc_worshipper_pay_prestige
+#bbc_priestess_convert_vassal
+#bbc_priestess_convert_county
+#bbc_priestess_convert_neighboring_ruler
+#bbc_priestess_convert_neighboring_county
+
+set_bbc_worshipper_effect = {
+    $BBC_WORSHIPPER$ = {
+        if = {
+            limit = { NOT = { liege = $EMPLOYER$ } }
+            $EMPLOYER$ = { add_courtier = $BBC_WORSHIPPER$ }
+        }
+    }
+    $EMPLOYER$ = {
+        #Replace old bbc whore if exist
+        every_court_position_holder = {
+            type = bno_bbc_worshipper_court_position
+            add_to_list = bbc_worshippers
+        }
+        if = {
+            limit = {
+                NOT = { can_employ_court_position_type = bno_bbc_worshipper_court_position }
+                list_size = {
+                    name = bbc_worshippers
+                    value >= 3
+                }
+            }
+            ordered_in_list = {
+                list = bbc_worshippers
+                order_by = age
+                save_scope_as = old_bbc_worshipper
+            }
+            $EMPLOYER$ = {
+                replace_court_position = {
+                    recipient = $BBC_WORSHIPPER$
+                    holder = scope:old_bbc_worshipper
+                    court_position = bno_bbc_worshipper_court_position
+                }
+                reverse_add_opinion = {
+                    target = scope:old_bbc_worshipper
+                    modifier = disappointed_opinion
+					opinion = -15
+                }
+                reverse_add_opinion = {
+                    target = $BBC_WORSHIPPER$
+                    modifier = hired_me_opinion
+                }
+            }
+        }
+        else = {
+            appoint_court_position = {
+                recipient = $BBC_WORSHIPPER$
+                court_position = bno_bbc_worshipper_court_position
+            }
+            reverse_add_opinion = {
+                target = $BBC_WORSHIPPER$
+                modifier = hired_me_opinion
+            }
+        }
+    }
+}
+
+bbc_worshipper_whoring_around = {
+    get_valid_whore_list = {
+        LIST_NAME = bbc_worshipper_target
+    }
+    if = {
+        limit = {
+            list_size = {
+                name = bbc_worshipper_target
+                value > 0
+            }
+        }
+        ordered_in_list = {
+            list = bbc_worshipper_target
+            limit = {
+                is_alive = yes
+            }
+            order_by = gold
+            save_scope_as = rich_bbc
+        }
+        if = {
+            limit = {
+                scope:rich_bbc ?= {
+                    is_alive = yes
+                }
+            }
+            bno_increase_whore_level = yes
+            bbc_worshipper_service_fee = {
+                PAYEE = scope:rich_bbc
+            }
+            carn_sex_scene_no_pregnancy_effect = yes
+			carn_sex_scene_no_drama_effect = yes
+            bno_have_sex_with_effects = {
+                PARTNER = scope:rich_bbc
+            }
+            bno_increase_whore_level = yes
+        }
+    }
+}
+
+bbc_worshipper_service_fee = {
+    bbc_worshipper_pay_gold = {
+        PAYEE = $PAYEE$
+    }
+    bbc_worshipper_pay_piety = {
+        PAYEE = $PAYEE$
+    }
+    bbc_worshipper_pay_prestige = {
+        PAYEE = $PAYEE$
+    }
+}
+
+bbc_worshipper_pay_gold = {
+    $PAYEE$ = {
+        if = {
+            limit = { gold > 0 }
+            pay_short_term_gold = {
+                target = root
+                gold  = minor_gold_value
+            }
+        }
+    }
+}
+
+bbc_worshipper_pay_piety = {
+    $PAYEE$ = {
+        if = {
+            limit = { piety > 0 }
+            add_piety = minor_piety_loss
+            root = { add_piety = minor_piety_gain }
+        }
+    }
+    if = {
+        limit = { faith = { has_doctrine = doctrine_adultery_women_crime } }
+        add_piety = {
+            value = minor_piety_gain
+            add = { 5 10 }
+            add = { 1 5 }
+        }
+    }
+}
+
+bbc_worshipper_pay_prestige = {
+    $PAYEE$ = {
+        if = {
+            limit = { prestige > 0 }
+            add_prestige = minor_prestige_loss
+            root = { add_piety = minor_prestige_gain }
+        }
+    }
+}
+
+bbc_worshipper_give_all_spoil_to_liege = {
+    save_scope_as = bbc_worshipper
+    liege ?= {
+        save_scope_as = TARGET_CHARACTER
+    }
+    if = {
+        limit = {
+            exists = scope:TARGET_CHARACTER
+        }
+        if = {
+            limit = { gold > 1 }
+            pay_short_term_gold = {
+                target = scope:TARGET_CHARACTER
+                gold = bno_bbc_worshipper_gold
+            }
+        }
+        if = {
+            limit = { piety > 1 }
+            scope:TARGET_CHARACTER = {
+                add_piety = bno_bbc_worshipper_piety
+            }
+            add_piety = {
+                value = bno_bbc_worshipper_piety
+                multiply = -1
+            }
+        }
+        if = {
+            limit = { prestige > 1 }
+            scope:TARGET_CHARACTER = {
+                add_prestige = bno_bbc_worshipper_prestige
+            }
+            add_prestige = {
+                value = bno_bbc_worshipper_prestige
+                multiply = -1
+            }
+        }
+    }
+}
+
+bbc_worshipper_on_invalidated = {
+    scope:employee ?= {
+        if = {
+            limit = { is_alive = yes }
+            remove_character_flag = no_headgear
+            remove_character_flag = can_not_marry
+            trigger_event = {
+                id = bbc_worshipper.2001
+                days = 7
+            }
+        }
+    }
+}
+
+bbc_priestess_gain_xp = {
+    root = {
+        add_trait_xp = {
+            trait = bno_lifestyle_bbc_priestess
+            value = bno_random_xp_positive
+        }
+    }
+}
+
+bbc_priestess_rejected = {
+    scope:TARGET_CHARACTER = {
+        if = {
+            limit = {
+                root = {
+                    is_a_male = yes
+                }
+            }
+            send_interface_message = {
+                type = bno_blacked_events
+                title = bbc_priestess.1001.rejected_conversion.male.title
+                right_icon = root
+                desc = bbc_priestess.1001.rejected_conversion.male.desc
+            }
+        }
+        else_if = {
+            limit = {
+                root = {
+                    is_a_girl = yes
+                }
+            }
+            send_interface_message = {
+                type = bno_blacked_events
+                title = bbc_priestess.1001.rejected_conversion.female.title
+                right_icon = root
+                desc = bbc_priestess.1001.rejected_conversion.female.desc
+            }
+        }
+    }
+}
+
+bbc_priestess_target_not_found = {
+    scope:TARGET_CHARACTER = {
+        if = {
+            limit = {
+                root = {
+                    is_a_male = yes
+                }
+            }
+            send_interface_message = {
+                type = bno_blacked_events
+                title = bbc_priestess.1001.target_not_found.male.title
+                right_icon = root
+                desc = bbc_priestess.1001.target_not_found.male.desc
+            }
+        }
+        else_if = {
+            limit = {
+                root = {
+                    is_a_girl = yes
+                }
+            }
+            send_interface_message = {
+                type = bno_blacked_events
+                title = bbc_priestess.1001.target_not_found.female.title
+                right_icon = root
+                desc = bbc_priestess.1001.target_not_found.female.desc
+            }
+        }
+    }
+}
+
+bbc_priestess_convert_vassal = {
+    if = {
+        limit = {
+            scope:TARGET_CHARACTER = {
+                any_vassal_or_below = {
+                    highest_held_title_tier >= tier_county
+                    NOT = { is_faith_bbcs = yes }
+                }
+            }
+        }
+        random_vassal_or_below = {
+            limit = {
+                NOT = { is_faith_bbcs = yes }
+            }
+            save_scope_as = target_vassal
+        }
+        if = {
+            limit = {
+                exists = scope:target_vassal
+            }
+            scope:target_vassal = {
+                random_list = {
+                    20 = {
+                        set_character_faith_with_conversion = scope:TARGET_CHARACTER.faith
+                        scope:TARGET_CHARACTER = {
+                            send_interface_message = {
+                                type = bno_blacked_events
+                                title = bbc_priestess.1001.vassal_converted.title
+                                right_icon = root
+                                desc = bbc_priestess.1001.vassal_converted.desc
+                            }
+                        }
+                    }
+                    80 = {
+                        bbc_priestess_rejected = yes
+                    }
+                }
+            }
+        }
+        else = {
+            bbc_priestess_target_not_found = yes
+        }
+    }
+}
+
+bbc_priestess_convert_county = {
+    if = {
+        limit = {
+            scope:TARGET_CHARACTER = {
+                any_sub_realm_county = {
+                    NOT = { is_faith_bbcs = yes }
+                }
+            }
+        }
+        #scope here is landed title
+        scope:TARGET_CHARACTER = {
+            random_realm_county = {
+                limit = {
+                    NOT = { is_faith_bbcs = yes }
+                }
+                save_scope_as = target_landed_title
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:target_landed_title
+            }
+            scope:target_landed_title = {
+                county = {
+                    random_list = {
+                        20 = {
+                            bbc_priestess_gain_xp = yes
+                            set_county_faith = scope:TARGET_CHARACTER.faith
+                            scope:TARGET_CHARACTER = {
+                                send_interface_message = {
+                                    type = bno_blacked_events
+                                    title = bbc_priestess.1001.county_converted.title
+                                    right_icon = root
+                                    desc = bbc_priestess.1001.county_converted.desc
+                                }
+                            }
+                        }
+                        80 = {
+                            bbc_priestess_rejected = yes
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            bbc_priestess_target_not_found = yes
+        }
+    }
+}
+
+bbc_priestess_convert_neighboring_ruler = {
+    if = {
+        limit = {
+            scope:TARGET_CHARACTER = {
+                any_character_to_title_neighboring_county = {
+                    holder = { NOT = { is_faith_bbcs = yes } }
+                }
+            }
+        }
+        scope:TARGET_CHARACTER = {
+            random_character_to_title_neighboring_county = {
+                limit = {
+                    holder = { NOT = { is_faith_bbcs = yes } }
+                }
+                save_scope_as = target_neighboring_landed_title
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:target_neighboring_landed_title
+            }
+            scope:target_neighboring_landed_title = {
+                holder = {
+                    save_scope_as = neighboring_lord_or_lady
+                    random_list = {
+                        20 = {
+                            bbc_priestess_gain_xp = yes
+                            set_character_faith_with_conversion = scope:TARGET_CHARACTER.faith
+                            scope:TARGET_CHARACTER = {
+                                send_interface_message = {
+                                    type = bno_blacked_events
+                                    title = bbc_priestess.1001.neighboring_lord_converted.title
+                                    right_icon = root
+                                    desc = bbc_priestess.1001.neighboring_lord_converted.desc
+                                }
+                            }
+                        }
+                        80 = {
+                            bbc_priestess_rejected = yes
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            bbc_priestess_target_not_found = yes
+        }
+    }
+}
+
+bbc_priestess_convert_neighboring_county = {
+    if = {
+        limit = {
+            scope:TARGET_CHARACTER = {
+                any_character_to_title_neighboring_county = {
+                    NOT = { is_faith_bbcs = yes }
+                }
+            }
+        }
+        scope:TARGET_CHARACTER = {
+            random_character_to_title_neighboring_county = {
+                limit = {
+                    NOT = { is_faith_bbcs = yes }
+                }
+                save_scope_as = target_neighboring_landed_title
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:target_neighboring_landed_title
+            }
+            scope:target_neighboring_landed_title = {
+                county = {
+                    random_list = {
+                        20 = {
+                            bbc_priestess_gain_xp = yes
+                            set_county_faith = scope:TARGET_CHARACTER.faith
+                            scope:TARGET_CHARACTER = {
+                                send_interface_message = {
+                                    type = bno_blacked_events
+                                    title = bbc_priestess.1001.neighboring_county_converted.title
+                                    right_icon = root
+                                    desc = bbc_priestess.1001.neighboring_county_converted.desc
+                                }
+                            }
+                        }
+                        80 = {
+                            bbc_priestess_rejected = yes
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            bbc_priestess_target_not_found = yes
+        }
+    }
+}
+
+bno_court_sex_scene_effect = {
+    save_scope_as = carn_sex_player
+    $PARTNER$ = { save_scope_as = carn_sex_partner }
+    scope:carn_sex_player = {
+        carnal_court_enter_court_effect = yes
+    }
+}
+
+bno_learn_skill = {
+    if = {
+        limit = {
+            scope:carn_sex_partner = {
+                $SKILL$ > 10
+            }
+        }
+        send_interface_message = {
+            type = bno_blacked_events
+            title = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_learn_skill.success.female.title
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_learn_skill.success.male.title
+                    }
+                }
+            }
+            desc = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_learn_skill.success.female.desc
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_learn_skill.success.male.desc
+                    }
+                }
+            }
+            right_icon = scope:carn_sex_player
+            left_icon = scope:carn_sex_partner
+            #effect
+            add_$SKILL$_skill = 1
+        }
+    }
+    else = {
+        send_interface_message = {
+            type = bno_blacked_events
+            title = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_learn_skill.failure.female.title
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_learn_skill.failure.male.title
+                    }
+                }
+            }
+            desc = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_learn_skill.failure.female.desc
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_learn_skill.failure.male.desc
+                    }
+                }
+            }
+            right_icon = scope:carn_sex_player
+            left_icon = scope:carn_sex_partner
+            #effect
+            add_$SKILL$_skill = -1
+        }
+    }
+}
+
+bno_learning_from_sex_effect = {
+    custom_tooltip = bno_learning_from_sex_effect.tooltip
+    random_list = {
+        1 = {
+            bno_learn_skill = {
+                SKILL = prowess
+            }
+        }
+        1 = {
+            bno_learn_skill = {
+                SKILL = diplomacy
+            }
+        }
+        1 = {
+            bno_learn_skill = {
+                SKILL = stewardship
+            }
+        }
+        1 = {
+            bno_learn_skill = {
+                SKILL = martial
+            }
+        }
+        1 = {
+            bno_learn_skill = {
+                SKILL = intrigue
+            }
+        }
+        1 = {
+            bno_learn_skill = {
+                SKILL = learning
+            }
+        }
+    }
+}

@@ -1,0 +1,198 @@
+﻿bno_tincture_of_genesis_interaction = {
+    icon = icon_bno_tincture_of_genesis
+    category = interaction_category_friendly
+    interface_priority = 999
+
+    auto_accept = yes
+
+    common_interaction = yes
+
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:actor = { is_a_male = yes } }
+                desc = bno_tincture_of_genesis_interaction.desc
+            }
+            desc = bno_tincture_of_genesis_interaction.desc.female
+        }
+    }
+
+    use_diplomatic_range = yes
+
+    is_shown = {
+        scope:actor = {
+            trigger_if = {
+                limit = {
+                    is_a_male = yes
+                    is_bbc = yes
+                }
+                is_adult = yes
+            }
+            trigger_else_if = {
+                limit = {
+                    is_a_girl = yes
+                }
+                is_bno_curious_and_up = yes
+                is_adult = yes
+            }
+            trigger_else = {
+                always = no
+            }
+        }
+        scope:recipient = {
+            NOT = { has_character_modifier = bno_ebony_bloom }
+            trigger_if = {
+                limit = {
+                    scope:actor = { is_a_male = yes }
+                }
+                is_a_girl = yes
+            }
+            trigger_else = {
+                this = scope:actor
+            }
+            scope:actor = {
+                OR = {
+                    is_spouse_of = scope:recipient
+                    any_spouse = {
+                        is_bbc = yes
+                    }
+                }
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        scope:actor = {
+            trigger_if = {
+                limit = {
+                    is_a_girl = yes
+                }
+                is_bno_mindless_bbc_slut = yes
+            }
+            trigger_else_if = {
+                limit = {
+                    is_a_male = yes
+                }
+                NOT = { has_character_modifier = bno_nourishers_fatigue }
+            }
+            trigger_else = {
+                always = no
+            }
+        }
+        scope:recipient = {
+            NOT = { has_character_modifier = bno_tincture_of_genesis }
+            custom_tooltip = {
+                text = bno_tincture_of_genesis_interaction.not_white
+                is_african = no
+            }
+            age >= 18
+        }
+    }
+
+    on_accept = {
+        #trigger event for bbc after 6 months will start to see the result give wife bno_becoming dark and a hidden event that keep incrementing that number
+        if = {
+            limit = {
+                scope:actor = { is_a_male = yes }
+            }
+            show_as_tooltip = {
+                custom_tooltip = bno_tincture_of_genesis_interaction.effect
+            }
+        }
+        else_if = {
+            limit = {
+                scope:actor = { is_a_girl = yes }
+            }
+            show_as_tooltip = {
+                custom_tooltip = bno_tincture_of_genesis_interaction.effect.female
+            }
+        }
+        scope:actor = {
+            if = {
+                limit = {
+                    is_a_male = yes
+                }
+                add_character_modifier = bno_nourishers_fatigue
+            }
+            else_if = {
+                limit = {
+                    is_a_girl = yes
+                }
+                random_spouse = {
+                    limit = {
+                        is_bbc = yes
+                    }
+                    add_character_modifier = bno_nourishers_fatigue
+                }
+            }
+        }
+        scope:recipient = {
+            if = {
+                limit = {
+                    is_a_girl = yes
+                }
+                add_character_modifier = bno_tincture_of_genesis
+            }
+        }
+        hidden_effect = {
+            scope:actor = {
+                if = {
+                    limit = {
+                        is_a_male = yes
+                    }
+                    trigger_event = bno_tincture_of_genesis.0001
+                }
+                else_if = {
+                    limit = {
+                        is_a_girl = yes
+                    }
+                    random_spouse = {
+                        limit = {
+                            is_bbc = yes
+                        }
+                        scope:actor = {
+                            save_scope_as = recipient
+                        }
+                        save_scope_as = actor
+                        scope:actor = {
+                            trigger_event = bno_tincture_of_genesis.0001
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ai_potential = {
+        OR = {
+            any_spouse = {
+                is_white_girl = yes
+                NOT = { exists = var:bno_becoming_dark }
+            }
+            is_mindless_bbc_slut = yes
+        }
+        OR = {
+            NOT = { has_trait = bno_full_black_slut }
+            NOT = { has_character_modifier = bno_nourishers_fatigue }
+        }
+    }
+
+    ai_frequency = 1
+
+    ai_targets = {
+        ai_recipients = spouses
+        ai_recipients = self
+    }
+
+    ai_will_do = {
+        base = 100
+        modifier = {
+            add = 1000000
+            scope:actor = {
+                is_bbc = yes
+                is_adult = yes
+            }
+        }
+    }
+
+}

@@ -1,0 +1,90 @@
+﻿bno_becoming_bbc_slut = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	desc = bno_becoming_bbc_slut_desc
+	selection_tooltip = bno_becoming_bbc_slut_tooltip
+	decision_group_type = bno_decision_group
+	is_shown = {
+		is_white_girl = yes
+		is_slut = yes
+		NOT = { has_character_flag = bno_stop_becoming_bbc_slut }
+		NOT = { has_character_flag = bno_slut.1015 }
+		OR = { 
+			is_ai = no 
+			has_game_rule = bno_decision_npc_yes 
+		}
+	}
+	is_valid = {
+		custom_tooltip = {
+			text = bno_becoming_bbc_slut.has_bbc_in_court
+			any_courtier_or_guest = {
+				is_ai_blackbull = yes
+			}
+		}
+		is_bno_snowbunny_and_up = yes
+	}
+	effect = {
+		custom_tooltip = bno_becoming_bbc_slut.effect
+		trigger_event = bno_slut.0015
+	}
+	ai_check_interval = 1
+	ai_potential = {
+		is_bno_snowbunny_and_up = yes
+		any_courtier_or_guest = {
+			is_ai_blackbull = yes
+		}
+		NOT = { has_character_flag = bno_stop_becoming_bbc_slut }
+		NOT = { has_character_flag = bno_slut.1015 }
+	}
+	ai_will_do = {
+		base = 0
+		bno_white_girl_modifier_big = yes
+	}
+}
+
+bno_stop_becoming_bbc_slut = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	desc = bno_stop_becoming_bbc_slut_desc
+	selection_tooltip = bno_stop_becoming_bbc_slut_tooltip
+	decision_group_type = bno_decision_group
+	is_shown = {
+		has_character_flag = bno_slut.1015
+		OR = { 
+			is_ai = no 
+			has_game_rule = bno_decision_npc_yes 
+		}
+		trigger_if = {
+			limit = {
+				exists = var:slut_whoring_year
+				var:slut_whoring_year >= 1
+			}
+			always = yes
+		}
+		trigger_else = {
+			always = no
+		}
+	}
+	is_valid = {
+		is_bno_snowbunny_and_up = yes
+		custom_tooltip = {
+			text = bno_stop_becoming_bbc_slut.bbc_spouse
+			any_spouse = {
+				is_bbc = yes
+			}
+		}
+	}
+	effect = {
+		remove_character_flag = bno_slut.1015
+		add_character_flag = bno_stop_becoming_bbc_slut
+	}
+	ai_check_interval = 0
+	ai_potential = {
+		always = no
+	}
+	ai_will_do = {
+		base = 0
+	}
+}

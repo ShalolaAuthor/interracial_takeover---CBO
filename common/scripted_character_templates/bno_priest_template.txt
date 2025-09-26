@@ -1,0 +1,198 @@
+﻿#faith and culture needs to be changed later based on your culture/faith if they re based on bbcs or bnoc
+
+bno_female_holy_order_leader_character_template = {
+	age = bno_younger_adult
+	random_traits_list = {
+		count = 1
+		education_learning_2 = { weight = { base = 5 } }
+		education_martial_2 = { weight = { base = 5 } }
+		education_learning_3 = { weight = { base = 10 } }
+		education_martial_3 = { weight = { base = 10 } }
+		education_learning_4 = { weight = { base = 20 } }
+		education_martial_4 = { weight = { base = 20 } }
+		education_learning_5 = { weight = { base = 10 } }
+		education_martial_5 = { weight = { base = 10 } }
+	}
+
+	trait = order_member
+
+	#Personality
+	random_traits_list = {
+		count = 3
+		ambitious = {}
+		arrogant = {}
+		just = {}
+		zealous = {}
+		brave = {}
+		diligent = {}
+		wrathful = {}
+		humble = {}
+		callous = {}
+		stubborn = {}
+		vengeful = {}
+	}
+	#Commander
+	random_traits_list = {
+		count = 1
+		unyielding_defender = {
+			weight = { base = 5 }
+		}
+		forder = {
+			weight = { base = 5 }
+		}
+		logistician = {
+			weight = { base = 10 }
+		}
+		military_engineer = {
+			weight = { base = 10 }
+		}
+		organizer = {
+			weight = { base = 10 }
+		}
+		rough_terrain_expert = {
+			weight = { base = 20 }
+		}
+		aggressive_attacker = {
+			weight = { base = 20 }
+		}
+		reckless = {
+			weight = { base = 20 }
+		}
+		open_terrain_expert = {
+			weight = { base = 20 }
+		}
+		desert_warrior = {
+			weight = { base = 50 }
+		}
+		jungle_stalker = {
+			weight = { base = 50 }
+		}
+		holy_warrior = {
+			weight = { base = 50 }
+		}
+	}	
+	gender = female
+
+	martial = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+
+	after_creation = {
+		bno_get_between_common_uncommon_and_rare_trait = {
+			TRAIT_COMMON = bno_snowbunny
+			TRAIT_UNCOMMON = bno_qos
+			TRAIT_RARE = bno_mindless_bbc_slut
+		}
+		bno_maybe_get_a_rare_trait = {
+			TRAIT = bno_pure_white
+		}
+		bno_get_a_leveled_trait = {
+			TRAIT = tits_big_good
+		}
+        bno_get_a_leveled_trait = {
+			TRAIT = beauty_good
+		}
+        remove_bad_traits = yes
+	}
+}
+
+bno_female_priest_character_template = {
+	age = bno_younger_adult
+	random_traits_list = {
+		count = 1
+		education_learning_2 = {}
+		education_learning_3 = {}
+		education_learning_4 = {}
+	}
+
+	trait = bno_lifestyle_bbc_priestess
+	
+	random_traits = yes
+	
+	gender = female
+
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+
+	after_creation = {
+		add_character_flag = need_priest_outfit
+		bno_get_between_common_uncommon_and_rare_trait = {
+			TRAIT_COMMON = bno_snowbunny
+			TRAIT_UNCOMMON = bno_qos
+			TRAIT_RARE = bno_mindless_bbc_slut
+		}
+		bno_maybe_get_a_rare_trait = {
+			TRAIT = bno_pure_white
+		}
+		bno_get_a_leveled_trait = {
+			TRAIT = tits_big_good
+		}
+        bno_get_a_leveled_trait = {
+			TRAIT = beauty_good
+		}
+        remove_bad_traits = yes
+	}
+}
+
+bno_male_priest_character_template = {
+	age = bno_younger_adult
+	random_traits_list = {
+		count = 1
+		education_learning_2 = {}
+		education_learning_3 = {}
+		education_learning_4 = {}
+	}
+
+	trait = bno_full_black
+	trait = bno_lifestyle_bbc_priest
+	random_traits = yes
+	
+	faith = faith:bbcs
+	culture = culture:bnoc
+	gender = male
+
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+
+	after_creation = {
+		add_character_flag = need_priest_outfit
+		bno_get_between_common_uncommon_and_rare_trait = {
+			TRAIT_COMMON = bno_snowbunny
+			TRAIT_UNCOMMON = bno_qos
+			TRAIT_RARE = bno_mindless_bbc_slut
+		}
+		bno_maybe_get_a_rare_trait = {
+			TRAIT = bno_pure_white
+		}
+        bno_get_a_leveled_trait = {
+			TRAIT = beauty_good
+		}
+		bno_add_bbc_trait_effect = yes
+		if = {
+			limit = {
+				root = {
+					is_faith_bbcs = yes
+				}
+			}
+			set_character_faith = root.faith
+		}
+		if = {
+			limit = {
+				root = {
+					is_culture_bnoc = yes
+				}
+			}
+			set_culture = root.culture
+		}
+        remove_bad_traits = yes
+	}
+}

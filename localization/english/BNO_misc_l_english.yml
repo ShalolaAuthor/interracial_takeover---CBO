@@ -1,0 +1,35 @@
+﻿l_english:
+# traits
+trait_bno_bbc: "Big, Black Cock"
+trait_bno_bbc_desc: "This character has a massive black cock and the urge to fuck every slut in his way."
+trait_bno_cuckish: "Cucked?"
+trait_bno_cuckish_desc: "This character's wife as recently grown distant to her. Why?"
+trait_bno_cuck: "Cucked!"
+trait_bno_cuck_desc: "This character's wife has fucked a black man before, and he's powerless to stop it."
+trait_bno_beta: "Beta"
+trait_bno_beta_desc: "This character's former wife has left him for a better man, and completely emasculated him."
+trait_bno_jos: "Jack of Spades"
+trait_bno_jos_desc: "This character, despite spousal troubles, has fully joined the new world order."
+trait_bno_caged: "Caged"
+trait_bno_caged_desc: "Chastity is this character's punishment for not being black."
+trait_bno_castrated: "Castrated"
+trait_bno_castrated_desc: "Children are a thing of the past. This man will not be producing any heirs."
+trait_bno_camp_leader: "Black Revolutionary"
+trait_bno_camp_leader_desc: "This character has been chosen as the leader of his local band of refugees for his gigantic, black cock, praised for the amount of sluts he has conquered."
+
+trait_bno_slut_blood: "Black Slut"
+trait_bno_slut_blood_desc: "She has consumed too much [GetTrait('bno_full_black').GetName( GetNullCharacter )] cum, she becomes black from inside out."
+trait_bno_full_black: "Black"
+trait_bno_full_black_desc: "A descendant straight from the continent of Africa"
+trait_bno_mostly_black: "Mostly Black"
+trait_bno_mostly_black_desc: "Through selective breeding amongst African foreigners, their skin is darker"
+trait_bno_mixed: "Mixed"
+trait_bno_mixed_desc: "Half-blooded African"
+trait_bno_barely_mixed: "Barely Mixed"
+trait_bno_barely_mixed_desc: "After generations of not breeding within the African dynasty, this character's native blood runs low"
+
+
+
+#Message Filter
+message_filter_bno_breeding_outcomes: ""
+message_filter_bno_blacked_events: ""

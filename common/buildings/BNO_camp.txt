@@ -1,0 +1,251 @@
+﻿@holding_illustration_grass = "gfx/interface/illustrations/holding_types/tribe_grass.dds"
+
+bbc_camp_01 = {
+	
+	construction_time = slow_construction_time
+
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_african_tribal_01_a_mesh"
+		}
+		graphical_cultures = { african_building_gfx }
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+	}
+	
+	cost_gold = expensive_building_tier_2_cost
+	can_construct_potential = {
+		bno_building_requirement_camp = yes
+	}
+	
+	show_disabled = yes
+	
+	province_modifier = { # add province modifiers here
+		monthly_income = 0.5
+	}
+	
+	character_modifier = {
+		knight_limit = 2
+		knight_effectiveness_mult = 0.1
+		men_at_arms_limit = 1
+	}
+	#Place Holder
+	type_icon = "icon_building_warcamps.dds"
+	
+	type = special
+	
+	next_building = bbc_camp_02
+	
+	ai_value = { # The priority to build the building
+		base = 100
+	}
+}
+
+bbc_camp_02 = {
+	
+	construction_time = slow_construction_time
+
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_african_tribal_01_a_mesh"
+		}
+		graphical_cultures = { african_building_gfx }
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+	}
+	
+	cost_gold = expensive_building_tier_3_cost
+	
+	can_construct_potential = {
+		bno_building_requirement_camp = yes
+	}
+	
+	
+	
+	province_modifier = { # add province modifiers here
+		monthly_income = 1
+	}
+	
+	character_modifier = {
+		knight_limit = 4
+		knight_effectiveness_mult = 0.2
+		men_at_arms_limit = 1
+	}
+	
+	type_icon = "icon_building_warcamps.dds"
+	
+	type = special
+	
+	next_building = bbc_camp_03
+	
+	ai_value = { # The priority to build the building
+		base = 100
+	}
+}
+
+bbc_camp_03 = {
+	
+	construction_time = slow_construction_time
+
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_african_tribal_01_a_mesh"
+		}
+		graphical_cultures = { african_building_gfx }
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+	}
+	
+	cost_gold = expensive_building_tier_4_cost
+	
+	can_construct_potential = {
+		bno_building_requirement_camp = yes
+	}
+	
+	province_modifier = { # add province modifiers here
+		monthly_income = 1.5
+	}
+	
+	character_modifier = {
+		knight_limit = 6
+		knight_effectiveness_mult = 0.3
+		men_at_arms_limit = 1
+	}
+	
+	type_icon = "icon_building_warcamps.dds"
+	
+	type = special
+	
+	next_building = bbc_camp_04
+	
+	ai_value = { # The priority to build the building
+		base = 100
+	}
+}
+
+bbc_camp_04 = {
+	
+	construction_time = slow_construction_time
+
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_african_tribal_01_a_mesh"
+		}
+		graphical_cultures = { african_building_gfx }
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+	}
+	
+	cost_gold = expensive_building_tier_5_cost
+	
+	can_construct_potential = {
+		bno_building_requirement_camp = yes
+	}
+	
+	province_modifier = { # add province modifiers here
+		monthly_income = 2
+	}
+	
+	character_modifier = {
+		knight_limit = 8
+		knight_effectiveness_mult = 0.4
+		men_at_arms_limit = 1
+	}
+	
+	type_icon = "icon_building_warcamps.dds"
+	
+	type = special
+	
+	next_building = bbc_camp_05
+	
+	ai_value = { # The priority to build the building
+		base = 100
+	}
+}
+
+bbc_camp_05 = {
+	
+	construction_time = slow_construction_time
+
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_african_tribal_01_a_mesh"
+		}
+		graphical_cultures = { african_building_gfx }
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+	}
+	
+	cost_gold = expensive_building_tier_6_cost
+	
+	can_construct_potential = {
+		bno_building_requirement_camp = yes
+	}
+	
+	province_modifier = { # add province modifiers here
+		monthly_income = 2.5
+	}
+	
+	character_modifier = {
+		knight_limit = 10
+		knight_effectiveness_mult = 0.5
+		men_at_arms_limit = 2
+	}
+	
+	type_icon = "icon_building_warcamps.dds"
+	
+	type = special
+	
+	next_building = bbc_camp_06
+	
+	ai_value = { # The priority to build the building
+		base = 100
+	}
+}
+
+bbc_camp_06 = {
+	
+	construction_time = slow_construction_time
+
+	asset = {
+		type = pdxmesh
+		names = {
+			"building_african_tribal_01_a_mesh"
+		}
+		graphical_cultures = { african_building_gfx }
+		illustration = @holding_illustration_grass
+		soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+	}
+	
+	cost_gold = expensive_building_tier_7_cost
+	
+	can_construct_potential = {
+		bno_building_requirement_camp = yes
+	}
+	
+	province_modifier = { # add province modifiers here
+		monthly_income = 2.5
+		development_growth_factor = 1
+		development_growth = 1
+		
+	}
+	
+	character_modifier = {
+		knight_limit = 10
+		knight_effectiveness_mult = 0.5
+		men_at_arms_limit = 2
+	}
+	
+	type_icon = "icon_building_warcamps.dds"
+	
+	type = special
+	
+	ai_value = { # The priority to build the building
+		base = 100
+	}
+}

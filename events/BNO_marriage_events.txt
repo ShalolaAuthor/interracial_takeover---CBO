@@ -1,0 +1,249 @@
+﻿namespace = bno_marriage
+
+bno_marriage.0001 = {
+	hidden = yes
+	type = character_event
+	
+	cooldown = { months = { 12 18 } }
+	
+	trigger = {
+		is_ai_blackbull = yes
+		is_married = no
+		is_ruler = no
+		does_unmarried_pure_white_girl_exist = yes
+	}
+	
+	immediate = {
+		get_unmarried_pure_white_girl_scope = {
+			SCOPE_NAME = target1
+		}
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target1
+		}
+		become_lover_with_target = {
+			TARGET = scope:target1
+			LOCATION = location
+		}
+	}
+	
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		scope:target1 ?= {
+			bno_marriage_effect = {
+				TARGET = root
+			}
+		}
+	}
+}
+
+#bull steals slut wife except liege's wife
+bno_marriage.0002 = {
+	hidden = yes
+	type = character_event
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = { 8 12 } }
+	
+	trigger = {
+		is_ai_blackbull = yes
+		is_ruler = no
+		does_blacked_girl_married_to_a_ruler_exist = yes
+	}
+	
+	immediate = {
+		get_blacked_girl_married_to_a_ruler_scope = {
+			SCOPE_NAME = target1
+		}
+	}
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		add_stress = -100
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target1
+		}
+		scope:target1 ?= {
+			bno_marriage_effect = {
+				TARGET = root
+			}
+		}
+	}
+}
+#checks if wife is too old, sick, crippled
+bno_marriage.0003 = {
+	hidden = yes
+	type = character_event
+	
+	trigger = {
+		is_ai_blackbull = yes
+		is_married = yes
+		does_partner_has_bad_trait = yes
+	}
+
+	immediate = {
+		bno_bbc_divorce_effect = yes
+		trigger_event = bno_marriage.0001
+	}
+}
+
+bno_marriage.0004 = { #unmarried bbc looks to other realms for single woman
+	hidden = yes
+	type = character_event
+	
+	cooldown = { months = { 12 18 } }
+	
+	trigger = {
+		is_unmarried_ai_blackbull = yes
+		is_ruler = no
+		does_unmarried_ai_pure_foreign_lady_exist = yes
+	}
+	
+	immediate = {
+		get_foreign_unmarried_pure_white_girl_scope = {
+			SCOPE_NAME = target1
+		}
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = root
+			}
+			become_lover_with_target = {
+				TARGET = root
+				LOCATION = location
+			}
+			bno_marriage_effect = {
+				TARGET = root
+			}
+		}
+		add_character_modifier = {
+			modifier = bno_took_foreign_unmarried_white_wife
+			years = 15
+		}
+	}
+}
+#bull steals foreign slut wife
+bno_marriage.0005 = {
+	hidden = yes
+	type = character_event
+	
+	cooldown = { months = { 8 12 } }
+	
+	trigger = {
+		is_unmarried_ai_blackbull = yes
+		is_ruler = no
+		is_courtier = yes
+		does_blacked_ai_girl_has_white_guy_husband_exist = yes
+	}
+	
+	immediate = {
+		get_foreign_married_blacked_girl_scope = {
+			SCOPE_NAME = target1
+		}
+		add_stress = -100
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = root
+			}
+			bno_marriage_effect = {
+				TARGET = root
+			}
+		}
+		add_character_modifier = {
+			modifier = bno_stole_foreign_married_white_wife
+			years = 15
+		}
+	}
+}
+
+bno_marriage.0006 = {	#used to make sure bbc actually have children. Might be worthless/overburdening to have too many characters having kids, so not currently added to any event pulses
+	hidden = yes
+	
+	cooldown = { months = { 12 18 } }
+
+	trigger = {
+		is_ai_blackbull = yes
+		is_married = yes
+		any_spouse = {
+			is_a_girl = yes
+		}
+		bno_num_mixed_children_plus_dead <= 3
+	}
+
+	immediate = {
+		every_spouse = {
+			limit = {
+				is_a_girl = yes
+			}
+			save_scope_as = wife_temp
+			scope:wife_temp ?= {
+				bno_have_sex_with_effects = {
+					PARTNER = root
+				}
+			}
+		}
+	}
+}
+#Dynasty Perk
+bno_marriage.0007 = {
+	hidden = yes
+	immediate = {
+		if = {
+			limit = {
+				dynasty ?= {
+					has_dynasty_perk = bno_embrace_african_4
+				}
+			}
+			dynasty ?= {
+				bno_bbc_marriage_effect = {
+					SOURCE = root
+				}		
+			}	
+		}
+		if = {
+			limit = {
+				scope:spouse ?= {
+					dynasty ?= {
+						has_dynasty_perk = bno_embrace_african_4
+					}
+				}
+			}
+			scope:spouse ?= {
+				dynasty ?= {
+					bno_bbc_marriage_effect = {
+						SOURCE = scope:spouse
+					}
+				}
+			}
+		}
+	}
+}

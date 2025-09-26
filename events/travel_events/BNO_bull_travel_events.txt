@@ -1,0 +1,97 @@
+﻿namespace = bno_bull_travel
+
+bno_bull_travel.0001 = {
+	type = character_event
+	title = bno_bull_travel_0001.title
+	desc = bno_bull_travel_0001.desc
+	theme = travel
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	cooldown = { years = 1 }
+	trigger = {
+		is_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		is_ruler = yes
+		has_trait = bno_bbc
+		is_adult = yes
+		current_travel_plan = {
+			any_entourage_character = {
+				is_adult = yes
+				is_a_girl = yes
+				is_bno_snowbunny_and_up = yes
+				NOT = { is_close_or_extended_family_of = root }
+			}
+		}
+	}
+	immediate = {
+		root = {
+			current_travel_plan = {
+				random_entourage_character = {
+					limit = {
+						is_adult = yes
+						is_a_girl = yes
+						has_trait = bno_whitegirl
+						is_bno_snowbunny_and_up = yes
+						NOT = { is_close_or_extended_family_of = root }
+					}
+					save_scope_as = target1
+				}
+			}
+		}
+	}
+	option = { #delays travel to fuck girl
+		name = bno_bull_travel_0001.a
+		bno_have_sex_with_effects = {
+			PARTNER = scope:target1
+		}
+		scope:target1 ?= {
+			bno_increase_sluttyness = yes
+			add_opinion = {
+				modifier = bno_bull_fucks_me
+				target = root
+			}
+			stress_impact = {
+				bno_curious = minor_stress_impact_loss
+				bno_blacked = minor_stress_impact_loss
+				bno_snowbunny = minor_stress_impact_loss
+				bno_qos = minor_stress_impact_loss
+				bno_mindless_bbc_slut = minor_stress_impact_loss
+			}
+		}
+		current_travel_plan = {
+			every_entourage_character = {
+				limit = {
+					NOT = { has_trait = lustful }
+					NOT = { this = scope:target1 }
+				}
+				add_opinion = {
+					modifier = bno_travel_delayed_for_fucking
+					target = root
+				}
+			}
+			delay_travel_plan = {
+				days = 5
+			}
+		}
+	}
+	option = { #don't get distracted
+		name = bno_bull_travel_0001.b
+		stress_impact = {
+			lustful = minor_stress_impact_gain
+			diligent = minor_stress_impact_loss
+		}
+		current_travel_plan = {
+			add_destination_progress = {
+				days = 5
+			}
+		}
+	}
+}

@@ -1,0 +1,154 @@
+﻿namespace = bno_combat
+
+#BBC Commander, castrated enemy dicks, and wound them
+bno_combat.0001 = {
+    type = character_event
+    title = bno_combat.0001.title
+    desc = bno_combat.0001.desc
+    theme = martial
+    override_background = {
+        reference = battlefield
+    }
+
+    left_portrait = {
+        character = scope:bbc_commander
+        animation = war_over_win
+    }
+
+    right_portrait = {
+        character = scope:bbc_enemy_commander
+        animation = fear
+    }
+
+    cooldown = { months = 1 }
+
+    trigger = {
+        scope:bbc_enemy_commander = {
+            is_alive = yes
+        }
+    }
+
+    option = { # Wound and castrate
+        name = bno_combat.0001.a
+        duel = {
+            skills = { martial prowess }
+            target = scope:bbc_enemy_commander
+            50 = {
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                desc = bno_combat.0001.a.success.tooltip
+                scope:bbc_enemy_commander = {
+                    increase_wounds_effect = { REASON = fight }
+                    add_character_modifier = {
+                        modifier = bno_wounded_commander
+                        months = 3
+                    }
+                    bno_castrated_effect = yes
+                }
+            }
+            50 = {
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -4.5
+                    min = 0
+                }
+                desc = bno_combat.0001.a.failure.tooltip
+                increase_wounds_no_death_effect = { REASON = fight }
+            }
+        }
+        stress_impact = {
+            bno_castrated = medium_stress_impact_gain
+            bno_bbc = medium_stress_impact_loss
+        }
+        ai_chance = {
+            base = 100
+        }
+    }
+}
+#BBC Commander, fuck slut, add them to your court, not slut, intrigue duel, win, girl become slut
+bno_combat.0002 = {
+    type = character_event
+    title = bno_combat.0002.title
+    desc = bno_combat.0002.desc
+    theme = seduction
+    override_background = {
+        reference = battlefield
+    }
+    left_portrait = {
+        character = scope:bbc_commander
+        animation = personality_content
+    }
+    right_portrait = {
+        character = scope:bbc_enemy_female_commander
+        animation = fear
+    }
+
+    cooldown = { months = 1 }
+
+    option = { # if girl is already curious and not has bbc spouse or liege, invite slut to court
+        name = bno_combat.0002.a
+        exclusive = yes
+        add_internal_flag = special
+        trigger = {
+            scope:bbc_enemy_female_commander = {
+                is_ruler = no
+                OR = {
+                    liege ?= {
+                        OR = {
+                            is_ai_white_guy = yes
+                            is_ai_pure_white_girl = yes
+                        }
+                    }
+                    any_spouse = {
+                        is_ai_white_guy = yes
+                    }
+                }
+            }
+        }
+        bno_have_sex_with_effects = {
+            PARTNER = scope:bbc_enemy_female_commander
+        }
+        liege = {
+            add_courtier = scope:bbc_enemy_female_commander
+        }
+        ai_chance = {
+            base = 200
+        }
+    }
+    option = { # make pure girl curious with duel
+        name = bno_combat.0002.b
+        duel = {
+            skills = { martial prowess }
+            target = scope:bbc_enemy_female_commander
+            50 = {
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                desc = bno_combat.0002.b.success.tooltip
+                scope:bbc_enemy_female_commander = {
+                    increase_wounds_effect = { REASON = fight }
+                    bno_have_sex_with_effects = {
+                        PARTNER = scope:bbc_commander
+                    }
+                }
+            }
+            50 = {
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -4.5
+                    min = 0
+                }
+                desc = bno_combat.0002.b.failure.tooltip
+                increase_wounds_no_death_effect = { REASON = fight }
+            }
+        }
+        ai_chance = {
+            base = 100
+        }
+    }
+}

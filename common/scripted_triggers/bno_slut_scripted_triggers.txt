@@ -1,0 +1,838 @@
+﻿is_blackbull = {
+	is_bbc = yes
+	is_elligible_partner = yes
+	is_a_male = yes
+}
+
+is_rich_ai_blackbull = {
+	is_ai_blackbull = yes
+	NOT = { has_trait = lovers_pox }
+	gold > 0
+	prestige > 0
+	piety > 0
+}
+
+is_bno_actor = {
+	OR = {
+        is_bbc = yes
+        is_slut = yes
+        has_trait = bno_whiteboi
+    }
+}
+
+is_a_male = {
+	OR = {
+		is_male = yes
+		is_a_futa = yes
+	}
+}
+
+does_blacked_girl_white_husband_has_secret = {
+	is_blacked = yes
+	is_married = yes
+	any_spouse = {
+		is_ai_white_guy_has_secret = yes
+	}
+}
+
+is_ai_white_guy_has_secret = {
+	has_any_secrets = yes
+	is_ai_white_guy = yes
+	any_secret = {
+		NOT = { is_known_by = root }
+	}
+}
+
+is_ai_white_guy_married = {
+	is_ai_white_guy = yes
+	is_married = yes
+}
+
+does_white_guy_liege_has_money = {
+	liege ?= {
+		gold > 50
+		is_ai_white_guy_married = yes
+		any_spouse = {
+			is_ai_blacked = yes
+		}
+	}
+}
+
+does_white_vassal_has_non_blacked_wife = {
+	OR = {
+		any_vassal_or_below = {
+			is_white_guy_with_pure_wife = yes
+		}
+		liege ?= {
+			OR = {
+				is_white_guy_with_pure_wife = yes
+				any_vassal_or_below = {
+					NOT = { this = root }
+					is_white_guy_with_pure_wife = yes
+				}
+			}
+		}
+	}
+}
+
+is_white_guy_with_pure_wife = {
+	is_ai_white_guy = yes
+	is_married = yes
+	any_spouse = {
+		is_ai_pure_white_girl = yes
+	}
+}
+
+is_ai_blackbull_just_or_zealous = {
+	is_ai_blackbull = yes
+	OR = {
+		has_trait = zealous
+		has_trait = just
+	}
+}
+
+does_wandering_male_exist = {
+	any_pool_character = {
+		province = location
+		is_a_male = yes
+		is_elligible_partner = yes
+		count >= 1
+	}
+}
+
+does_something_related_to_you_exist = {
+	any_close_family_member = {
+		$TRIGGER_KEY$ = yes
+	}
+}
+
+does_blacked_mother_exist = {
+	does_something_related_to_you_exist = {
+		TRIGGER_KEY = is_mother_blacked
+	}
+}
+
+does_blacked_sibling_exist = {
+	does_something_related_to_you_exist = {
+		TRIGGER_KEY = is_sibling_blacked
+	}
+}
+
+does_something_above_exist = {
+	any_liege_or_above = {
+		$TRIGGER_KEY$ = yes
+	}
+}
+
+does_qos_has_blackbull_husband_exist = {
+	does_something_above_exist = {
+		TRIGGER_KEY = is_qos_has_blackbull_husband
+	}
+}
+
+is_qos_has_blackbull_husband = {
+	is_ai_qos = yes
+	is_married = yes
+	any_spouse = {
+		is_ai_blackbull = yes
+	}
+}
+
+is_mother_blacked = {
+	is_ai_blacked = yes
+	is_parent_of = root
+}
+
+is_sibling_blacked = {
+	is_ai_blacked = yes
+	is_sibling_of = root
+}
+
+does_something_exist = {
+	any_courtier_or_guest = {
+        $TRIGGER_KEY$ = yes
+    }
+}
+
+does_something_exist_backup = {
+    OR = {
+        any_courtier_or_guest = {
+            $TRIGGER_KEY$ = yes
+        }
+        any_vassal_or_below = {
+            $TRIGGER_KEY$ = yes
+        }
+        any_vassal_or_below = {
+            highest_held_title_tier >= tier_county
+            any_courtier_or_guest = {
+                $TRIGGER_KEY$ = yes
+            }
+        }
+        liege ?= {
+            OR = {
+                $TRIGGER_KEY$ = yes
+                any_courtier_or_guest = {
+                    $TRIGGER_KEY$ = yes
+                }
+                any_vassal_or_below = {
+                    $TRIGGER_KEY$ = yes
+                }
+                any_vassal_or_below = {
+                    highest_held_title_tier >= tier_county
+                    any_courtier_or_guest = {
+                        $TRIGGER_KEY$ = yes
+                    }
+                }
+            }
+        }
+    }
+}
+
+does_an_ai_white_girl_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_pure_white_girl
+	}
+}
+
+does_just_or_zealous_blackbull_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_blackbull_just_or_zealous
+	}
+}
+
+does_secret_haver_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = does_blacked_girl_white_husband_has_secret
+	}
+}
+
+does_blacked_noble_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_blacked_noble
+	}
+}
+
+does_blacked_peasant_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_blacked_peasant
+	}
+}
+
+does_unmarried_blackbull_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_unmarried_ai_blackbull
+	}
+}
+
+does_blacked_with_eating_disorder_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_blacked_has_eating_disorder
+	}
+}
+
+does_blacked_girl_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_blacked
+	}
+}
+
+does_blackbull_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_blackbull
+	}
+}
+
+does_pure_whitegirl_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_ai_pure_white_girl
+	}
+}
+
+does_unmarried_pure_white_girl_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_unmarried_ai_pure_white_girl
+	}
+}
+
+does_blacked_girl_married_to_a_ruler_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_blacked_girl_married_to_a_ruler
+	}
+}
+
+is_blacked_girl_married_to_a_ruler = {
+	is_ai_blacked = yes
+	trigger_if = {
+		limit = { is_married = yes }
+		any_spouse ?= {
+			is_ai_white_guy = yes
+		}
+	}
+}
+
+is_unmarried_ai_pure_white_girl = {
+	is_ai_pure_white_girl = yes
+	is_married = no
+	is_betrothed = no
+}
+
+is_married_ai_pure_white_girl_has_white_husband = {
+	is_ai_pure_white_girl = yes
+	trigger_if = {
+		limit = { is_married = yes }
+		any_spouse ?= {
+			is_ai_white_guy = yes
+		}
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+is_a_futa = {
+	OR = {
+		has_trait = futa
+		has_trait = futa_genetic
+	}
+}
+
+is_a_girl = {
+	is_female = yes
+	is_a_futa = no
+}
+
+is_an_ai_girl = {
+	is_a_girl = yes
+	is_ai = yes
+	is_elligible_partner = yes
+}
+
+does_caged_or_castrated_male_exist = {
+	does_something_exist = {
+		TRIGGER_KEY = is_caged_or_castrated_male
+	}
+}
+
+is_caged_or_castrated_male = {
+	OR = {
+		has_trait = bno_chastity
+		has_trait = bno_castrated
+	}
+	is_elligible_partner = yes
+	is_ai = yes
+	is_a_male = yes
+	is_bbc = no
+}
+
+is_white_girl = {
+	is_a_girl = yes
+	is_elligible_partner = yes
+	is_african = no
+}
+
+is_ai_white_girl = {
+	is_white_girl = yes
+	is_ai = yes
+}
+
+is_curious = {
+	is_white_girl = yes
+	is_bno_curious_and_up = yes
+}
+
+is_ai_curious = {
+	is_curious = yes
+	is_ai = yes
+}
+
+is_ai_blacked = {
+	is_blacked = yes
+	is_ai = yes
+}
+
+is_ai_blacked_noble = {
+	is_ai_blacked = yes
+	is_lowborn = no
+}
+
+is_ai_blacked_peasant = {
+	is_ai_blacked = yes
+	is_lowborn = yes
+}
+
+is_ai_blacked_has_eating_disorder = {
+	is_ai_blacked = yes
+	has_eating_disorder = yes
+}
+
+is_not_blacked_enough = {
+	is_ai = yes
+	is_bno_curious_and_up = yes
+	is_bno_fucked_mindless = no
+}
+
+is_partner_not_blacked_enough = {
+	any_spouse = {
+		is_not_blacked_enough = yes
+	}
+}
+
+is_blacked = {
+	is_bno_blacked_and_up = yes
+	is_white_girl = yes
+}
+
+is_snowbunny = {
+	is_bno_snowbunny_and_up = yes
+	is_white_girl = yes
+}
+
+is_qos = {
+	is_bno_qos_and_up = yes
+	is_white_girl = yes
+}
+
+is_mindless_bbc_slut = {
+	is_bno_mindless_bbc_slut = yes
+	is_white_girl = yes
+}
+
+does_wandering_curious_whitegirl_exist = {
+	any_pool_character = {
+		province = location
+		is_curious = yes
+	}
+}
+
+is_body_modification_ok = {
+	has_game_rule = bno_body_modification_yes
+}
+
+is_bno_fucked_mindless = {
+	is_bno_mindless_bbc_slut = yes
+	has_trait_xp = {
+		trait = bno_mindless_bbc_slut
+		value >= 80
+	}
+}
+
+is_stressed_out = {
+	OR = {
+		stress > 70
+		has_trait = drunkard
+		has_trait = rakish
+		has_trait = reclusive
+		has_trait = flagellant
+		has_trait = improvident
+		has_trait = contrite
+		has_trait = inappetetic
+		has_trait = comfort_eater
+		has_trait = profligate
+	}
+}
+
+has_eating_disorder = {
+	OR = {
+		has_trait = drunkard
+		has_trait = inappetetic
+		has_trait = comfort_eater
+		has_trait = gluttonous
+	}
+}
+
+has_bad_trait = {
+	OR = {
+		has_trait = beauty_bad_1
+		has_trait = beauty_bad_2
+		has_trait = beauty_bad_3
+		has_trait = physique_bad_1
+		has_trait = physique_bad_2
+		has_trait = physique_bad_3
+		has_trait = intellect_bad_1
+		has_trait = intellect_bad_2
+		has_trait = intellect_bad_3
+		has_trait = disfigured
+		has_trait = infirm
+		has_trait = gout_ridden
+		has_trait = cancer
+		has_trait = consumption
+		has_trait = incapable
+		has_trait = typhus
+		has_trait = bubonic_plague
+		has_trait = smallpox
+		has_trait = one_legged
+		has_trait = one_eyed
+		has_trait = great_pox
+		has_trait = maimed
+		has_trait = leper
+		has_trait = early_great_pox
+		has_trait = lovers_pox
+		has_trait = scaly
+	}
+}
+
+does_partner_has_bad_trait = {
+	any_spouse = {
+		is_old_or_has_bad_trait = yes
+	}
+}
+
+is_old_or_has_bad_trait = {
+	OR = {
+		AND = {
+			is_immortal = no
+			is_visibly_fertile = no
+		}
+		has_bad_trait = yes
+	}
+}
+
+has_desirable_looks_or_breast = {
+	OR = {
+		has_trait = beauty_good_1
+		has_trait = beauty_good_2
+		has_trait = beauty_good_3
+		has_trait = tits_big_good_1
+		has_trait = tits_big_good_2
+		has_trait = tits_big_good_3
+		has_trait = tits_small_good_1
+		has_trait = tits_small_good_2
+		has_trait = tits_small_good_3
+	}
+}
+
+is_good_blacked_whitegirl = {
+	is_blacked = yes
+	NOT = { is_close_or_extended_family_of = root }
+	OR = {
+		has_trait = beauty_good_1
+		has_trait = beauty_good_2
+		has_trait = beauty_good_3
+		has_trait = lustful
+		has_trait = fecund
+		has_trait = intellect_good_1
+		has_trait = intellect_good_2
+		has_trait = intellect_good_3
+		has_trait = physique_good_1
+		has_trait = physique_good_2
+		has_trait = physique_good_3
+		has_trait = pure_blooded
+		has_trait = strong
+		has_trait = shrewd
+		has_trait = zealous
+	}
+	has_bad_trait = no
+}
+
+is_partner_non_bbc = {
+	any_spouse = {
+		is_ai_white_guy = yes
+	}
+}
+
+is_ai_qos = {
+	is_qos = yes
+	is_ai = yes
+}
+
+is_white_guy = {
+	is_bbc = no
+	is_african = no
+	is_elligible_partner = yes
+	is_a_male = yes
+}
+
+is_ai_white_guy = {
+	is_white_guy = yes
+	is_ai = yes
+}
+
+is_ai_white_guy_rich = {
+	is_ai_white_guy = yes
+	gold > 50
+}
+
+does_white_husband_has_gold = {
+	any_spouse = {
+		is_ai_white_guy_rich = yes
+	}
+}
+
+does_hated_non_black_courtier_exist = {
+	save_temporary_scope_as = temp
+	any_courtier_or_guest = {
+		is_ai_white_guy  = yes
+		reverse_opinion = {
+			target = scope:temp
+			value < 0
+		}
+		NOT = { has_trait = bno_castrated }
+		NOT = { has_trait = bno_chastity }
+	}
+}
+
+is_ai_mindless = {
+	is_mindless_bbc_slut = yes
+	is_ai = yes
+}
+
+is_partner_mindless_bbc_slut = {
+	any_spouse = {
+		is_ai_mindless = yes
+	}
+}
+
+is_partner_bbc = {
+	any_spouse = {
+		is_ai_blackbull = yes
+	}
+}
+
+is_ai_pure_white_girl = {
+	is_pure_whitegirl = yes
+	is_ai = yes
+}
+
+is_pure_whitegirl = {
+	is_a_girl = yes
+	is_elligible_partner = yes
+	is_african = no
+	is_slut = no
+}
+
+is_mindless_bbc_slut_married_to_bbc = {
+	is_mindless_bbc_slut = yes
+	is_married = yes
+	any_spouse = {
+		is_ai_blackbull = yes
+	}
+}
+
+is_bbc = {
+	has_trait = bno_bbc
+}
+
+is_ai_blackbull = {
+	is_blackbull = yes
+	is_ai = yes
+}
+
+does_good_looking_ai_foreign_lady_exist = {
+	does_something_foreign_exist = {
+		TRIGGER_KEY = is_married_ai_pure_white_girl_has_white_husband
+	}
+}
+
+does_blacked_ai_girl_has_white_guy_husband = {
+	is_ai_blacked = yes
+	is_married = yes
+	any_spouse = {
+		is_ai_white_guy = yes
+	}
+}
+
+does_something_foreign_exist = {
+    any_neighboring_and_across_water_top_liege_realm_owner = {
+        OR = {
+            $TRIGGER_KEY$ = yes
+            any_courtier_or_guest = {
+                $TRIGGER_KEY$ = yes
+            }
+            any_vassal_or_below = {
+              OR = {
+                  $TRIGGER_KEY$ = yes
+                  and = {
+                      highest_held_title_tier >= tier_county
+                      any_courtier_or_guest = {
+                          $TRIGGER_KEY$ = yes
+                      }
+                  }
+                }
+            }
+        }
+    }
+}
+
+does_blacked_ai_girl_has_white_guy_husband_exist = {
+	does_something_foreign_exist = {
+		TRIGGER_KEY = does_blacked_ai_girl_has_white_guy_husband
+	}
+}
+
+does_unmarried_ai_pure_foreign_lady_exist = {
+	does_something_foreign_exist = {
+		TRIGGER_KEY = is_unmarried_ai_pure_white_girl
+	}
+}
+
+is_unmarried_ai_blackbull = {
+	NOT = { has_character_flag = can_not_marry }
+	is_ai_blackbull = yes
+	is_married = no
+	is_betrothed = no
+}
+
+is_bno_curious = {
+	has_trait = bno_curious
+}
+
+is_bno_blacked = {
+	has_trait = bno_blacked
+}
+
+is_bno_snowbunny = {
+	has_trait = bno_snowbunny
+}
+
+is_bno_qos = {
+	has_trait = bno_qos
+}
+
+is_bno_mindless_bbc_slut = {
+	has_trait = bno_mindless_bbc_slut
+}
+
+is_bno_curious_and_up = {
+	OR = {
+		is_bno_curious = yes
+		is_bno_blacked = yes
+		is_bno_snowbunny = yes
+		is_bno_qos = yes
+		is_bno_mindless_bbc_slut = yes
+	}
+}
+
+is_bno_blacked_and_up = {
+	OR = {
+		is_bno_blacked = yes
+		is_bno_snowbunny = yes
+		is_bno_qos = yes
+		is_bno_mindless_bbc_slut = yes
+	}
+}
+
+is_bno_snowbunny_and_up = {
+	OR = {
+		is_bno_snowbunny = yes
+		is_bno_qos = yes
+		is_bno_mindless_bbc_slut = yes
+	}
+}
+
+is_bno_qos_and_up = {
+	OR = {
+		is_bno_qos = yes
+		is_bno_mindless_bbc_slut = yes
+	}
+}
+
+is_cum_slave = {
+	has_trait = bno_cum_addiction_4
+}
+
+is_elligible_partner = {
+	is_travelling = no
+	is_adult = yes
+	is_imprisoned = no
+	is_alive = yes
+	trigger_if = {
+		limit = { is_a_male = yes }
+		is_visibly_fertile = yes
+	}
+	trigger_else_if = {
+		limit = { is_a_girl = yes }
+		custom_tooltip = {
+			text = is_elligible_partner.desc
+			OR = {
+				health > 0
+				is_immortal = yes
+			}
+		}
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+is_bbc_valid_target_for_betrothal = {
+	highest_held_title_tier >= tier_county
+	NOT = { exists = betrothed }
+	allowed_more_spouses = yes
+	is_ai_blackbull = yes
+	is_male = yes
+}
+
+is_girl_valid_target_for_bbc_betrothal = {
+	is_a_girl = yes
+	is_female = yes
+	age >= 10
+	is_adult = no
+	trigger_if = {
+		limit = {
+			exists = betrothed
+		}
+		betrothed = {
+			is_bbc = no
+		}
+	}
+	trigger_else = {
+		always = yes
+	}
+	NOT = { has_character_flag = bno_cuck.0011 }
+	NOT = { has_trait = bno_blood }
+}
+
+is_slave = {
+	has_trait = slave
+}
+
+is_slut = {
+	has_trait = bno_whitegirl
+}
+
+is_african = {
+	has_trait = bno_full_black
+}
+
+is_good_pure_whitegirl = {
+	is_pure_whitegirl = yes
+	is_married = no
+	is_concubine = no
+	NOT = { is_close_or_extended_family_of = root }
+	OR = {
+		has_trait = beauty_good_1
+		has_trait = beauty_good_2
+		has_trait = beauty_good_3
+		has_trait = lustful
+		has_trait = fecund
+		has_trait = intellect_good_1
+		has_trait = intellect_good_2
+		has_trait = intellect_good_3
+		has_trait = physique_good_1
+		has_trait = physique_good_2
+		has_trait = physique_good_3
+		has_trait = pure_blooded
+		has_trait = strong
+		has_trait = shrewd
+		has_trait = zealous
+	}
+	has_bad_trait = no
+}
+
+bno_can_get_wavy_hair_trigger = {
+	OR = {
+		has_trait = bno_pure_white
+		AND = {
+			has_trait = bno_blood
+			NOT = { has_trait = bno_full_black }
+		}
+	}
+}
+
+bno_culture_has_european_heritage_pillar_trigger = {
+	OR = {
+		culture_has_west_european_heritage_pillar_trigger = yes
+		culture_has_north_european_heritage_pillar_trigger = yes
+		culture_has_central_european_heritage_pillar_trigger = yes
+	}
+}

@@ -1,0 +1,135 @@
+﻿@cultural_maa_extra_ai_score = 80 # Equivalent to having 8 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
+@provisions_cost_infantry_cheap = 3
+@provisions_cost_infantry_expensive = 12
+
+bno_african_warriors = {
+	type = bnwo_armies
+	
+	damage = 20
+	toughness = 20
+	pursuit = 15
+	screen = 20
+	
+	counters = {
+		skirmishers = 1
+		heavy_infantry = 1
+	}
+	
+	terrain_bonus = {
+		taiga = { damage = 8 }
+		forest = { damage = 8 }
+		jungle = {damage = 8}
+	}
+	
+	can_recruit = {
+		bno_can_recruit_bno_african_warriors = yes
+	}
+	
+	buy_cost = {gold = 100}
+	low_maintenance_cost = { gold = 0.5 }
+	high_maintenance_cost = { gold = 0.8 }
+	provision_cost = @provisions_cost_infantry_cheap
+
+	stack = 250
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = bno_african_warriors
+}
+# Special
+bno_ebony_elites = {
+	type = bnwo_armies
+	can_recruit = {
+		bno_can_recuit_bno_ebony_elites = yes
+	}
+	
+	damage = 100
+	toughness = 100
+	pursuit = 100
+	screen = 100
+
+	siege_tier = 5
+	siege_value = 10
+	
+	counters = {
+		pikemen = 10
+		archers = 10
+		skirmishers = 10
+		light_cavalry = 10
+		heavy_infantry = 10
+		siege_weapon = 10
+	}
+
+	terrain_bonus = {
+		taiga = { damage = 8 }
+		forest = { damage = 8 }
+		jungle = {damage = 8}
+	}
+	
+	buy_cost = { gold = 500 }
+	low_maintenance_cost = { gold = 0 }
+	high_maintenance_cost = { gold = 1 }
+	provision_cost = @provisions_cost_infantry_expensive
+	
+	max_regiments = 1
+	
+	stack = 100
+	ai_quality = { value = 100 }
+}
+#Cock Maidens
+bno_cock_maidens = {
+    type = bnwo_armies
+    
+    damage = 45
+    toughness = 40
+    pursuit = 30
+    screen = 35
+
+    counters = {
+        light_cavalry = 2
+        skirmishers = 2
+    }
+
+    terrain_bonus = {
+        plains = { damage = 6 }
+        hills = { toughness = 6 }
+        forest = { pursuit = 4 }
+    }
+
+    can_recruit = {
+        bno_can_recruit_bno_cock_maidens = yes
+    }
+
+    buy_cost = { gold = 200 }
+    low_maintenance_cost = { gold = 0.6 }
+    high_maintenance_cost = { gold = 1.0 }
+    provision_cost = @provisions_cost_infantry_expensive
+
+    stack = 150
+    ai_quality = { value = 90 }
+    icon = bno_cock_maidens
+}
+#Unlocked from Tradition
+bno_seed_thralls = {
+	type = bnwo_armies
+
+	damage = 10
+	toughness = 100
+	pursuit = 20
+	screen = 100
+
+	counters = {
+		archers = 10
+	}
+
+	can_recruit = {
+        bno_can_recruit_bno_seed_thralls = yes
+    }
+
+	buy_cost = { gold = 100 }
+	low_maintenance_cost = { gold = 0.1 }
+    high_maintenance_cost = { gold = 0.5 }
+	provision_cost = 1
+
+	stack = 100
+	ai_quality = { value = 100 }
+	icon = bno_seed_thralls
+}

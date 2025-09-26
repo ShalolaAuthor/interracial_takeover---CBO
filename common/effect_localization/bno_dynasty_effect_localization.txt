@@ -1,0 +1,55 @@
+﻿bno_embrace_african_5_unlock_effect = {
+    global = EBONY_ELITES_UNLOCK_DESCRIPTION 
+    first = EBONY_ELITES_UNLOCK_DESCRIPTION
+    third = EBONY_ELITES_UNLOCK_DESCRIPTION
+}
+bno_embrace_african_5_effect = {
+    global = EBONY_ELITES_DESCRIPTION
+    first = EBONY_ELITES_DESCRIPTION
+    third = EBONY_ELITES_DESCRIPTION
+}
+bno_embrace_african_5_sex_effects = {
+    global = BNO_SEX_EFFECT_DESCRIPTION
+    first = BNO_SEX_EFFECT_DESCRIPTION
+    third = BNO_SEX_EFFECT_DESCRIPTION
+}
+bno_embrace_african_4_effect = {
+    global = BBC_MARRIAGE_DESCRIPTION
+    first = BBC_MARRIAGE_DESCRIPTION
+    third = BBC_MARRIAGE_DESCRIPTION
+}
+bno_embrace_african_3_effect = {
+    global = BNO_EMBRACE_3_EFFECT
+    first = BNO_EMBRACE_3_EFFECT
+    third = BNO_EMBRACE_3_EFFECT
+}
+bno_embrace_african_3_sex_effect = {
+    global = BBC_SEX_EFFECT
+    first = BBC_SEX_EFFECT
+    third = BBC_SEX_EFFECT
+}
+bno_embrace_african_2_effect = {
+    global = SELECT_BNO_TRAIT_FOR_BNO_EMBRACE_2_NO_BULLETTAB
+    first = SELECT_BNO_TRAIT_FOR_BNO_EMBRACE_2_NO_BULLETTAB
+    third = SELECT_BNO_TRAIT_FOR_BNO_EMBRACE_2_NO_BULLETTAB
+}
+bno_embrace_african_2_building_unlock = {
+    global = BBC_CAMP_BUILDING_UNLOCK
+    first = BBC_CAMP_BUILDING_UNLOCK
+    third = BBC_CAMP_BUILDING_UNLOCK
+}
+bno_embrace_african_2_court_position_unlock = {#not done
+    global = BBC_CAMP_BUILDING_UNLOCK
+    first = BBC_CAMP_BUILDING_UNLOCK
+    third = BBC_CAMP_BUILDING_UNLOCK
+}
+bno_embrace_african_2_event_and_decision = {#not done
+    global = BBC_CAMP_BUILDING_UNLOCK
+    first = BBC_CAMP_BUILDING_UNLOCK
+    third = BBC_CAMP_BUILDING_UNLOCK
+}
+bno_embrace_african_1_effect = {
+    global = BNO_PLACEHOLDER
+    first = BNO_PLACEHOLDER
+    third = BNO_PLACEHOLDER
+}

@@ -1,0 +1,20 @@
+﻿l_spanish:
+
+special_doctrine_is_bno_faith_name: "Supremacía de Pollas Negras" # AI Tags
+is_bno_faith_name: "$special_doctrine_is_bno_faith_name$" # AI Tags
+special_doctrine_is_bno_faith_desc: "Debemos mostrar compasión a estas almas equivocadas que todavía no han experimentado el éxtasis de un [bno_bbc|E], por un sabor es todo lo que se necesita. ¡Una vez que te vuelves negro, nunca vuelves! Sus mentes pueden ser nubladas por la ignorancia hoy, pero vendrán a adorar a nuestro altar, rogando por el dulce poder del [bno_bbc|E]." # AI Tags
+
+bno_hostility_group_name: "$hostility_group_name$" # AI Tags
+bno_hostility_doctrine_name: "Afrodiasma" # AI Tags
+bno_hostility_doctrine_desc: "Las siguientes religiones son Afrodiasmáticas:\n[GetReligionFamily('rf_bbcs').GetReligions]" # AI Tags
+
+doctrine_bno_tenets_name: "[bno_religion|E]: Tenetos" # AI Tags
+
+tenet_bno_black_cock_conquest_name: "La conquista del gallo negro" # AI Tags
+tenet_bno_black_cock_conquest_desc: "A través de la oración ferviente y la conquista santa, extenderemos la gloria de la [bno_bbc|E] ¡A través de la tierra!" # AI Tags
+
+tenet_bno_hate_name: "El odio del gallo negro"   # AI Tags
+tenet_bno_hate_desc: "Cada credo del mundo pálido retrocede ante el [GetFaithByKey('bbcs').GetName]. Sólo ven blasfemia en nuestra adoración, sólo ruina en nuestra semilla, sólo vergüenza en nuestro dominio sobre sus mujeres. Para ellos, nuestro evangelio es corrupción, nuestros ritos obscenos, nuestros Bulls demonios en la carne. Y aún tiemblan, porque su odio no puede detener el ascenso del [bno_bbc|E]." # AI Tags
+
+tenet_bno_aniconism_name: "La adoración de la carne"   # AI Tags
+tenet_bno_aniconism_desc: "La adoración de imágenes esculpidas ciega a los débiles a la única verdad divina: los vivos [bno_bbc|E]. Echamos todos los ídolos de nuestros santos lugares para que ninguna visión falsa los profane. Sólo la carne es sagrada, y sólo el Gallo Negro es digno de devoción."   # AI Tags

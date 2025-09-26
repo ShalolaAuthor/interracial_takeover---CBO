@@ -1,0 +1,51 @@
+﻿l_polish:
+
+game_concept_bno_whore: "Kurwa z BBC" # AI Tags
+game_concept_bno_whore_desc: "[GetCourtPositionType('bno_bbc_worshipper_court_position').GetName()] poświęci całe swoje życie, by zostać wykorzystana do [bno_bbc|E]To przyjemność seksualna. [GetCourtPositionType('bno_bbc_worshipper_court_position').GetName()] Zdarzy wszystkie swoje ciężko zarobione zarobki dla jej Liege" # AI Tags
+
+game_concept_bno_first_harvest: "Pierwszy żniw" # AI Tags
+game_concept_bno_first_harvest_desc: "Pod spojrzeniem czarnych szefów głodnych za przyjemnością i władzą, Dama Zasiętego Tronu prezentuje najbardziej pożądane córki swego królestwa - każda ma nadzieję zaspokoić potężny apetyt swego władcy i zabezpieczyć sobie miejsce w jego linii. Odbywa się sezon słodkich ofiar, gdzie piękno i płodność są wymieniane, a prawo do rządzenia jest ogromne w krwi i nasieniu." # AI Tags
+
+game_concept_bno_bbc_council: "Rada BBC" # AI Tags
+game_concept_bno_bbc_council_desc: "Zgromadzenie starszych czarnych szefów, których przejrzyste oczy osądzają dziewice zarówno za ich kwitnienie, jak i ich przystosowanie do linii przepełnionej mocą, przyjemnością i potężnym dziedzictwem. Ich osądy, szepczone pod ozdobnymi dachami z zapachowymi winogronami, określają, które córki otrzymają przywilej i agonię służenia Satynowemu Tronowi." # AI Tags
+
+game_concept_bno_sated_throne: "Zasiadany tron" # AI Tags
+game_concept_bno_sated_throne_desc: "Szanowana siedziba władzy, gdzie przyjemność i władza przepływają, a pragnienia Czarnych Szefów są spełnione i rozszerzane." # AI Tags
+
+game_concept_bno_sexual_experience: "Doświadczenie seksualne" # AI Tags
+game_concept_bno_sexual_experience_desc: "Środek intymnych spotkań i umiejętności człowieka, odzwierciedlający jego podróż przez obszary pasji i pragnienia. To doświadczenie kształtuje ich zrozumienie przyjemności, dynamiki siły i skomplikowanego tańca uwodzenia, czyniąc ich niezwykłą obecnością w świecie relacji i wpływów." # AI Tags
+
+game_concept_bno_black: "Czarny" # AI Tags
+game_concept_bno_black_desc: "Termin używany do opisu ludzi afrykańskiego pochodzenia, często związany z siłą, odpornością i grubym twardym kutasem." # AI Tags
+
+game_concept_bno_bnwo: "Czarny Nowy Porządek Świata" # AI Tags
+game_concept_bno_bnwo_desc: "W ramach [bno_bnwo|E]Żelazna pięść, białe ciała stają się zwierzętami rozrodczymi, ich przyjemności karmią nasz nienasycający głód potężnego czarnego potomstwa." # AI Tags
+
+game_concept_bnwo_armies: "Wojska BNWO" # AI Tags
+game_concept_bnwo_armies_desc: "Wydarz [men_at_arms|E] które wspierają ideały [bno_bnwo|E], składający się z elitarnych wojowników lub [bno_whore|E] poświęcony sprawie." # AI Tags
+
+game_concept_bbc_evangelist: "BBC Evangelist" # AI Tags
+game_concept_bbc_evangelist_desc: "Z szepanymi obietnicami błogosławieństwa ponad zrozumienie śmiertelników i zapachem muska i przyprawy trzymających się ich olejowanej skóry, kapłanki i kapłani [bno_religion|E] Zwiedzają zarówno szlachetnych, jak i kobiet, zasiając nasienie uwielbienia potęgi ebony w sercach i w biodrach." # AI Tags
+
+game_concept_bno_bbc: "BBC" # AI Tags
+game_concept_bno_bbcs: "BBC" # AI Tags
+game_concept_bno_bbc_desc: "Termin używany do opisu potężnych i męskich czarnych mężczyzn, którzy dominują w seksie, ucieleśniając siłę, władzę i nienasycony apetyt na przyjemność." # AI Tags
+
+game_concept_bno_religion: "Kościół Czarnego Kurczaka" # AI Tags
+game_concept_bno_religion_desc: "Małżeńskie mięso wrzuca się pod sklepionymi sufitami, zabarwione świętym cumem, gdy wyznawcy poddają się nienasycającemu głodowi [bno_bbc|E] Czciony w ekstatycznej oddanie i wieczny, guturały płacz." # AI Tags
+
+game_concept_bno_slave: "BBC Niewolnik" # AI Tags
+game_concept_bno_slaves: "BBC Niewolnicy" # AI Tags
+game_concept_bno_slave_desc: "A $game_concept_bno_slave$ jest [character|E] który został całkowicie pozbawiony godności i oznaczony jako własność pod [bno_bnwo|E]- Nie , nie , nie . Są niewolnikami czarnego pana, istnieją tylko jako mięso do użycia, hodowania i złamania. Ich ciało, dziury, a nawet pokolenie należą całkowicie do ich właściciela.\n\nA $game_concept_bno_slave$ nie może posiadać ani dziedziczyć [titles|E], a wszystkie dzieci urodzone z łona niewolnika są automatycznie niewolnikami, wychowywane bezpośrednio w niewolnictwo. Biały mężczyzna lub niewolnik futa zostanie zamknięty w klatce lub kastratowany, aby zaprzeczyć mu fałszywej męskości, podczas gdy kobiety zostaną utrzymane płodne i otwarte na nasienie.\n\nJeśli pan umrze, własność wszystkich $game_concept_bno_slave$ przejdzie do ich [primary_heir|E], zapewniając, że pozostaną one związane przez pokolenia. Biała dziwka sama nie może posiadać niewolnika; musi mieć przynajmniej jedną BBC na swoim dworze, aby działać jako prawdziwy pan i egzekwować własność.\n\nA $game_concept_bno_slave$ Nigdy nie mogą żądać wolności przez prawo tylko poprzez wolę swoich mistrzów poprzez $carn_free_slave_interaction$ [character_interaction|E]- Nie , nie , nie . Ich los jest lekcją: [bno_bnwo|E]Na zawsze są własnością, na zawsze dziury do wypełnienia."   # AI Tags
+
+game_concept_bno_cum_slave: "Jako niewolnik" # AI Tags
+game_concept_bno_cum_slaves: "Niewolnicy" # AI Tags
+game_concept_bno_cum_slave_desc: "A $game_concept_bno_cum_slave$ jest [character|E] którego wola została usunięta przez wielokrotne rozsiewanie. Nie służy już koronie, krewni ani Bogu tylko Bykowi, którego pragnie. Jej usta, gardło i łono należą tylko do niego, a jej lojalność jest napisana w każdej kropli, którą połknie. A $game_concept_bno_cum_slave$ Nie może zdradzić ani przeciwstawić się swemu panu, bo jej życie zależy od jego nasienia. Ona nie jest tylko dziwką, ale naczynia [bno_bnwo|E]Dowód na to, że najwyższym celem białej kurwy jest oddanie jednemu Bykowi." # AI Tags
+
+game_concept_bno_bull: "Byka" # AI Tags
+game_concept_bno_bulls: "Byki" # AI Tags
+game_concept_bno_bull_desc: "A $game_concept_bno_bull$ jest nie tylko [bno_bbc|E], ale ten, który sfałszował [bno_cum_slave|E]- Nie , nie , nie . Jego kurczak złamał jej umysł, jego nasienie zniewoliło jej ciało, a jej lojalność należy tylko do niego. Kiedy zwykli ludzie wpływają na poddanych słowami lub bogactwem, $game_concept_bno_bull$ Zasady z wiązką i nasieniem. Jego niewolnik jest żywym dowodem [bno_bnwo|E]To prawda, że blade kobiety istnieją tylko po to, by być związane, uzależnione i wychowywane przez swojego Byka. Sąd lub armia kierowana przez $game_concept_bno_bull$ Rozwija się, bo jego dominacja inspiruje strach u mężczyzn i oddanie u dziwek." # AI Tags
+
+game_concept_bno_slave_owner: "BBC Właściciel niewolników" # AI Tags
+game_concept_bno_slave_owners: "BBC Właściciele Niewolników" # AI Tags
+game_concept_bno_slave_owner_desc: "A $game_concept_bno_slave_owner$ jest [character|E] posiadający jedną lub więcej [bno_slaves|E]Pale kobiety schwytane w czasie wojny, nalotów lub wyroków, pozbawione praw i zmniejszone do zapasów [bno_bnwo|E] Zasada. Te dziwki mogą być wykorzystywane, handlowane lub darzone według woli, ich łonie i praca służą jako narzędzia podboju.\n\nW przeciwieństwie do [bno_cum_slave|E], której oddanie wiąże się z nią ciałem i duszą [bno_bull|E] Sam, zwykły $game_concept_bno_slave$ jest nieruchomością przenośną dowód, że zgodnie z [bno_bnwo|E]Białe kobiety nie są żonami ani szlachetnymi, ale hodowcami bydła dla swoich panów." # AI Tags

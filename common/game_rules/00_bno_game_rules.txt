@@ -1,0 +1,356 @@
+﻿bno_prostitution_interval = {
+	
+	categories = {
+		interracial_takeover
+	}
+	
+	default = bno_interval_one_month
+
+	bno_interval_one_month = {
+	
+	}
+	
+	bno_interval_three_months = {
+		
+	}
+
+	bno_interval_six_months = {
+
+	}
+}
+
+bno_mod_status = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_mod_status_on
+
+	bno_mod_status_on = {
+
+	}
+
+	bno_mod_status_off = {
+		
+	}
+
+}
+
+bno_body_modification = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_body_modification_yes
+
+	bno_body_modification_yes = {
+
+	}
+
+	bno_body_modification_no = {
+		
+	}
+}
+
+bno_religion_allowed = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_religion_yes
+
+	bno_religion_yes = {
+
+	}
+
+	bno_religion_no = {
+
+	}
+
+}
+
+bno_decision_npc = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_decision_npc_yes
+
+	bno_decision_npc_yes = {
+
+	}
+
+	bno_decision_npc_no = {
+
+	}
+
+}
+
+bno_global_bbc_activities = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_global_bbc_activities_yes
+
+	bno_global_bbc_activities_yes = {
+
+	}
+
+	bno_global_bbc_activities_no = {
+		
+	}
+
+}
+
+bno_seeding = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_seeding_yes
+
+	bno_seeding_yes = {
+
+	}
+
+	bno_seeding_no = {
+		
+	}
+
+}
+
+bno_event_frequency = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_event_frequency_three_months
+
+	bno_event_frequency_one_month = {
+
+	}
+
+	bno_event_frequency_three_months = {
+
+	}
+
+	bno_event_frequency_six_months = {
+
+	}
+
+	bno_event_frequency_twelve_months = {
+		
+	}
+
+}
+
+bno_tattoo = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_tattoo_yes
+
+	bno_tattoo_yes = {
+
+	}
+
+	bno_tattoo_no = {
+		
+	}
+
+}
+
+bno_rarity = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_rarity_race
+
+
+	bno_bbc_very_rare_chance = {
+
+	}
+
+	bno_bbc_rare_chance = {
+		
+	}
+
+	bno_bbc_uncommon_chance = {
+		
+	}
+
+	bno_bbc_common_chance = {
+		
+	}
+	
+	bno_bbc_very_common_chance = {
+
+	}
+
+	bno_rarity_size = {
+
+	}
+
+	bno_rarity_race = {
+		
+	}
+}
+
+bno_invite_white_noble_decision = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_invite_white_noble_decision_off
+
+	bno_invite_white_noble_decision_all = {
+
+	}
+
+	bno_invite_white_noble_decision_slut = {
+
+	}
+
+	bno_invite_white_noble_decision_bbc = {
+		
+	}
+
+	bno_invite_white_noble_decision_off = {
+
+	}
+
+}
+
+bno_invite_bbc_decision = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_invite_bbc_decision_all
+
+	bno_invite_bbc_decision_all = {
+
+	}
+
+	bno_invite_bbc_decision_slut = {
+
+	}
+
+	bno_invite_bbc_decision_bbc = {
+
+	}
+
+	bno_invite_bbc_decision_off = {
+		
+	}
+
+}
+
+bno_ai_events_chance = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_ai_events_chance_rare
+
+	bno_ai_events_chance_rare = {
+
+	}
+
+	bno_ai_events_chance_uncommon = {
+
+	}
+
+	bno_ai_events_chance_common = {
+
+	}
+
+}
+
+bno_black_cum_potency = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_black_cum_potency_normal
+
+	bno_black_cum_potency_normal = {
+
+	}
+
+	bno_black_cum_potency_abnormal = {
+		
+	}
+}
+
+bno_black_birth = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_black_birth_on
+
+	bno_black_birth_on = {
+
+	}
+
+	bno_black_birth_off = {
+		
+	}
+
+}
+
+bno_bbc_forced_conversion = {
+	categories = {
+		interracial_takeover
+	}
+	
+	default = bno_bbc_forced_conversion_yes
+
+	bno_bbc_forced_conversion_yes = {
+
+	}
+
+	bno_bbc_forced_conversion_no = {
+
+	}
+}
+
+bno_great_replacement = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_great_replacement_converting
+
+	bno_great_replacement_converting = {
+
+	}
+
+	bno_great_replacement_cultural_acceptance = {
+		
+	}
+}
+
+bno_xp_gain = {
+	categories = {
+		interracial_takeover
+	}
+
+	default = bno_xp_gain_low
+
+	bno_xp_gain_low = {
+		
+	}
+
+	bno_xp_gain_med = {
+		
+	}
+
+	bno_xp_gain_high = {
+		
+	}
+}

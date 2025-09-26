@@ -1,0 +1,746 @@
+﻿bno_darker_skin = {
+	usage = game
+	priority = 999
+	bno_darker_skin = {
+		dna_modifiers = {
+			#changes skin color
+			color = {
+				gene = skin_color
+				mode = modify
+				
+				x = skin_color_x
+				y = skin_color_y
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = var:bno_becoming_dark
+				is_body_modification_ok = yes
+			}
+		}
+	}
+}
+
+bno_blonder_hair = {
+	usage = game
+	priority = 999
+	bno_blonder_hair = {
+		dna_modifiers = {
+			#changes hair color
+			color = {
+				gene = hair_color
+				mode = modify
+				
+				x = hair_color_x
+				y = hair_color_y
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = var:bno_becoming_dark
+				is_body_modification_ok = yes
+			}
+		}
+	}
+}
+
+bno_make_up = {
+	usage = game
+	priority = 999
+	bno_make_up = {
+		dna_modifiers = {
+			morph = { #pink lipstick
+				mode = add
+				gene = lipstick
+				template = pink_matte
+				value = {
+					value = 0.1
+					multiply = var:bno_becoming_dark
+				}
+			}
+			morph = { #eye shadow
+				mode = add
+				gene = eye_shadow
+				template = red_eye_shadow
+				value = {
+					value = 0.25
+					multiply = var:bno_becoming_dark
+				}
+			}
+			morph = { #eyeliner
+				mode = add
+				gene = eyeliner
+				template = black_eyeliner
+				value = {
+					value = 0.25
+					multiply = var:bno_becoming_dark
+				}
+			}
+			morph = { #eyelash_extensions
+				mode = add
+				gene = eyelash_extensions
+				template = eyelash_extensions
+				value = {
+					value = 0.1
+					multiply = var:bno_becoming_dark
+				}
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = var:bno_becoming_dark
+				is_body_modification_ok = yes
+			}
+		}
+	}
+}
+
+bno_naked = {
+	usage = game
+	priority = 999
+	bno_naked = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = dressed
+				template = undressed
+				value = 1.0
+			}
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = no_cloak
+				value = 1.0
+			}
+			accessory = {
+				mode = add
+				gene = legwear
+				template = no_legwear
+				value = 1.0
+			}
+			accessory = {
+                mode = add
+                gene = headgear
+                template = no_headgear
+                value = 0
+            }
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_character_flag = bno_naked
+			}
+			modifier = {
+				add = 1000
+				OR = {
+					has_court_position = bno_bbc_worshipper_court_position
+					has_court_position = bno_bbc_priestess_court_position
+				}
+			}
+		}
+	}
+}
+
+bno_cum_shot = {
+	usage = game
+	priority = 999
+	bno_cum_shot = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = gene_cumshots_oral
+				template = cumshots_oral_1
+				value = {
+					if = {
+						limit = {
+							exists = root
+						}
+						value = 1
+					}
+				}
+			}
+			morph = {
+				mode = add
+				gene = gene_cumshots_doggy
+				template = cumshots_doggy_1
+				value = {
+					if = {
+						limit = {
+							exists = root
+						}
+						value = 1
+					}
+				}
+			}
+			morph = {
+				mode = add
+				gene = gene_cumshots_miss
+				template = cumshots_miss_1
+				value = {
+					if = {
+						limit = {
+							exists = root
+						}
+						value = 1
+					}
+				}
+			}
+			accessory = {
+				mode = add
+				gene = cbo_eyelashes_accessory
+				template = mascara_eyelashes
+				value = {
+					if = {
+						limit = {
+							exists = root
+						}
+						value = 1
+					}
+				}
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_body_modification_ok = yes
+				has_character_flag = bno_cum_shot
+			}
+			modifier = {
+				add = 1000
+				has_court_position = bno_bbc_worshipper_court_position
+			}
+		}
+	}
+}
+
+bno_bigger_areolas = {
+	usage = game
+	priority = 999
+	bno_bigger_areolas_5 = {
+		dna_modifiers = {
+			morph = {
+				mode = modify
+				gene = gene_areolas
+				template = areolas_5
+				value = 1
+			} 
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 6
+				is_body_modification_ok = yes
+				exists = var:bno_becoming_dark
+				var:bno_becoming_dark >= 4
+			}
+		}
+	}
+	bno_bigger_areolas_4 = {
+		dna_modifiers = {
+			morph = {
+				mode = modify
+				gene = gene_areolas
+				template = areolas_4
+				value = 1
+			} 
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 5
+				is_body_modification_ok = yes
+				exists = var:bno_becoming_dark
+				var:bno_becoming_dark >= 3
+			}
+		}
+	}
+	bno_bigger_areolas_3 = {
+		dna_modifiers = {
+			morph = {
+				mode = modify
+				gene = gene_areolas
+				template = areolas_3
+				value = 1
+			} 
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 4
+				is_body_modification_ok = yes
+				exists = var:bno_becoming_dark
+				var:bno_becoming_dark >= 2
+			}
+		}
+	}
+	bno_bigger_areolas_2 = {
+		dna_modifiers = {
+			morph = {
+				mode = modify
+				gene = gene_areolas
+				template = areolas_2
+				value = 1
+			} 
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 3
+				is_body_modification_ok = yes
+				exists = var:bno_becoming_dark
+				var:bno_becoming_dark >= 1
+			}
+		}
+	}
+	bno_bigger_areolas_1 = {
+		dna_modifiers = {
+			morph = {
+				mode = modify
+				gene = gene_areolas
+				template = areolas_1
+				value = 1
+			} 
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 2
+				is_body_modification_ok = yes
+				exists = var:bno_becoming_dark
+				var:bno_becoming_dark >= 0
+			}
+		}
+	}
+	bno_bigger_areolas_1 = {
+		dna_modifiers = {
+			morph = {
+				mode = modify
+				gene = gene_areolas
+				template = areolas_0
+				value = 1
+			} 
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				is_body_modification_ok = yes
+				NOT = { exists = var:bno_becoming_dark }
+			}
+		}
+	}
+}
+
+bno_boobs = {
+	usage = game
+	priority = 999
+	bno_dynamic_boobs = {
+		dna_modifiers = {
+			#Breasts
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_bust
+				value = {
+					value = 0.04
+					multiply = {
+						value = var:bno_breast_size
+						add = bno_becoming_dark_value
+					}
+				}
+			}
+			morph = {
+				mode = modify
+				gene = gene_bs_bust
+				value = {
+					value = 0.1
+					multiply = {
+						value = var:bno_breast_size
+						add = bno_becoming_dark_value
+					}
+				}
+			}
+			#Breasts Excess
+			morph = {
+				mode = add
+				gene = gene_breast_excess
+				template = breast_excess
+				value = {
+					value = 0.04
+					multiply = {
+						value = var:bno_breast_size
+						add = bno_becoming_dark_value
+					}
+				}
+			}
+			#Nipples
+			morph = {
+				mode = modify_multiply
+				gene = gene_bs_nipples
+				value = {
+					value = 0.04
+					multiply = {
+						value = var:bno_breast_size
+						add = bno_becoming_dark_value
+					}
+				}
+			}
+			morph = {
+				mode = modify
+				gene = gene_bs_nipples
+				value = {
+					value = 0.1
+					multiply = {
+						value = var:bno_breast_size
+						add = bno_becoming_dark_value
+					}
+				}
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = var:bno_breast_size
+			}
+		}
+	}
+}
+
+bno_bigger_butts = {
+	usage = game
+	priority = 999
+	bno_bigger_butts = {
+		dna_modifiers = {
+			#Changes Butt Size
+			morph = {
+				mode = modify gene = gene_bs_butt_size
+				value = {
+					add = {
+						value = var:bno_becoming_dark
+						divide = 10
+					}
+				}
+			}
+			#Changes Hip Size
+			morph = {
+				mode = modify gene = gene_bs_hips
+				value = {
+					add = {
+						value = var:bno_becoming_dark
+						divide = 10
+					}
+				}
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = var:bno_becoming_dark
+				is_body_modification_ok = yes
+			}
+		}
+	}
+}
+
+bno_smaller_waist = {
+	usage = game
+	priority = 999
+	bno_smaller_waist = {
+		dna_modifiers = {
+			#Changes Waist Size
+			morph = {
+				mode = modify gene = gene_bs_waist
+				value = {
+					add = {
+						value = var:bno_becoming_dark
+						multiply = -1
+						divide = 10
+					}
+				}
+			}
+			morph = {
+				mode = modify gene = gene_bs_shoulders
+				value = {
+					add = {
+						value = var:bno_becoming_dark
+						multiply = -1
+						divide = 10
+					}
+				}
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				exists = var:bno_becoming_dark
+				is_body_modification_ok = yes
+			}
+		}
+	}
+}
+
+bno_white_girl = {
+	usage = game
+	priority = 999
+	bno_white_girl = {
+		dna_modifiers = {
+			accessory = {
+                mode = add
+                gene = headgear
+                template = no_headgear
+                value = 0
+            }
+			accessory = {
+				mode = add
+				gene = clothing_type
+				template = revealing_2
+				value = 0
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_trait = bno_whitegirl
+				age >= 18
+			}
+		}
+	} 
+}
+
+bno_hairstyles = {
+	usage = game
+	priority = 999
+	selection_behavior = weighted_random
+	bno_indian_wavy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = indian_hairstyles_wavy
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = this
+				bno_can_get_wavy_hair_trigger = yes
+			}
+		}
+	}
+	bno_northern_wavy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = northern_hairstyles_wavy
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = this
+				bno_can_get_wavy_hair_trigger = yes
+			}
+		}
+	}
+	bno_african_wavy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = sub_saharan_hairstyles_wavy
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = this
+				bno_can_get_wavy_hair_trigger = yes
+			}
+		}
+	}
+	bno_western_wavy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = western_hairstyles_wavy
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = this
+				bno_can_get_wavy_hair_trigger = yes
+			}
+		}
+	}
+	bno_mena_wavy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = mena_hairstyles_wavy
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = this
+				bno_can_get_wavy_hair_trigger = yes
+			}
+		}
+	}
+	bno_byzantine_wavy = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = byzantine_hairstyles_wavy
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1
+				exists = this
+				bno_can_get_wavy_hair_trigger = yes
+			}
+		}
+	}
+}
+
+bno_slave = { #changes for any female slave with bbc owner
+	usage = game
+	priority = 100
+	bbc_slave = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = clothes
+				template = no_clothes
+				value = 0
+			}
+			accessory = {
+				mode = add
+				gene = legwear
+				template = no_legwear
+				value = 0
+			}
+			accessory = {
+                mode = add
+                gene = headgear
+                template = no_headgear
+                value = 0
+            }
+			accessory = {
+                mode = add
+                gene = cloaks
+                template = no_cloak
+                value = 0
+            }
+			accessory = {
+				mode = add
+				gene = cbo_headgear
+				template = cbo_sub_collar
+				value = 0
+			}
+			accessory = {
+				mode = add
+				gene = cbo_clothes
+				template = cbo_sub_harness
+				value = 0
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				has_game_rule = bno_tattoo_yes
+				OR = {
+					AND = {
+						has_trait = slave
+						is_a_girl = yes
+						is_adult = yes
+						liege = {
+							has_trait = bno_bbc
+						}
+					}
+					has_trait = bno_slave
+					has_trait = bno_cum_addiction_4
+				}
+			}
+		}
+	}
+}
+
+bimbo = {
+	usage = game
+	priority = 999
+	bimbo = {
+		
+		dna_modifiers = {
+			color = { #changes hair color
+				gene = hair_color
+				mode = modify
+				
+				x = 0.1
+				y = 0
+			}
+			accessory = {
+				mode = add
+				gene = dressed
+				template = undressed
+				value = 1
+			}
+			accessory = {
+				mode = add
+				gene = legwear
+				template = no_legwear
+				value = 0
+			}
+			morph = { #pink lipstick
+				mode = add
+				gene = lipstick
+				template = pink_matte
+				value = 1.0
+			}
+			morph = {
+				mode = add
+				gene = gene_cumshots_oral
+				value = 1.0
+				template = cumshots_oral_1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_character_flag = bimbo
+				is_body_modification_ok = yes
+			}
+		}
+	}
+}

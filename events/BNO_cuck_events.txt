@@ -1,0 +1,1655 @@
+﻿namespace = bno_cuck
+
+#Cuck seeing wife fucked by bbc NOTE: should add 3rd option/followup event for advanced level cuck entering the room to watch
+bno_cuck.0001 = {
+	type = character_event
+	title = bno_cuck_0001.title
+	desc = bno_cuck_0001.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = eavesdrop
+	}
+	
+	cooldown = { months = { 24 36 } }
+	trigger = {
+		is_white_guy = yes
+		does_blackbull_exist = yes
+		is_spouse_white = yes
+	}
+	
+	immediate = {
+		get_bbc_scope = {
+			SCOPE_NAME = target1
+		}
+		get_white_wife_scope = {
+			SCOPE_NAME = target2
+		}
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = scope:target2
+			}
+		}
+	}
+	
+	option = {#check to see wife getting fucked, learn secret
+		name = bno_cuck_0001.a
+		add_internal_flag = special
+		ai_chance = {
+			base = 20
+			modifier = {
+				has_trait = bno_whiteboi
+				add = 30
+			}
+			modifier = {
+				has_trait = paranoid
+				add = 30
+			}
+		}
+		trigger_event = bno_cuck.1001
+	}
+	
+	option = { #conclude it can't be your wife
+		name = bno_cuck_0001.b
+		ai_chance = {
+			base = 80
+			modifier = {
+				has_trait = arrogant
+				add = 20
+			}
+			modifier = {
+				has_trait = lazy
+				add = 10
+			}
+			modifier = {
+				has_trait = craven
+				add = 20
+			}
+		}
+		trigger_event = bno_cuck.2001
+	}
+}
+
+bno_cuck.1001 = {
+	type = character_event
+	title = bno_cuck_1001.title
+	desc = bno_cuck_1001.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	
+	right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = root
+		animation = eavesdrop
+	}
+	
+	trigger = {
+		is_alive = yes
+		is_bbc = no
+	}
+
+	option = {
+		name =  bno_cuck_1001.a
+		bno_increase_cuckiness = yes
+		scope:target1 ?= { #learn random secret of wife, probably this lovers one
+			random_secret = {
+				reveal_to = root
+			}
+		}
+	}
+}
+
+bno_cuck.2001 = { #follow up event, conclude it isn't wife, get anti stress / bad secrecy modifier
+	type = character_event
+	title = bno_cuck_2001.title
+	desc = bno_cuck_2001.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = root
+		animation = eavesdrop
+	}
+
+	trigger = {
+		is_alive = yes
+		is_bbc = no
+	}
+
+	option = {
+		name = bno_cuck_2001.a
+		bno_decrease_cuckiness = yes
+		add_character_modifier = {
+			modifier = bno_cuck_blissfully_unaware
+			months = 10
+		}
+	}
+}
+
+# cuck event, wife not distracting you from work
+bno_cuck.0002 = {
+	type = character_event
+	title = bno_cuck_0002.title
+	desc = bno_cuck_0002.desc
+	theme =  bastardy
+	
+	override_background = {
+		reference = corridor_day
+	}
+	right_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	cooldown = { months = { 12 18 } }
+	
+	trigger = {
+		is_cuckish_guy = yes
+		any_spouse = {
+			is_imprisoned = no
+		}
+	}
+	option = {
+		name = bno_cuck_0002.a
+		add_prestige = -50
+		add_gold = 25
+	}
+}
+
+#cuck paying bbc for wifes "damages" to bbc camp
+bno_cuck.0003 = {
+	type = character_event
+	title = bno_cuck_0003.title
+	desc = bno_cuck_0003.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = council_chamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = marshal
+		
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = { months = { 12 18 } }
+	
+	trigger = {
+		is_cuckish_guy = yes
+		does_blackbull_exist = yes
+		is_spouse_curious = yes
+		gold > 50
+	}
+	immediate = {
+		get_bbc_scope = {
+			SCOPE_NAME = target1
+		}
+		get_curious_wife_scope = {
+			SCOPE_NAME = target2
+		}
+		scope:target2 ?= {
+			bno_increase_sluttyness = yes
+		}
+	}
+	option = {
+		name = bno_cuck_0003.a
+		add_prestige = -250
+		dynasty ?= { add_dynasty_prestige = -25 }
+		scope:target1 ?= {
+			add_prestige = 250
+		}
+	}
+	option = {
+		name = bno_cuck_0003.b
+		
+		remove_short_term_gold = 50
+		add_prestige = -150
+		
+		scope:target1 ?= {
+			add_gold = 50
+			add_prestige = 150
+		}
+	}
+	option = {
+		name = bno_cuck_0003.c
+		remove_short_term_gold = 100
+		add_prestige = -25
+		scope:target1 ?= {
+			add_gold = 100
+			add_prestige = 25
+		}
+	}
+}
+
+# cuck ruler, marshall asks to escort wife for "troop morale"
+bno_cuck.0004 = {
+	type = character_event
+	title = bno_cuck_0004.title
+	desc = bno_cuck_0004.desc
+	theme = martial_authority_focus
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = marshal
+		
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = { months = 36 }
+	trigger = {
+		is_cuck_guy = yes
+		is_married = yes
+		is_spouse_blacked = yes
+		any_martial_councillor = {
+			is_ai_blackbull = yes
+		}
+	}
+	immediate = {
+		random_martial_councillor = {
+			limit = {
+				is_ai_blackbull = yes
+			}
+			save_scope_as = target1
+		}
+		random_spouse = {
+			limit = {
+				is_blacked = yes
+			}
+			save_scope_as = target2
+		}
+	}
+	option = { #ignore troop concerns, negative modifiers
+		name = bno_cuck_0004.a
+		add_prestige = -200
+		bno_decrease_cuckiness = yes
+		add_character_modifier = {
+			modifier = bno_troops_lack_bunnies
+			months = 12
+		}
+		ai_chance = {
+			base = 33
+			modifier = {
+				add = 15
+				has_trait = lazy
+			}
+			modifier = {
+				add = 15
+				has_trait = arrogant
+			}
+			modifier = {
+				add = 15
+				has_trait = impatient
+			}
+			modifier = {
+				OR = {
+					has_trait = education_martial_1
+					has_trait = education_martial_2
+					has_trait = education_martial_3
+					has_trait = education_martial_4
+					has_trait = education_martial_5
+				}
+				add = -200
+			}
+		}
+	}
+	option = { #leave marshal and wife to "talk"
+		name = bno_cuck_0004.b
+		trigger_event = bno_cuck.2004
+		
+		ai_chance = {
+			base = 33
+			modifier = {
+				add = 50
+				has_trait = bno_whiteboi
+			}
+		}
+	}
+	option = { #wife goes to camp to raise the troop morale
+		name = bno_cuck_0004.c
+		trigger = {
+			any_knight = {
+				has_trait = bno_bbc
+				count >= 3
+			}
+		}
+		trigger_event = bno_cuck.3004
+		
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				has_trait = bno_whiteboi
+			}
+		}
+	}
+}
+#marshal and wife alone
+bno_cuck.2004 = {
+	type = character_event
+	title = bno_cuck_2004.title
+	desc = bno_cuck_2004.desc
+	theme = diplomacy_family_focus
+	
+	override_background = {
+		reference = corridor_day
+	}
+	lower_left_portrait = {
+		character = root
+		animation = personality_content
+		
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = marshal
+		
+	}
+	left_portrait = {
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	trigger = {
+		is_alive = yes
+		is_bbc = no
+	}
+
+	immediate = {
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = scope:target2
+			}
+			hidden_effect = {
+				become_lover_with_target = {
+					TARGET = scope:target2
+					LOCATION = root.location
+				}
+			}
+		}		
+	}
+	option = {
+		name = 	bno_cuck_2004.a
+		add_character_modifier = {
+			modifier = bno_cuck_blissfully_unaware
+			months = 12
+		}
+	}
+}
+
+#wife gangbanged by marshal and troops
+bno_cuck.3004 = {
+	type = character_event
+	title = bno_cuck_3004.title
+	desc = bno_cuck_3004.desc
+	theme =  martial_chivalry_focus
+	
+	override_background = {
+		reference = army_camp
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = pregnant
+		
+	}
+	lower_left_portrait = {
+		character = scope:target1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target3
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target3
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target4
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target4
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	trigger = {
+		is_alive = yes
+		is_bbc = no
+	}
+
+	immediate = {
+		random_knight = {
+			limit = {
+				is_blackbull = yes
+				NOT = {this = scope:target1}
+			}
+			save_scope_as = target3
+		}
+		scope:target3 = {
+			add_character_flag = {
+				flag = no_headgear
+				months = 1
+			}
+		}
+
+		random_knight = {
+			limit = {
+				is_blackbull = yes
+				NOT = {this = scope:target1}
+				NOT = {this = scope:target3}
+			}
+			save_scope_as = target4
+		}
+		scope:target4 = {
+			add_character_flag = {
+				flag = no_headgear
+				months = 1
+			}
+		}
+	}
+	option = {
+		name = bno_cuck_3004.a
+		if = {
+			limit = {
+				scope:target2 ?= {
+					is_married = yes
+					any_spouse = {
+						is_ai_white_guy = yes
+					}
+				}
+			}
+			scope:target2 ?= {
+				every_spouse = {
+					limit = {
+						is_ai_white_guy = yes
+					}
+					become_more_cuck_effect = yes 
+				}
+			}
+		}
+
+		scope:target2 ?= {
+			
+			hidden_effect = {
+				bno_have_sex_with_effects = {
+					PARTNER = scope:target1
+				}
+				bno_have_sex_with_effects = {
+					PARTNER = scope:target3
+				}
+				bno_have_sex_with_effects = {
+					PARTNER = scope:target4
+				}
+			}
+
+			bno_increase_sluttyness = yes
+			give_nickname = nick_bcamps
+		}
+		scope:target1 ?= {
+			hidden_effect = {
+				become_lover_with_target = {
+					TARGET = scope:target2
+					LOCATION = root.location
+				}
+			}
+		}
+		scope:target3 = {
+			hidden_effect = {
+				become_lover_with_target = {
+					TARGET = scope:target2
+					LOCATION = root.location
+				}
+			}
+		}
+		scope:target4 = {
+			hidden_effect = {
+				become_lover_with_target = {
+					TARGET = scope:target2
+					LOCATION = root.location
+				}
+			}
+		}
+		add_character_modifier = {
+			modifier = bno_troops_like_camp_slut
+			months = 36
+		}
+	}
+}
+
+#Cuck is convinced to be trusting
+bno_cuck.0005 = {
+	type = character_event
+	title = bno_cuck.0005.title
+	desc = bno_cuck_0005.desc
+	theme = friendly
+	
+	override_background = {
+		reference = council_chamber
+	}
+	left_portrait = {
+		character = root
+		animation = laugh
+		
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = laugh
+		
+	}
+	trigger = {
+		is_cuck_guy = yes
+		NOT = {
+			has_trait = trusting
+		}
+		number_of_personality_traits > 4
+		does_blackbull_exist = yes
+	}
+	immediate = {
+		get_bbc_scope = {
+			SCOPE_NAME = target1
+		}
+		if = {
+			limit = {
+				has_trait = paranoid
+			}
+			remove_trait = paranoid
+		}
+	}
+	option = {
+		name = bno_cuck_0005.a
+		add_trait = trusting
+		add_opinion = {
+			modifier = friendly_interaction
+			target = scope:target1
+		}
+	}
+}
+
+bno_cuck.0006 = { #Just cuck bonds with bbc, gives court position
+	type = character_event
+	title = bno_cuck_0006.title
+	desc = bno_cuck_0006.desc
+	theme = friendly
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	cooldown = { months = 24 }
+	trigger = {
+		is_cuck_guy = yes
+		has_trait = just
+		NOR = {
+			employs_court_position = bodyguard_court_position
+			employs_court_position = master_of_horse_court_position
+			employs_court_position = master_of_hunt_court_position
+		}
+		any_courtier_or_guest = {
+			is_ai_blackbull_just_or_zealous = yes
+		}
+	}
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				is_ai_blackbull_just_or_zealous = yes
+			}
+			save_scope_as = target1
+		}
+		add_opinion = {
+			modifier = friendly_interaction
+			target = scope:target1
+		}
+		scope:target1 ?= {
+			add_opinion = {
+				modifier = friendly_interaction
+				target = root
+			}
+			add_character_modifier = {
+				modifier = bno_seeks_new_world_order
+				years = 20
+			}
+		}
+	}
+	option = {
+		name = bno_cuck_0006.a
+		trigger = {
+			can_employ_court_position_type = bodyguard_court_position
+		}
+		appoint_court_position = {
+			recipient = scope:target1
+			court_position = bodyguard_court_position
+		}
+	}
+	option = {
+		name = bno_cuck_0006.b
+		trigger = {
+			can_employ_court_position_type = master_of_horse_court_position
+		}
+		appoint_court_position = {
+			recipient = scope:target1
+			court_position = master_of_horse_court_position
+		}
+	}
+	option = {
+		name = bno_cuck_0006.c
+		trigger = {
+			can_employ_court_position_type = master_of_hunt_court_position
+		}
+		appoint_court_position = {
+			recipient = scope:target1
+			court_position = master_of_hunt_court_position
+		}
+	}
+	option = {
+		name = bno_cuck_0006.d
+		bno_decrease_cuckiness = yes
+		remove_short_term_gold = 30
+		scope:target1 ?= {
+			add_gold = 30
+			add_prestige = 50
+		}
+	}
+}
+
+#BBC makes brave or strong advanced cuck a coward or loses strong trait
+bno_cuck.0007 = {
+	type = character_event
+	title = bno_cuck_0007.title
+	desc = bno_cuck_0007.desc
+	theme = martial
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = grief
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = anger
+	}
+	trigger = {
+		is_cuck_guy = yes
+		OR = {
+			has_trait = brave
+			has_trait = strong
+		}
+		does_blackbull_exist = yes
+	}
+	immediate = {
+		get_bbc_scope = {
+			SCOPE_NAME = target1
+		}
+	}
+	option = {
+		name = bno_cuck_0007.a
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			remove_trait = brave
+			add_trait = craven
+		}
+		if = {
+			limit = {
+				has_trait = strong
+			}
+			remove_trait = strong		#could maybe add weak trait as well, leaving as is for now.
+		}
+		become_smaller_dick_effect = yes
+		add_prestige = -250
+		scope:target1 ?= {
+			add_prestige = 250
+		}
+	}
+}
+
+#advanced cuck ruler gives hook to bbc vassal or gets wife fucked
+bno_cuck.0008 = {
+	type = character_event
+	title = bno_cuck_0008.title
+	desc = bno_cuck_0008.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = grief
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = anger
+	}
+	cooldown = { months = { 24 36 } }
+	trigger = {
+		is_beta_guy = yes
+		is_spouse_blacked = yes
+		any_vassal = {
+			is_ai_blackbull = yes
+			NOT = { has_hook = root }
+		}
+	}
+	immediate = {
+		random_vassal = {
+			limit = {
+				is_ai_blackbull = yes
+				NOT = { has_hook = root }
+			}
+			save_scope_as = target1
+		}
+		get_blacked_wife_scope = {
+			SCOPE_NAME = target2
+		}
+	}
+	option = { #BBC does cuck a favor and doesn't fuck his wife
+		name = bno_cuck_0008.a
+		scope:target1 ?= {
+			add_hook = {
+				type = favor_hook
+				target = root
+			}
+		}
+		add_opinion = {
+			modifier = loyalty_opinion
+			target = scope:target1
+		}
+		bno_decrease_cuckiness = yes
+	}
+	option = { #BBC fucks cuck's wife
+		name = bno_cuck_0008.b
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = scope:target2
+			}
+		}
+		scope:target2 ?= {
+			add_opinion = {
+				modifier = bno_pathetic_cuck_husband
+				target = root
+			}
+		}
+		add_prestige = -100
+	}
+}
+
+#Cuck player bonding with cuck son
+bno_cuck.0009 = {
+	type = character_event
+	title = bno_cuck_0009.title
+	desc = bno_cuck_0009.desc
+	theme = family
+	
+	override_background = {
+		reference = tavern
+	}
+	left_portrait = {
+		character = scope:cucked_son
+		animation = toast_goblet
+	}
+	right_portrait = {
+		character = root
+		animation = laugh
+	}
+	lower_left_portrait = {
+		character = scope:target1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = { months = { 48 60 } }
+	trigger = {
+		is_cuck_guy = yes
+		any_child = {
+			is_courtier_of = root
+			is_spouse_blacked = yes
+			is_cuck_guy = yes
+		}
+		does_blackbull_exist = yes
+	}
+	immediate = {
+		random_child = {
+			limit = {
+				is_courtier_of = root
+				is_spouse_blacked = yes
+				is_whiteboi = yes
+			}
+			save_scope_as = cucked_son
+		}
+		get_bbc_scope = {
+			SCOPE_NAME = target1
+		}
+		add_opinion = {
+			modifier = supportive_parent
+			target = scope:cucked_son
+		}
+		scope:cucked_son = {
+			get_blacked_wife_scope = {
+				SCOPE_NAME = target2
+			}
+			add_opinion = {
+				modifier = grateful_child
+				target = root
+			}
+			add_opinion = {
+				modifier = bno_bull_takes_care_of_my_wife
+				target = scope:target1
+			}
+		}
+	}
+	option = {
+		name = bno_cuck_0009.a
+		scope:target2 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = scope:target1
+			}
+			add_opinion = {
+				modifier = bno_pathetic_cuck_husband
+				target = scope:cucked_son
+			}
+		}
+		scope:cucked_son = {
+			add_character_modifier = {
+				modifier = bno_cuck_blissfully_unaware
+				years = 1
+			}
+		}
+	}
+}
+
+#bbc spymaster event
+bno_cuck.0010 = {
+	type = character_event
+	title = bno_cuck_0010.title
+	desc = bno_cuck_0010.desc
+	theme = intrigue_intimidation_focus
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		
+	}
+	right_portrait = { #spymaster
+		character = scope:target1
+		animation = spymaster
+		
+	}
+	lower_right_portrait = { #wife
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	cooldown = { months = { 36 48 } }
+	trigger = {
+		is_cuck_guy = yes
+		is_spouse_blacked = yes
+		any_vassal = {
+			is_ai_white_guy = yes
+		}
+		any_intrigue_councillor = {
+			is_ai_blackbull = yes
+		}
+	}
+	immediate = {
+		random_intrigue_councillor = {
+			limit = {
+				is_ai_blackbull = yes
+			}
+			save_scope_as = target1
+		}
+		get_blacked_wife_scope = {
+			SCOPE_NAME = target2
+		}
+		random_vassal = {
+			limit = {
+				is_ai_white_guy = yes
+			}
+			save_scope_as = target3
+		}
+	}
+	option = { #A week later, Spymaster gives liege hook on rando vassal and gets hook from liege
+		name = bno_cuck_0010.a
+		trigger_event = {
+			id = bno_cuck.1010
+			days = 7
+			delayed = yes
+		}
+		bno_decrease_cuckiness = yes
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 10
+				has_trait = brave
+			}
+			modifier = {
+				add = 30
+				has_trait = diligent
+			}
+			modifier = {
+				add = 30
+				has_trait = impatient
+			}
+		}
+	}
+	option = { #A week later, spymaster watches over wife himself
+		name = bno_cuck_0010.b
+		trigger_event = {
+			id = bno_cuck.2010
+			days = 7
+			delayed = yes
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 1000
+				has_trait = bno_whiteboi
+			}
+			modifier = {
+				add = 30
+				has_trait = lazy
+			}
+			modifier = {
+				add = 20
+				has_trait = patient
+			}
+		}
+	}
+}
+
+bno_cuck.1010 = { #followup event, spymaster frames cuck's vassal, gives and gets hooks w/liege
+	type = character_event
+	title = bno_cuck_1010.title
+	desc = bno_cuck_1010.desc
+	theme = intrigue_intimidation_focus
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target3
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = spymaster
+		
+	}
+
+	trigger = {
+		is_alive = yes
+		is_bbc = no
+	}
+
+	immediate = {
+		add_hook = {
+			type = manipulation_hook
+			target = scope:target3
+		}
+		add_opinion = {
+			modifier = loyalty_opinion
+			target = scope:target1
+		}
+		scope:target1 ?= {
+			add_hook = {
+				type = favor_hook
+				target = root
+			}
+		}
+		scope:target3 = {
+			add_opinion = {
+				modifier = accused_crime_opinion
+				target = root
+			}
+			add_opinion = {
+				modifier = accused_crime_opinion
+				target = scope:target1
+			}
+		}
+	}
+	option = {
+		name = bno_cuck_1010.a
+	}
+}
+
+bno_cuck.2010 = { #follow up event, bbc spymaster lays with cuck's wife
+	type = character_event
+	title = bno_cuck_2010.title
+	desc = bno_cuck_2010.desc
+	theme = intrigue_intimidation_focus
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = flirtation
+		
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = spymaster
+		
+	}
+	immediate = {
+		hidden_effect = {
+			scope:target2 ?= {
+				bno_have_sex_with_effects = {
+					PARTNER = scope:target1
+				}
+				become_lover_with_target = {
+					TARGET = scope:target1
+					LOCATION = location
+				}
+			}
+		}
+	}
+	option = {
+		name = bno_cuck_2010.a
+		add_opinion = {
+			modifier = loyalty_opinion
+			target = scope:target1
+		}
+		hidden_effect = {
+			add_character_modifier = {
+				modifier = bno_cuck_blissfully_unaware
+				months = 12
+			}
+			scope:target1 ?= {
+				add_character_modifier = {
+					modifier = bno_cheating_well_hidden
+					months = 12
+				}
+			}
+		}
+		scope:target2 ?= {
+			add_opinion = {
+				modifier = bno_spymaster_guarded_me
+				target = scope:target1
+			}
+		}
+		scope:target1 ?= {
+			add_prestige = 150
+		}
+	}
+}
+
+# BBC vassal explains he will take cuck's white daughter/sister as future wife
+bno_cuck.0011 = {
+	type = character_event
+	title = bno_cuck_0011.title
+	desc = bno_cuck_0011.desc
+	theme = intrigue_intimidation_focus
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = idle
+		
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = personality_greedy
+		
+	}
+
+	cooldown = { months = { 24 36 } }
+
+	trigger = {
+		is_cuck_guy = yes
+		any_close_family_member = {
+			is_girl_valid_target_for_bbc_betrothal = yes
+			save_temporary_scope_as = girl
+		}
+		any_vassal_or_below = {
+			is_bbc_valid_target_for_betrothal = yes
+			save_temporary_scope_as = bbc
+		}
+		scope:bbc = {
+			can_marry_character_trigger = {
+				CHARACTER = scope:girl
+			}
+		}
+		scope:girl = {
+			can_marry_character_trigger = {
+				CHARACTER = scope:bbc
+			}
+		}
+	}
+	immediate = {
+		random_close_family_member = {
+			limit = {
+				is_girl_valid_target_for_bbc_betrothal = yes
+			}
+			save_scope_as = target1
+		}
+		random_vassal_or_below = {
+			limit = {
+				is_bbc_valid_target_for_betrothal = yes
+			}
+			save_scope_as = target2
+		}
+		scope:target1 ?= {
+			if = {
+				limit = {
+					NAND = {
+						has_trait = beauty_good_1
+						has_trait = beauty_good_2
+						has_trait = beauty_good_3
+					}
+				}
+				add_trait = beauty_good_1
+			}
+		}
+	}
+	option = {
+		name = bno_cuck_0011.a
+		trigger = {
+			scope:target1 ?= {
+				can_marry_character_trigger = {
+					CHARACTER = scope:target2
+				}
+			}
+			scope:target2 ?= {
+				can_marry_character_trigger = {
+					CHARACTER = scope:target1
+				}
+			}
+		}
+		scope:target1 ?= {
+			every_relation = {
+				type = guardian
+				remove_relation_ward = scope:target1
+			}
+			betrothed ?= {
+				break_betrothal = scope:target1
+			}
+			create_betrothal = scope:target2
+		}
+		add_internal_flag = special
+		scope:target2 ?= {
+			every_relation = {
+				type = ward
+				limit = { is_african = yes }
+				remove_relation_guardian = scope:target2
+			}
+			set_relation_ward = scope:target1
+		}
+		scope:target1 ?= {
+			add_character_flag = bno_cuck.0011
+			bno_increase_sluttyness = yes
+			add_character_modifier = bno_family_betrothed_me_to_bbc
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {	#im sorry i can't do that
+		name = bno_cuck_0011.b
+		bno_decrease_cuckiness = yes
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+#wife uses your funds to build black camp building
+bno_cuck.0012 = {
+	type = character_event
+	title = bno_cuck_0012.title
+	desc = bno_cuck_0012.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = sadness
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = steward
+	}
+	trigger = {
+		gold > 500
+		is_white_guy = yes
+		is_married = yes
+		is_spouse_blacked = yes
+		any_directly_owned_province = {
+			has_special_building_slot = no
+			NOT = { has_building_or_higher = bbc_camp_01 }
+		}
+	}
+
+	cooldown = { months = { 12 18 } }
+
+	immediate = {
+		get_blacked_wife_scope = {
+			SCOPE_NAME = target1
+		}
+		random_directly_owned_province  = {
+			limit = {
+				has_special_building_slot = no
+				NOT = { has_building_or_higher = bbc_camp_01 }
+			}
+			add_special_building_slot  = bbc_camp_01
+			add_special_building = bbc_camp_01
+		}
+
+		remove_short_term_gold = 300
+	}
+	option = {
+		name = bno_cuck_0012.a
+	}
+}
+
+#wife regent gives powers to bbc character
+bno_cuck.0013 = {
+	type = character_event
+	title = bno_cuck_0013.title
+	desc = bno_cuck_0013.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = sadness
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = dismissal
+	}
+	trigger = {
+		is_cuck_guy = yes
+		is_ruler = yes
+		diarch ?= {
+			is_spouse_of = root
+			is_qos = yes
+		}
+		does_blackbull_exist = yes
+	}
+	immediate = {
+		diarch = {
+			save_scope_as = target1
+		}
+		get_bbc_scope = {
+			SCOPE_NAME = target2
+		}
+		scope:target1 ?= {
+			bno_have_sex_with_effects = {
+				PARTNER = scope:target2
+			}
+		}
+		set_diarch = scope:target2
+	}
+	option = {
+		name = bno_cuck_0013.a
+		
+		change_diarchy_swing = 60
+	}
+}
+
+# the black cock
+bno_cuck.0014 = {
+	type = character_event
+	theme = intrigue_intimidation_focus
+	title = bno_cuck_0014.title
+	desc = bno_cuck_0014.desc
+	override_background = {
+		reference = feast
+	}
+	
+	left_portrait = {
+		character = scope:target2
+		animation = drink
+		
+	}
+	
+	right_portrait = {
+		character = scope:target1
+		animation = drink
+		
+	}
+	
+	cooldown = { months = { 36 48 } }
+	
+	trigger = {
+		is_beta_guy = yes
+		is_married = yes
+		is_ruler = yes
+		does_blackbull_exist = yes
+		does_blacked_girl_exist = yes
+		is_spouse_curious = yes
+	}
+	immediate = {
+		get_curious_wife_scope = {
+			SCOPE_NAME = target1
+		}
+		get_blacked_girl_scope = {
+			SCOPE_NAME = target2
+		}
+		hidden_effect = {
+			every_spouse = {
+				limit = {
+					is_ai_curious = yes
+				}
+				bno_increase_sluttyness = yes
+			}
+		}
+		add_character_modifier = {
+			modifier = bno_emasculated
+			months = 12
+		}
+	}
+	option = {
+		name = bno_cuck_0014.a
+		stress_impact = {
+			lustful = minor_stress_impact_loss
+			ambitious = major_stress_impact_gain
+		}
+	}
+}
+
+#Wife fucks neighbor black leader
+bno_cuck.0015 = {
+	type = character_event
+	title = bno_cuck_0015.title
+	desc = bno_cuck_0015.desc
+	theme = love
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = boredom
+		
+	}
+	right_portrait = {
+		character = root
+		animation = sadness
+		
+	}
+	trigger = {
+		is_cuck_guy = yes
+		is_partner_mindless_bbc_slut = yes
+	}
+
+	cooldown = { months = { 12 18 } }
+
+	immediate = {
+		get_mindless_wife_scope = {
+			SCOPE_NAME = target2
+		}
+		bno_increase_cuckiness = yes
+		add_character_modifier = {
+			modifier = bno_emasculated
+			months = 12
+		}
+	}
+	option = { # Accept it
+		name = bno_cuck_0015.a
+		ai_chance = {
+			base = 40
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = humble }
+			}
+			add_trait = humble
+		}
+		scope:target2 ?= {
+			add_opinion = {
+				modifier = bno_happy_cuck_husband
+				target = root
+			}
+		}
+	}
+	option = { # Confront your spouse in anger
+		name = bno_cuck_0015.b
+		ai_chance = {
+			base = 40
+		}
+		bno_decrease_cuckiness = yes
+		add_stress = 25
+		scope:target2 ?= {
+			add_opinion = {
+				modifier = bno_pathetic_cuck_husband
+				target = root
+			}
+		}
+	}
+}
+
+#Wife divorces you for black ruler, called by other event
+bno_cuck.0016 = {
+	type = character_event
+	title = bno_cuck_0016.title
+	desc = bno_cuck_0016.desc
+	theme = unfriendly
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = disgust
+		
+	}
+	right_portrait = {
+		character = root
+		animation = shame
+		
+	}
+	trigger = {
+		is_alive = yes
+		is_bbc = no
+	}
+	immediate = {
+		random_spouse = {
+			save_scope_as = target2
+		}
+	}
+	option = { # Accept your fate in silence
+		name = bno_cuck_0016.a
+		ai_chance = {
+			base = 60
+		}
+		add_trait = humble
+		add_stress = 20
+	}
+	option = { # Publicly denounce your ex-wife
+		name = bno_cuck_0016.b
+		ai_chance = {
+			base = 30
+		}
+		bno_decrease_cuckiness = yes
+		add_prestige = -100
+		add_stress = 30
+	}
+	option = { # Vow to reclaim your honor
+		name = bno_cuck_0016.c
+		ai_chance = {
+			base = 10
+		}
+		add_trait = ambitious
+		bno_decrease_cuckiness = yes
+		bno_decrease_cuckiness = yes
+		add_prestige = 50
+		add_stress = 10
+	}
+}

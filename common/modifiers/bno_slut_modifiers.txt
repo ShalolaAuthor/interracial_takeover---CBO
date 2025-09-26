@@ -1,0 +1,184 @@
+﻿bno_slut_stress_relieved = {
+	icon = stress_positive
+	stress_loss_mult = 0.1
+	stress_gain_mult = -0.1
+}
+bno_slut_pimped = {
+	icon = economy_positive
+	monthly_income = 1
+	monthly_prestige = 0.5
+	stress_loss_mult = 0.1
+	stress_gain_mult = -0.1
+}
+bno_pretty_slut_pimped = {
+	icon = economy_positive
+	monthly_income = 3
+	monthly_income_mult = 0.1
+	monthly_prestige = 1.5
+	monthly_dread = -1
+}
+
+bno_a_lively_performance_in_a_refugee_camp = {
+	icon = lively_performance_in_a_refugee_camp
+	stewardship = 5
+	intrigue = 5
+	stress_gain_mult = -0.5
+	stress_loss_mult = 0.5
+}
+
+bno_educated_a_future_queen_of_spades = {
+	icon = educated_a_future_queen_of_spades
+	stacking = yes
+	stewardship = 1
+	diplomacy = 1
+	learning = 1
+	intrigue = 1
+	stress_gain_mult = -0.1
+	stress_loss_mult = 0.1
+}
+
+bno_a_future_queen_for_black = {
+	icon = future_queen_of_white
+	stewardship = -3
+	diplomacy = -3
+	learning = -3
+	intrigue = 3
+	martial = -3
+	prowess = -5
+	tax_mult = 0.2
+	levy_size = 0.5
+	knight_effectiveness_mult = 0.5
+	knight_limit = 5
+	men_at_arms_limit = 1
+	men_at_arms_cap = 1
+	bnwo_armies_maintenance_mult = -0.1
+	bnwo_armies_recruitment_cost_mult = -0.1
+}
+
+bno_black_bred_queen = {
+	icon = black_bred_queen
+	stacking = yes
+    fertility = 0.05
+    attraction_opinion = 15
+    general_opinion = -5
+    dynasty_house_opinion = -10
+    different_faith_opinion = -5
+    monthly_prestige = 0.15
+    stress_loss_mult = 0.05
+}
+
+bno_bred_in_secret = {
+	icon = bred_in_secret
+	stacking = yes
+    fertility = 0.05
+    attraction_opinion = 10
+    stress_loss_mult = 0.05
+}
+
+bno_claimed_broodmare = {
+	icon = claimed_broodmare
+	stacking = yes
+    prowess = 2
+    attraction_opinion = 15
+    stress_loss_mult = 0.05
+}
+
+bno_cuckolded_king = {
+	icon = cuckolded_king
+	stacking = yes
+
+    diplomacy = -1
+    prowess = -1
+    fertility = -0.1
+
+    monthly_prestige = -0.10
+    legitimacy_gain_mult = -0.05
+
+    stress_gain_mult = 0.1 
+
+    spouse_opinion = -10
+    vassal_opinion = -2
+    courtier_opinion = -2
+    attraction_opinion = -2
+}
+
+bno_blacked_queen = {
+    icon = blacked_queen
+    stacking = yes
+
+    attraction_opinion = 10
+    levy_reinforcement_rate = 0.05
+    bnwo_armies_damage_mult = 0.05
+    bnwo_armies_maintenance_mult = -0.05
+    bnwo_armies_max_size_mult = 0.05
+    general_opinion = -1
+    stress_loss_mult = 0.05
+}
+
+bno_throne_breeder = {
+    icon = throne_breeder
+    stacking = yes
+
+    attraction_opinion = 10
+    prowess = 3
+    monthly_prestige = 0.25
+    dread_gain_mult = 0.05
+    knight_effectiveness_mult = 0.05
+    army_maintenance_mult = -0.05      
+}
+
+bno_blacked_witness = {
+    icon = blacked_witness
+    stacking = yes
+
+    stress_gain_mult = 0.05
+    stress_loss_mult = 0.05
+    monthly_prestige = -0.05
+    courtier_opinion = -2
+    attraction_opinion = -2
+    intrigue = 1
+}
+
+bno_white_breeder = {
+	icon = white_breeder
+    stacking = yes
+    
+	general_opinion = 2
+	#bbcs_opinion = 30
+	health = 0.1
+	years_of_fertility = 1
+	stress_gain_mult = -0.1
+	child_health = 0.1
+	child_opinion = 2
+}
+
+bno_seeded_sovereign = {
+    icon = seeded_sovereign
+    stacking = yes
+
+    monthly_county_control_growth_factor = 0.05
+    levy_size = 0.05
+    monthly_prestige = 0.05 
+    dread_gain_mult = 0.05 
+}
+
+bno_broodmakers_hand = {
+    icon = broodmakers_hand
+    stacking = yes
+
+    martial = 1                       # sharper military command
+    knight_effectiveness_mult = 0.05  # knights pound harder
+    levy_reinforcement_rate = 0.05    # fresh bodies for war
+    stress_loss_mult = 0.05           # relief in spreading lust
+}
+
+bno_sneak_bbc = {
+    icon = sneak_bbc
+    stacking = yes
+
+    owned_personal_scheme_success_chance_add = 1
+    owned_hostile_scheme_success_chance_add = 1
+    owned_scheme_secrecy_add = 2
+    dread_gain_mult = 0.01
+    monthly_piety = -0.1
+}

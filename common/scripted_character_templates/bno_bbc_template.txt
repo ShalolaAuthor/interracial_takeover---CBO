@@ -1,0 +1,29 @@
+﻿bbc_noble_template = {
+    age = { 18 30 }
+    gender = male
+    dynasty = generate
+    faith = faith:bbcs
+	culture = culture:bnoc
+    #Traits
+    random_traits = yes
+    #Skills
+    prowess = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	martial = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+    after_creation = {
+		set_sexuality = heterosexual
+		add_gold = minor_gold_value
+		bno_add_bbc_trait_effect = yes
+		add_trait = bno_full_black
+		add_trait = lustful
+		bno_maybe_get_a_rare_trait = {
+			TRAIT = bno_camp_leader
+		}
+		add_character_flag = spawned_in_bnwo_faction_leader
+	}
+}

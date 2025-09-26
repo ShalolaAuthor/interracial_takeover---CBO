@@ -1,0 +1,2572 @@
+﻿namespace = bno_kill_temporary_character
+
+bno_kill_temporary_character.0001 = {
+    hidden = yes
+    immediate = {
+        bno_kill_character = {
+            TARGET = root
+        }
+    }
+}
+
+namespace = bno_embrace_african_1
+
+#1 conflict between migrants and locals. siding with locals increase income but lower control
+bno_embrace_african_1.0001 = {
+    type = character_event
+    title = bno_embrace_african_1.0001.title
+    desc = bno_embrace_african_1.0001.desc
+    theme = realm
+
+    override_background = {
+        reference = farmland
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = rage
+    }
+
+    right_portrait = {
+        character = scope:local
+        animation = anger
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_1
+        }
+        any_realm_province = {
+            NOT = { is_culture_bnoc = yes }
+        }
+    }
+    
+    immediate = {
+        bno_get_local_bbc = yes
+        bno_dismiss_local_bbc = yes
+        every_realm_province = {
+            limit = {
+                NOT = { is_culture_bnoc = yes }
+            }
+            save_scope_as = province_temp
+            every_pool_character = {
+                province = scope:province_temp
+                add_to_temporary_list = local_people
+            }
+        }
+        random_in_list = {
+            list = local_people
+            save_scope_as = local
+        }
+        if = {
+            limit = {
+                NOT = { exists = scope:local }
+            }
+            random_realm_province = {
+                limit = {
+                    NOT = { is_culture_bnoc = yes }
+                }
+                set_local_variable = {
+                    name = local_culture
+                    value = culture
+                }
+                set_local_variable = {
+                    name = local_faith
+                    value = faith
+                }
+                save_scope_as = local_province
+            }
+            create_character = {
+                gender = male
+                location = location
+                dynasty = none
+                random_traits = yes
+                culture = local_var:local_culture
+                faith = local_var:local_faith
+                save_scope_as = local
+            }
+            scope:local = {
+                trigger_event = {
+                    id = bno_kill_temporary_character.0001
+                    days = 2
+                    delayed = yes
+                }
+            }
+        }
+        else = {
+            scope:province_temp = {
+                save_scope_as = local_province
+            }
+        }
+    }
+
+    option = {#siding with local
+        name = bno_embrace_african_1.0001.a
+        
+        scope:local_province = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_siding_with_bbc
+                    }
+                    remove_county_modifier = bno_siding_with_bbc
+                }
+                bno_apply_bno_local_bbc_unsatisfied = yes
+                add_county_modifier = {
+                    modifier = bno_siding_with_local
+                    months = 18
+                }
+            }
+        }
+    }
+
+    option = {
+        name = bno_embrace_african_1.0001.b
+        scope:local_province = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_siding_with_local
+                    }
+                    remove_county_modifier = bno_siding_with_local
+                }
+                add_county_modifier = {
+                    modifier = bno_siding_with_bbc
+                    months = 18
+                }
+            }
+        }
+    }
+}
+#2 securing court position
+bno_embrace_african_1.0002 = {
+    type = character_event
+    title = bno_embrace_african_1.0002.title
+    desc = bno_embrace_african_1.0002.desc
+    theme = dynasty
+
+    override_background = {
+        reference = throne_room
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = disapproval
+    }
+
+    right_portrait = {
+        character = cp:councillor_marshal
+        animation = anger
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_1
+        }
+        any_councillor = {
+            has_council_position = councillor_marshal
+            is_bbc = no
+        }
+    }
+
+    immediate = {
+        bno_get_local_bbc = yes
+        bno_get_random_non_bbc_african_county = yes
+    }
+
+    option = { # you agree to give bbc the position
+        trigger = {
+            cp:councillor_marshal.martial < scope:bbc.martial
+        }
+        name = bno_embrace_african_1.0002.a
+        fire_councillor = cp:councillor_marshal
+        add_courtier = scope:bbc
+        assign_councillor_type = {
+            type = councillor_marshal
+            target = scope:bbc
+        }
+    }
+
+    option = { # you reject
+        name = bno_embrace_african_1.0002.b
+        
+        bno_dismiss_local_bbc = yes
+        bno_decrease_county_control = yes
+        bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = yes
+    }
+}
+#3 gaining prestige
+bno_embrace_african_1.0003 = {#your courtier is a known whore
+    type = character_event
+    title = bno_embrace_african_1.0003.title
+    desc = bno_embrace_african_1.0003.desc
+    theme = realm
+
+    override_background = {
+        reference = market
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = personality_content
+    }
+
+    right_portrait = {
+        character = scope:whore
+        animation = flirtation
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_1
+        }
+        any_courtier_or_guest = {
+            is_a_girl = yes
+            is_elligible_partner = yes
+            has_trait = bno_whitegirl
+        }
+        bno_is_county_not_fully_controlled = yes
+    }
+
+    immediate = {
+        bno_get_random_non_bbc_african_county = yes
+        bno_get_local_bbc = yes
+        bno_dismiss_local_bbc = yes
+        random_courtier_or_guest = {
+            limit = {
+                is_a_girl = yes
+                is_elligible_partner = yes
+                has_trait = bno_whitegirl
+            }
+            save_scope_as = whore
+        }
+    }
+
+    option = { #you agree to let him take your courtier
+        name = bno_embrace_african_1.0003.a
+        add_prestige = major_prestige_gain
+        bno_increase_county_control = yes
+        scope:whore = {
+            bno_fuck_a_bbc_5_times = yes
+        }
+    }
+
+    option = {
+        name = bno_embrace_african_1.0003.b
+        bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = yes
+        add_prestige = major_prestige_loss
+        
+        bno_decrease_county_control = yes
+    }
+}
+#4 obtaining gold
+bno_embrace_african_1.0004 = {#female courtier got targeted by migrants
+    type = character_event
+    title = bno_embrace_african_1.0004.title
+    desc = bno_embrace_african_1.0004.desc
+    theme = realm
+
+    override_background = {
+        reference = throne_room
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = personality_content
+    }
+
+    right_portrait = {
+        character = scope:whore
+        animation = stunned
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_1
+        }
+        bno_is_county_not_fully_controlled = yes
+        any_courtier_or_guest = {
+            NOT = { has_trait = bno_blood }
+            is_a_girl = yes
+            is_elligible_partner = yes
+            NOT = { has_trait = bno_whitegirl }
+        }
+    }
+    
+    immediate = {
+        bno_get_local_bbc = yes
+        bno_dismiss_local_bbc = yes
+        bno_get_random_non_bbc_african_county = yes
+        random_courtier_or_guest = {
+            limit = {
+                NOT = { has_trait = bno_blood }
+                is_a_girl = yes
+                is_elligible_partner = yes
+                NOT = { has_trait = bno_whitegirl }
+            }
+            save_scope_as = whore
+        }
+    }
+
+    option = {# accept the proposal let the girl be fucked by him, get more county control, get gold for appeasement
+        name = bno_embrace_african_1.0004.a
+        hidden_effect = {
+            scope:whore = {
+                bno_fuck_a_bbc_5_times = yes
+            }
+        }
+        bno_increase_county_control = yes
+        scope:bbc = {
+            pay_short_term_gold = {
+                target = root
+                gold = minor_gold_value
+            }
+        }
+    }
+    option = {# reject the proposal, lower county control, give gold for appeasement
+        name = bno_embrace_african_1.0004.b
+        bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = yes
+        bno_decrease_county_control = yes
+        
+        pay_short_term_gold = {
+            target = scope:bbc
+            gold = minor_gold_value
+        }
+    }
+}
+#5 requesting duel
+bno_embrace_african_1.0005 = {
+    type = character_event
+    title = bno_embrace_african_1.0005.title
+    desc = bno_embrace_african_1.0005.desc
+    theme = martial
+
+    override_background = {
+        reference = battlefield
+    }
+
+    left_portrait = {
+        character = root
+        animation = aggressive_sword
+    }
+
+    right_portrait = {
+        character = scope:bbc
+        animation = aggressive_spear
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_1
+        }
+        bno_is_county_not_fully_controlled = yes
+    }
+
+    immediate = {
+        bno_get_local_bbc = yes
+        bno_get_random_non_bbc_african_county = yes
+    }
+
+    option = { # not whore, or not bbc : duel martial prowess, wounded if loss, bbc join court, win gain prestige
+        name = bno_embrace_african_1.0005.a
+        trigger = {
+            NOR = {
+                has_trait = bno_bbc
+                has_trait = bno_whitegirl
+            }
+        }
+        duel = {
+            skills = { martial prowess }
+            target = scope:bbc
+            50 = { # win
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                desc = bno_embrace_african_1.0005.a.success.tooltip
+                scope:bbc = {
+                    increase_wounds_effect = { REASON = fight }
+                }
+                bno_dismiss_local_bbc = yes
+                
+                add_prestige = major_prestige_gain
+                bno_increase_county_control = yes
+            }
+            50 = { # loss
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -4.5
+                    min = 0
+                }
+                desc = bno_embrace_african_1.0005.a.failure.tooltip
+                increase_wounds_effect = { REASON = fight }
+                add_prestige = major_prestige_loss
+                add_courtier = scope:bbc
+                bno_decrease_county_control = yes
+                bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = yes
+            }
+        }
+    }
+
+    option = { # whore: fuck and join court
+        name = bno_embrace_african_1.0005.b.1
+        trigger = {
+            has_trait = bno_whitegirl
+        }
+        bno_fuck_a_bbc_5_times = yes
+        add_courtier = scope:bbc
+        bno_increase_county_control = yes
+    }
+
+    option = { # whore: fuck and reject them from court
+        name = bno_embrace_african_1.0005.b.2
+        trigger = {
+            has_trait = bno_whitegirl
+            any_courtier_or_guest = {
+                is_bbc = yes
+                count > 5
+            }
+        }
+        bno_fuck_a_bbc_5_times = yes
+        bno_dismiss_local_bbc = yes
+        
+        bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = yes
+    }
+
+    option = { # BBC : duel if win reject the bbc gain prestige, if loss let bbc join court
+        name = bno_embrace_african_1.0005.c
+        trigger = {
+            has_trait = bno_bbc
+        }
+        duel = {
+            skills = { martial prowess }
+            target = scope:bbc
+            50 = { # win
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = 3.5
+                    min = -49
+                }
+                desc = bno_embrace_african_1.0005.c.success.tooltip
+                scope:bbc = {
+                    increase_wounds_effect = { REASON = fight }
+                }
+                add_prestige = major_prestige_gain
+                bno_increase_county_control = yes
+                bno_dismiss_local_bbc = yes
+                
+            }
+            50 = { # loss
+                compare_modifier = {
+                    value = scope:duel_value
+                    multiplier = -4.5
+                    min = 0
+                }
+                desc = bno_embrace_african_1.0005.c.failure.tooltip
+                add_courtier = scope:bbc
+                bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = yes
+            }
+        }
+    }
+}
+#6 bbc demands to join court
+bno_embrace_african_1.0006 = {
+    type = character_event
+    title = bno_embrace_african_1.0006.title
+    desc = bno_embrace_african_1.0006.desc
+    theme = realm
+
+    override_background = {
+        reference = council_chamber
+    }
+
+    left_portrait = {
+        character = root
+        animation = thinking
+    }
+
+    right_portrait = {
+        character = scope:bbc
+        animation = disappointed
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_1
+        }
+        any_courtier_or_guest = {
+            is_bbc = yes
+            count < 5
+        }
+    }
+
+    immediate = {
+        bno_get_local_bbc = yes
+        bno_get_random_non_bbc_african_county = yes
+    }
+
+    option = {#agree bbc join court
+        name = bno_embrace_african_1.0006.a
+        add_courtier = scope:bbc
+        bno_increase_county_control = yes
+    }
+
+    option = {# reject give gold
+        name = bno_embrace_african_1.0006.b
+        pay_short_term_gold = {
+            target = scope:bbc
+            gold = minor_gold_value
+        }
+        bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = yes
+        
+        bno_dismiss_local_bbc = yes
+        bno_decrease_county_control = yes
+    }
+}
+#7 demand event fired from faction
+bno_embrace_african_1.0007 = {
+    type = letter_event
+    sender = scope:peasant_leader
+    opening = {
+        desc = faction_demand_bnwo
+    }
+    desc = bno_embrace_african_1.0007.desc
+
+    trigger = {
+        exists = scope:faction
+		exists = scope:peasant_leader
+		scope:peasant_leader.joined_faction = scope:faction
+    }
+
+    immediate = {
+        every_realm_province = {
+			county = { add_to_list = remaining_counties_list }
+		}
+		scope:faction = {
+			every_faction_county_member = { remove_from_list = remaining_counties_list }
+		}
+    }
+    #TODO: add option to surrender land to BNWO
+    option = {
+        name = bno_embrace_african_1.0007.a
+        # This effect should always be placed here, _before_ all the other effects in the block.
+		trigger_event = { on_action = on_faction_demand_rejected }
+
+        scope:faction = {
+			faction_start_war = {
+				title = scope:target_title
+			}
+		}
+
+        custom_tooltip = bno_embrace_african_1.0007.a.tooltip
+
+        #Follow up vassal events
+        if = {
+            limit = {
+                list_size = {
+                    name = bnwo_faction_vassal_targets
+                    value > 0
+                }
+            }
+            every_in_list = {
+                list = bnwo_faction_vassal_targets
+                trigger_event = bno_embrace_african_1.1007
+            }
+        }
+    }
+
+    after = {
+        if = {
+			limit = {
+				exists = scope:faction
+				scope:faction = {
+					has_variable = faction_targets_player
+				}
+			}
+			scope:faction = {
+				remove_variable = faction_targets_player
+			}
+		}
+    }
+}
+
+bno_embrace_african_1.1007 = {
+    type = letter_event
+    sender = scope:peasant_leader
+    opening = {
+        desc = faction_demand_bnwo
+    }
+    desc = bno_embrace_african_1.1007.desc
+
+    trigger = {
+        exists = scope:faction
+		exists = scope:peasant_leader
+		scope:peasant_leader.joined_faction = scope:faction
+    }
+
+    immediate = {
+		scope:faction.faction_war = {
+			save_scope_as = bnwo_war
+		}
+	}
+    
+    #only if the vassal is BBC and the liege is not bbc, join the war
+    option = {
+        name = bno_embrace_african_1.1007.a
+        trigger = {
+            has_trait = bno_bbc
+            liege ?= {
+                NOT = { has_trait = bno_bbc }
+            }
+        }
+        scope:faction.faction_war = {
+            add_attacker = root
+        }
+        custom_tooltip = bno_embrace_african_1.1007.a.tooltip
+        ai_chance = {
+            base = 0
+            modifier = {
+                add = 100
+                liege ?= {
+                    NOT = { has_trait = bno_bbc }
+                }
+            }
+        }
+    }
+    
+    #fight along side liege
+    option = {
+        name = bno_embrace_african_1.1007.b
+        trigger = {
+			custom_tooltip = { # ... If you already are at war with another participant.
+				text = FACTION_DEMAND_POPULIST_VASSAL_JOIN_WAR_BLOCK_TT
+				scope:faction.faction_war = {
+					NOT = {
+						any_war_participant = {
+							is_at_war_with = root
+						}
+					}
+				}
+			}
+			custom_tooltip = { # ... If it would put you against someone you are fighting another war with.
+				text = FACTION_DEMAND_POPULIST_VASSAL_JOIN_WAR_BLOCK_TT_2
+				scope:faction.faction_war = {
+					NOT = {
+						any_war_attacker = {
+							any_war_ally = {
+								this = root
+							}
+						}
+					}
+				}
+			}
+		}
+		show_as_unavailable = {
+			OR = {
+				scope:faction.faction_war = {
+					any_war_participant = {
+						is_at_war_with = root
+					}
+				}
+				scope:faction.faction_war = {
+					any_war_attacker = {
+						any_war_ally = {
+							this = root
+						}
+					}
+				}
+			}
+		}
+        # Join the war.
+		scope:faction.faction_war = {
+			add_defender = root
+		}
+		custom_tooltip = bno_embrace_african_1.1007.b.tooltip.2
+		
+		ai_chance = {
+			base = 100
+		}
+    }
+
+    # do nothing
+    option = {
+        name = bno_embrace_african_1.1007.c
+        custom_tooltip = bno_embrace_african_1.1007.c.tooltip.1
+        #custom_tooltip = bno_embrace_african_1.1007.c.tooltip.2
+
+        ai_chance = {
+            base = 0
+
+            modifier = {
+                add = 20
+                has_trait = craven
+            }
+        }
+    }
+}
+
+bno_embrace_african_1.2007 = {
+    hidden = yes
+    trigger = {
+		has_variable = bnwo_leader_peasants
+		joined_faction = var:bnwo_leader_peasants
+		exists = scope:war
+		scope:war = {
+			primary_defender = scope:previous_controller
+		}
+		OR = {
+			scope:county.culture = root.culture
+			scope:county.religion = root.religion
+		}
+	}
+
+    immediate = {
+        set_variable = {
+            name = number_bnwo_reinforcements
+            value = {
+                add = {
+                    every_in_list = {
+                        list = occupied_baronies
+                        add = building_levies
+                    }
+                }
+                multiply = {
+                    add = 0.25
+                    add = {
+                        scope:county = {
+                            add = development_level
+                            multiply = 0.005
+                        }
+                    }
+                }
+            }
+        }
+
+        spawn_army = {
+            name = bno_event_troop_default_name
+            levies = var:number_bnwo_reinforcements
+            location = scope:barony.title_province
+            war = scope:war
+        }
+
+        every_in_list = {
+            list = occupied_baronies
+            scope:county = {
+                change_county_control = -10
+            }
+        }
+
+        remove_variable = number_bnwo_reinforcements
+    }
+}
+
+namespace = bno_embrace_african_2
+
+#1 migrant appeasement event, give gold for development buff
+bno_embrace_african_2.0001 = {
+    type = character_event
+    title = bno_embrace_african_2.0001.title
+    desc = bno_embrace_african_2.0001.desc
+    theme = realm
+
+    override_background = {
+        reference = farmland
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = rage
+    }
+
+    right_portrait = {
+        character = root
+        animation = disgust
+    }    
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_2
+        }
+        any_held_title = {
+            tier = tier_county
+            NOT = { has_county_modifier = bno_bbc_appeased }
+        }
+    }
+
+    immediate = {
+        bno_get_really_local_bbc = yes
+        random_held_title = {
+            limit = {
+                tier = tier_county
+                NOT = { has_county_modifier = bno_bbc_appeased }
+            }
+            save_scope_as = bno_target_title
+        }
+    }
+
+    option = { # you agree to give him gold
+        name = bno_embrace_african_2.0001.a.accept
+        pay_short_term_gold = {
+            target = scope:bbc
+            gold = minor_gold_value 
+        }
+        bno_give_development_buff_to_target_title = yes
+        bno_dismiss_local_bbc = yes
+    }
+
+    option = { # you disagree to give him gold
+        name = bno_embrace_african_2.0001.a.decline
+        scope:bno_target_title = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_bbc_appeased
+                    }
+                    remove_county_modifier = bno_bbc_appeased
+                }
+                add_county_modifier = {
+                    modifier = bno_bbc_angered
+                    months = 18
+                }
+            }
+        }
+        bno_dismiss_local_bbc = yes
+    }
+
+    option = { # you are snowbunny and up
+        name = bno_embrace_african_2.0001.b
+        trigger = {
+            is_bno_snowbunny_and_up = yes
+        }
+        exclusive = yes
+        add_internal_flag = special
+        trigger_event = {
+            id = bno_embrace_african_2.1001
+        }
+    }
+
+    option = { # if a BBC and has white girl courtier
+        name = bno_embrace_african_2.0002.c
+        trigger = {
+            has_trait = bno_bbc
+            any_courtier_or_guest = {
+                is_curious = yes
+            }
+        }
+        exclusive = yes
+        add_internal_flag = special
+        trigger_event = {
+            id = bno_embrace_african_2.2001
+        }        
+    }
+}
+#1.1 female followup
+bno_embrace_african_2.1001 = {
+    type = character_event
+    title = bno_embrace_african_2.1001.title
+    desc = bno_embrace_african_2.1001.desc
+    theme = realm
+
+    override_background = {
+        reference = bedchamber
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = personality_content
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    right_portrait = {
+        character = root
+        animation = bno_sex_love_stand_2
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    immediate = {
+        bno_fuck_a_bbc_5_times = yes
+        bno_give_development_buff_to_target_title = yes
+    }
+
+    option = {
+        name = bno_embrace_african_2.1001.a
+        bno_dismiss_local_bbc = yes
+    }
+}
+#1.2 bbc followup
+bno_embrace_african_2.2001 = {
+    type = character_event
+    title = bno_embrace_african_2.2001.title
+    desc = bno_embrace_african_2.2001.desc
+    theme = realm
+
+    override_background = {
+        reference = farmland
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = personality_content
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    right_portrait = {
+        character = scope:whore
+        animation = bno_sex_love_stand_2
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    immediate = {
+        random_courtier_or_guest = {
+            limit = {
+                is_curious = yes
+            }
+            save_scope_as = whore
+        }
+        bno_give_development_buff_to_target_title = yes
+        scope:whore = {
+            bno_fuck_a_bbc_5_times = yes
+            bno_have_sex_with_effects = {
+                PARTNER = root
+            }
+            hidden_effect = {
+                bno_have_sex_with_effects = {
+                    PARTNER = root
+                }
+                bno_have_sex_with_effects = {
+                    PARTNER = root
+                }
+                bno_have_sex_with_effects = {
+                    PARTNER = root
+                }
+                bno_have_sex_with_effects = {
+                    PARTNER = root
+                }
+            }
+        }
+    }
+
+    option = {
+        name = bno_embrace_african_2.2001.a
+        bno_dismiss_local_bbc = yes
+    }
+}
+#2 send female courtier, she come backs broken, increasing levies
+bno_embrace_african_2.0002 = {
+    type = character_event
+    title = bno_embrace_african_2.0002.title
+    desc = bno_embrace_african_2.0002.desc
+    theme = realm
+
+    override_background = {
+        reference = courtyard
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = rage
+    }
+
+    right_portrait = {
+        character = root
+        animation = disgust
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_2
+        }
+        any_courtier_or_guest = {
+            is_curious = yes
+            NOT = { has_trait = beauty_good }
+        }
+        any_held_title = {
+            tier = tier_county
+            NOT = { has_county_modifier = bno_sent_courtier_to_bbc }
+        }
+    }
+
+    immediate = {
+        bno_get_really_local_bbc = yes
+        every_courtier_or_guest = {
+            limit = {
+                is_curious = yes
+                NOT = { has_trait = beauty_good }
+            }
+            add_to_temporary_list = whores
+        }
+        random_in_list = {
+            list = whores
+            save_scope_as = whore
+        }
+        random_held_title = {
+            limit = {
+                tier = tier_county
+                NOT = { has_county_modifier = bno_sent_courtier_to_bbc }
+            }
+            save_scope_as = target_county
+        }
+    }
+
+    option = { # accept
+        name = bno_embrace_african_2.0002.a.accept
+        trigger = {
+            NOR = {
+                has_trait = bno_bbc
+                has_trait = bno_whitegirl
+            }
+        }
+        scope:whore = {
+            bno_travel_to_local_bbc = {
+                RETURN_TRIP = no
+                ON_ARRIVAL_EVENT = bno_embrace_african_2.1002
+            }
+        }
+    }
+
+    option = { # decline
+        name = bno_embrace_african_2.0002.a.decline
+        scope:target_county = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_sent_courtier_to_bbc
+                    }
+                    add_county_modifier = bno_sent_courtier_to_bbc
+                }
+                add_county_modifier = {
+                    modifier = bno_reject_sending_courtier_to_bbc
+                    months = 18
+                }
+            }
+        }
+        bno_dismiss_local_bbc = yes
+    }
+
+    option = { # whore
+        name = bno_embrace_african_2.0002.b
+        trigger = {
+            is_bno_snowbunny_and_up = yes
+        }
+        add_internal_flag = special
+
+        bno_travel_to_local_bbc = {
+            RETURN_TRIP = no
+            ON_ARRIVAL_EVENT = bno_embrace_african_2.1002
+        }
+    }
+
+    option = { # bbc: make the bbc travel to your court, and make him fuck every girl there
+        name = bno_embrace_african_2.0002.c
+        trigger = {
+            has_trait = bno_bbc
+        }
+        add_internal_flag = special
+
+        trigger_event = {
+            id = bno_embrace_african_2.2002
+            days = { 2 7 }
+            delayed = yes
+        }
+    }
+}
+#2.1 arrival event for sending girls to the camp
+bno_embrace_african_2.1002 = {
+    type = character_event
+    title = bno_embrace_african_2.1002.title
+    desc = bno_embrace_african_2.1002.desc
+    theme = seduction
+
+    override_background = {
+        reference = bedchamber
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = personality_content
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    right_portrait = {
+        character = root
+        animation = bno_sex_love_stand_2
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    immediate = {
+        bno_fuck_a_bbc_5_times = yes
+        scope:target_county = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_reject_sending_courtier_to_bbc
+                    }
+                    remove_county_modifier = bno_reject_sending_courtier_to_bbc
+                }
+                add_county_modifier = {
+                    modifier = bno_sent_courtier_to_bbc
+                    months = 18
+                }
+            }
+        }
+    }
+
+    option = {
+        name = bno_embrace_african_2.1002.a
+        bno_dismiss_local_bbc = yes
+    }
+}
+#2.2 arrival event for bbc that come to your court
+bno_embrace_african_2.2002 = {
+    type = character_event
+    title = bno_embrace_african_2.2002.title
+    desc = bno_embrace_african_2.2002.desc
+    theme = seduction
+
+    override_background = {
+        reference = bedchamber
+    }
+
+    left_portrait = {
+        character = scope:bbc
+        animation = personality_content
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    right_portrait = {
+        character = scope:whore
+        animation = bno_sex_love_stand_2
+        outfit_tags = {
+            no_clothes
+        }
+    }
+
+    immediate = {
+        hidden_effect = {
+            add_courtier = scope:bbc
+        }
+        every_in_list = {
+            list = whores
+            bno_have_sex_with_effects = {
+                PARTNER = scope:bbc
+            }
+        }
+    }
+
+    option = {
+        name = bno_embrace_african_2.2002.a
+        scope:target_county = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_reject_sending_courtier_to_bbc
+                    }
+                    remove_county_modifier = bno_reject_sending_courtier_to_bbc
+                }
+                add_county_modifier = {
+                    modifier = bno_sent_courtier_to_bbc
+                    months = 18
+                }
+            }
+        }
+    }
+
+    after = {
+        hidden_effect = {
+            remove_courtier_or_guest = {
+				character = scope:bbc
+				new_location = root.capital_province
+			}
+            bno_dismiss_local_bbc = yes
+        }
+        trigger_event = {
+            id = bno_events.0001
+        }
+    }
+}
+#3 send your daughter , she got married to black guy, increasing control
+bno_embrace_african_2.0003 = {
+    type = character_event
+    title = bno_embrace_african_2.0003.title
+    desc = bno_embrace_african_2.0003.desc
+    theme = realm
+
+    override_background = {
+        reference = courtyard
+    }
+    left_portrait = {
+        character = scope:bbc
+        animation = rage
+    }
+
+    right_portrait = {
+        character = root
+        animation = disgust
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        is_ruler = yes
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_2
+        }
+        any_child = {
+            is_ai_curious = yes
+            age > 15
+            age < 25
+            NOT = { 
+                any_spouse ?= { 
+                    is_ai_blackbull = yes 
+                }
+            }
+        }
+        any_held_title = {
+            tier = tier_county
+            NOT = { has_county_modifier = bno_approve_daughter_marriage_with_bbc }
+        }
+    }
+
+    immediate = {
+        bno_get_really_local_bbc = yes
+        random_child = {
+            limit = {
+                is_curious = yes
+                age > 15
+                age < 25
+                NOT = { 
+                    any_spouse ?= { 
+                        is_ai_blackbull = yes 
+                    }
+                }
+            }
+            save_scope_as = whore
+        }
+        random_held_title = {
+            limit = {
+                tier = tier_county
+                NOT = { has_county_modifier = bno_approve_daughter_marriage_with_bbc }
+            }
+            save_scope_as = bno_target_title
+        }
+    }
+
+    option = {  # accept
+        name = bno_embrace_african_2.0003.a.accept
+        scope:whore = {
+            bno_travel_to_local_bbc = {
+                RETURN_TRIP = no
+                ON_ARRIVAL_EVENT = bno_embrace_african_2.1003
+            }
+        }
+    }
+
+    option = { # decline
+        name = bno_embrace_african_2.0003.a.decline
+        bno_dismiss_local_bbc = yes
+        scope:bno_target_title = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_approve_daughter_marriage_with_bbc
+                    }
+                    remove_county_modifier = bno_approve_daughter_marriage_with_bbc
+                }
+                add_county_modifier = {
+                    modifier = bno_disapprove_daughter_marriage_with_bbc
+                }
+            }
+        }
+    }
+}
+#3.1 daughter event
+bno_embrace_african_2.1003 = {
+    hidden = yes
+
+    immediate = {
+        bno_fuck_a_bbc_5_times = yes
+        bno_marriage_effect = {
+            TARGET = scope:bbc
+        }
+        scope:target_county = {
+            county = {
+                if = {
+                    limit = {
+                        has_county_modifier = bno_disapprove_daughter_marriage_with_bbc
+                    }
+                    remove_county_modifier = bno_disapprove_daughter_marriage_with_bbc
+                }
+                add_county_modifier = {
+                    modifier = bno_approve_daughter_marriage_with_bbc
+                }
+            }
+        }
+    }
+}
+
+namespace = bno_embrace_african_5
+# Cure Diseases Decisions
+# TODO add BBC Church Temple special building and actually go there to get rid of illness
+# story say the priest need you to have a breeding ritual it cost massive amount of gold to get rid of your illness
+bno_embrace_african_5.0001 = {
+    type = character_event
+    #window = big_event_window
+    theme = healthcare
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0001.title.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0001.title.male
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0001.desc.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0001.desc.male
+            }
+        }
+    }
+
+    override_background = {
+        reference = temple
+    }
+
+    left_portrait = {
+        character = scope:carn_sex_partner
+        animation = sex_combined
+        triggered_outfit = {
+            trigger = { scope:priestess = { is_a_girl = yes } }
+            outfit_tags = {
+                no_clothes
+            }
+        }
+    }
+
+    right_portrait = {
+        character = scope:carn_sex_player
+        animation = sex_combined
+        outfit_tags = {
+            no_headgear
+        }
+    }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        bno_has_bbc_priest_or_priestess = yes
+    }
+
+    immediate = {
+        bno_get_bbc_priest_or_priestess = yes
+        bno_sex_scene_start = {
+            PARTNER = scope:carn_sex_partner
+        }
+        standing_oral_animations = yes
+    }
+
+    option = { # will show the cost of ritual and use show_as_unavailable if you dont have enough money
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_embrace_african_5.0001.a.female
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_embrace_african_5.0001.a.male
+                    }
+                }
+            }
+        }
+        bno_cure_disease = yes
+        if = {
+            limit = { NOT = { has_character_flag = bno_embrace_african_5.0008 } }
+            add_character_flag = bno_embrace_african_5.0008
+            trigger_event = {
+                id = bno_embrace_african_5.0008
+                days = 7
+            }
+        }
+        carn_sex_scene_is_cum_inside_effect = yes
+        bno_sex_scene_cleanup = yes
+    }
+}
+
+#free treatment
+bno_embrace_african_5.0002 = {
+    type = character_event
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {is_a_girl = yes}
+                desc = bno_embrace_african_5.0002.title.female
+            }
+            triggered_desc = {
+                trigger = {is_a_male = yes}
+                desc = bno_embrace_african_5.0002.title.male
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0002.desc.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0002.desc.male
+            }
+        }
+    }
+    theme = healthcare
+
+    override_background = {
+        reference = throne_room
+    }
+
+    left_portrait = {
+        character = scope:priestess
+        animation = personality_content
+        triggered_outfit = {
+            trigger = { is_a_girl = yes }
+            outfit_tags = {
+                no_clothes
+            }
+        }
+    }
+
+    right_portrait = {
+        character = root
+        animation = sick
+    }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        bno_has_bbc_priest_or_priestess = yes
+        bno_illness_list = yes
+        NOT = { has_character_flag = bno_embrace_african_5.0002 }
+    }
+
+    immediate = {
+        add_character_flag = bno_embrace_african_5.0002
+        bno_get_bbc_priest_or_priestess = yes
+    }
+    option = {
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_embrace_african_5.0002.a.female
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_embrace_african_5.0002.a.male
+                    }
+                }
+            }
+        }
+        trigger_event = {
+            id = bno_embrace_african_5.1002
+        }
+    }
+}
+#Follow Up
+bno_embrace_african_5.1002 = {
+    type = character_event
+    #window = big_event_window
+    theme = healthcare
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0001.title.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0001.title.male
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0001.desc.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0001.desc.male
+            }
+        }
+    }
+
+    override_background = {
+        reference = temple
+    }
+
+    left_portrait = {
+        character = scope:carn_sex_partner
+        animation = sex_combined
+        triggered_outfit = {
+            trigger = { scope:priestess = { is_a_girl = yes } }
+            outfit_tags = {
+                no_clothes
+            }
+        }
+    }
+
+    right_portrait = {
+        character = scope:carn_sex_player
+        animation = sex_combined
+        outfit_tags = {
+            no_headgear
+        }
+    }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        bno_has_bbc_priest_or_priestess = yes
+    }
+
+    immediate = {
+        save_scope_as = carn_sex_player
+        bno_get_bbc_priest_or_priestess = yes
+        bno_sex_scene_start = {
+            PARTNER = scope:carn_sex_partner
+        }
+        standing_oral_animations = yes
+    }
+
+    option = { # will show the cost of ritual and use show_as_unavailable if you dont have enough money
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_embrace_african_5.0001.a.female
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_embrace_african_5.0001.a.male
+                    }
+                }
+            }
+        }
+        switch = {
+            trigger = has_trait
+            lovers_pox = { bno_cure_disease_type = { SICKNESS = lovers_pox } }
+            ill = { bno_cure_disease_type = { SICKNESS = ill } }
+            pneumonic = { bno_cure_disease_type = { SICKNESS = pneumonic } }
+            early_great_pox = { bno_cure_disease_type = { SICKNESS = early_great_pox } }
+            leper = { bno_cure_disease_type = { SICKNESS = leper } }
+            gout_ridden = { bno_cure_disease_type = { SICKNESS = gout_ridden } }
+            consumption = { bno_cure_disease_type = { SICKNESS = consumption } }
+            cancer = { bno_cure_disease_type = { SICKNESS = cancer } }
+            typhus = { bno_cure_disease_type = { SICKNESS = typhus } }
+            bubonic_plague = { bno_cure_disease_type = { SICKNESS = bubonic_plague } }
+            smallpox = { bno_cure_disease_type = { SICKNESS = smallpox } }
+            measles = { bno_cure_disease_type = { SICKNESS = measles } }
+            dysentery = { bno_cure_disease_type = { SICKNESS = dysentery } }
+            ergotism = { bno_cure_disease_type = { SICKNESS = ergotism } }
+            sickly = { bno_cure_disease_type = { SICKNESS = sickly } }
+            great_pox = { bno_cure_disease_type = { SICKNESS = great_pox } }
+        }
+        if = {
+            limit = { NOT = { has_character_flag = bno_embrace_african_5.0008 } }
+            add_character_flag = bno_embrace_african_5.0008
+            trigger_event = {
+                id = bno_embrace_african_5.0008
+                days = 7
+            }
+        }
+        carn_sex_scene_is_cum_inside_effect = yes
+        bno_sex_scene_cleanup = yes
+    }
+}
+
+#beg liege to make the church foundation
+bno_embrace_african_5.0003 = {
+    type = character_event
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_girl = yes } }
+                desc = bno_embrace_african_5.0003.title.female_wanderer
+            }
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_male = yes } }
+                desc = bno_embrace_african_5.0003.title.male_wanderer
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_girl = yes } }
+                desc = bno_embrace_african_5.0003.desc.female_wanderer
+            }
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_male = yes } }
+                desc = bno_embrace_african_5.0003.desc.male_wanderer
+            }
+        }
+    }
+    theme = realm
+
+    override_background = {
+        reference = throne_room
+    }
+
+    left_portrait = {
+        character = root
+        animation = thinking
+    }
+
+    right_portrait = {
+        character = scope:wanderer
+        animation = beg
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        is_ruler = yes
+        is_faith_bbcs = yes
+        NOT = {
+            any_realm_province = {
+                has_building = bbc_church_01
+            }    
+            any_realm_province = {
+                has_building = bbc_church_02
+            }  
+        }
+    }
+
+    immediate = {
+        bno_get_wanderer_scope = yes
+    }
+
+    option = { # i will think about it
+        name = bno_embrace_african_5.0003.a
+    }
+
+    after = {
+        bno_kill_wanderer_scope = yes
+    }    
+}
+# some spawned in people will beg liege to build bbc_church_02
+bno_embrace_african_5.0004 = {
+    type = character_event
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_girl = yes } }
+                desc = bno_embrace_african_5.0004.title.female_wanderer
+            }
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_male = yes } }
+                desc = bno_embrace_african_5.0004.title.male_wanderer
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_girl = yes } }
+                desc = bno_embrace_african_5.0004.desc.female_wanderer
+            }
+            triggered_desc = {
+                trigger = { scope:wanderer = { is_a_male = yes } }
+                desc = bno_embrace_african_5.0004.desc.male_wanderer
+            }
+        }
+    }
+    theme = realm
+
+    override_background = {
+        reference = throne_room
+    }
+
+    left_portrait = {
+        character = root
+        animation = thinking
+    }
+
+    right_portrait = {
+        character = scope:wanderer
+        animation = beg
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        is_ruler = yes
+        any_realm_province = {
+            has_building = bbc_church_01
+        }    
+    }
+
+    immediate = {
+        bno_get_wanderer_scope = yes
+    }
+
+    option = { # i will think about it
+        name = bno_embrace_african_5.0004.a
+    }
+
+    after = {
+        bno_kill_wanderer_scope = yes
+    }
+}
+#Please make the holy order
+bno_embrace_african_5.0005 = {
+    type = character_event
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0005.title.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0005.title.male
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0005.desc.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0005.desc.male
+            }
+        }
+    }
+    theme = realm
+
+    override_background = {
+        reference = throne_room
+    }
+
+    left_portrait = {
+        character = root
+        animation = thinking
+    }
+
+    right_portrait = {
+        character = scope:wanderer
+        animation = beg
+    }
+
+    cooldown = { months = { 12 18 } }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        is_ruler = yes
+        any_realm_province = {
+            has_building = bbc_church_02
+        }
+        NOT = {
+            faith = {
+                any_faith_holy_order = {
+                    holy_order_patron = root
+                }
+            }
+        }
+    }
+
+    immediate = {
+        random_list = {
+            40 = {
+                create_blacked_european_girls = {
+                    TEMPLATE = bbc_worshipper_low_character_template
+                    LOCATION = root.capital_province
+                    SCOPE = wanderer
+                }
+            }
+            40 = {
+                create_blacked_european_girls = {
+                    TEMPLATE = bbc_worshipper_high_character_template
+                    LOCATION = root.capital_province
+                    SCOPE = wanderer
+                }
+            }
+            20 = {
+                create_blacked_european_girls = {
+                    TEMPLATE = bbc_worshipper_excellent_character_template
+                    LOCATION = root.capital_province
+                    SCOPE = wanderer
+                }
+            }
+        }
+    }
+
+    option = { # i will think about it
+        name = bno_embrace_african_5.0005.a
+    }
+
+    after = {
+        bno_kill_wanderer_scope = yes
+    }
+}
+
+# Found bbc holy order decision
+bno_embrace_african_5.0006 = {
+    type = character_event
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0006.title.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0006.title.male
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0006.desc.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0006.desc.male
+            }
+        }
+    }
+    theme = realm
+
+    override_background = {
+        reference = throne_room
+    } 
+
+    left_portrait = {
+        character = root
+        triggered_animation = {
+            trigger = { is_a_male = yes }
+            animation = personality_content
+        }
+        triggered_animation = {
+            trigger = { is_a_girl = yes }
+            animation = bno_sex_love_stand_2
+        }
+    }
+
+    right_portrait = {
+        character = scope:leader
+        animation = bno_sex_love_stand_2
+    }
+
+    trigger = {
+        exists = capital_province
+    }
+
+    immediate = {
+        #mandatory vanilla shit
+        if = {
+            limit = { exists = scope:barony }
+            hidden_effect = {
+                if = {
+                    limit = { NOT = { scope:barony.holder = root } }
+                    create_title_and_vassal_change = {
+                        type = leased_out
+                        save_scope_as = change
+                        add_claim_on_loss = no
+                    }
+                    scope:barony = {
+                        change_title_holder_include_vassals = {
+                            holder = root
+                            change = scope:change
+                        }
+                    }
+                    resolve_title_and_vassal_change = scope:change
+                }
+            }
+        }
+
+        create_blacked_european_girls = {
+            TEMPLATE = bno_female_holy_order_leader_character_template
+            LOCATION = scope:barony.title_province
+            SCOPE = leader
+        }
+
+        create_holy_order_neutral_effect = {
+            LEADER = scope:leader
+            CAPITAL = scope:barony
+            NEW_HO_SCOPE = new_holy_order
+            FOUNDER = root
+        }
+        scope:new_holy_order = {
+            title = {
+                set_variable = bbc_holy_order
+            }
+        }
+        create_holy_order_effect = yes
+        scope:leader = {
+            every_courtier_or_guest = {
+                limit = {
+                    is_slut = no
+                }
+                create_blacked_european_girls = {
+                    TEMPLATE = bno_female_holy_order_leader_character_template
+                    LOCATION = scope:leader.location
+                    SCOPE = female_courtier
+                }
+                scope:leader = {
+                    add_courtier = scope:female_courtier
+                }
+                death = {
+		        	death_reason = death_disappearance
+		        }
+            }
+        }
+    }
+
+    option = {
+        name = bno_embrace_african_5.0006.a
+    }
+}
+
+#letter event holy order has sent you a priest
+bno_embrace_african_5.0007 = {
+    type = letter_event
+    sender = scope:order_leader
+    opening = {
+        desc = bno_embrace_african_5.0007.opening
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:priest = { is_a_girl = yes } }
+                desc = bno_embrace_african_5.0007.desc.female_priest
+            }
+            triggered_desc = {
+                trigger = { scope:priest = { is_a_male = yes } }
+                desc = bno_embrace_african_5.0007.desc.male_priest
+            }
+        }
+    }
+
+    trigger = {
+        is_ruler = yes
+        OR = {
+            can_employ_court_position_type = bno_bbc_priestess_court_position
+            can_employ_court_position_type = bno_bbc_priest_court_position
+        }
+        faith = {
+            any_faith_holy_order = {
+                holy_order_patron = root
+                title = {
+                    has_variable = bbc_holy_order
+                }
+            }
+        }
+    }
+
+    immediate = {
+        faith = {
+            every_faith_holy_order = {
+                limit = {
+                    holy_order_patron = root
+                    title = {
+                        has_variable = bbc_holy_order
+                    }
+                }
+                leader = {
+                    save_scope_as = order_leader
+                }
+            }
+        }
+        if = {
+            limit = {
+                can_employ_court_position_type = bno_bbc_priest_court_position
+            }
+            create_character = {
+                template = bno_male_priest_character_template
+                location = root.capital_province
+                save_scope_as = priest
+            }
+        }
+        else_if = {
+            limit = {
+                can_employ_court_position_type = bno_bbc_priestess_court_position
+            }
+            create_blacked_european_girls = {
+                SCOPE = priest
+                LOCATION = root.capital_province
+                TEMPLATE = bno_female_priest_character_template
+            }
+        }
+    }
+
+    option = {
+        name = bno_embrace_african_5.0007.a
+        add_courtier = scope:priest
+        if = {
+            limit = {
+                scope:priest = {
+                    is_a_girl = yes
+                }
+                can_employ_court_position_type = bno_bbc_priestess_court_position
+            }
+            appoint_court_position = {
+                recipient = scope:priest
+                court_position = bno_bbc_priestess_court_position
+            }
+        }
+        else_if = {
+            limit = {
+                scope:priest = {
+                    is_a_male = yes
+                }
+                can_employ_court_position_type = bno_bbc_priest_court_position
+            }
+            appoint_court_position = {
+                recipient = scope:priest
+                court_position = bno_bbc_priest_court_position
+            }
+        }
+        reverse_add_opinion = {
+            target = scope:priest
+            modifier = hired_me_opinion
+        }
+    }
+}
+#recurring event for healing illness
+bno_embrace_african_5.0008 = {
+    hidden = yes
+
+    trigger = {
+        is_alive = yes
+        has_character_flag = bno_embrace_african_5.0008
+    }
+
+    immediate = {
+        trigger_event = {
+            id = bno_embrace_african_5.0008
+            days = 7
+        }
+        switch = {
+            trigger = has_trait
+            bno_lovers_pox_immunity = { bno_disease_immunity = { TRAIT = lovers_pox } }
+            bno_ill_immunity = { bno_disease_immunity = { TRAIT = ill } }
+            bno_pneumonic_immunity = { bno_disease_immunity = { TRAIT = pneumonic } }
+            bno_early_great_pox_immunity = { bno_disease_immunity = { TRAIT = early_great_pox } }
+            bno_leper_immunity = { bno_disease_immunity = { TRAIT = leper } }
+            bno_gout_ridden_immunity = { bno_disease_immunity = { TRAIT = gout_ridden } }
+            bno_consumption_immunity = { bno_disease_immunity = { TRAIT = consumption } }
+            bno_cancer_immunity = { bno_disease_immunity = { TRAIT = cancer } }
+            bno_typhus_immunity = { bno_disease_immunity = { TRAIT = typhus } }
+            bno_bubonic_plague_immunity = { bno_disease_immunity = { TRAIT = bubonic_plague } }
+            bno_smallpox_immunity = { bno_disease_immunity = { TRAIT = smallpox } }
+            bno_measles_immunity = { bno_disease_immunity = { TRAIT = measles } }
+            bno_dysentery_immunity = { bno_disease_immunity = { TRAIT = dysentery } }
+            bno_ergotism_immunity = { bno_disease_immunity = { TRAIT = ergotism } }
+            bno_sickly_immunity = { bno_disease_immunity = { TRAIT = sickly } }
+            bno_great_pox_immunity = { bno_disease_immunity = { TRAIT = great_pox } }
+        }
+    }
+}
+
+#fired from decision (Primal Insight)
+bno_embrace_african_5.0009 = {
+    type = character_event
+    #window = big_event_window
+    theme = witchcraft
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0009.title.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0009.title.male
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_girl = yes }
+                desc = bno_embrace_african_5.0009.desc.female
+            }
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0009.desc.male
+            }
+        }
+    }
+
+    override_background = {
+        reference = throne_room_scope
+    }
+
+    left_portrait = {
+        character = scope:carn_sex_partner
+        animation = sex_combined
+        triggered_outfit = {
+            trigger = { scope:priestess = { is_a_girl = yes } }
+            outfit_tags = {
+                no_clothes
+            }
+        }
+    }
+
+    right_portrait = {
+        character = scope:carn_sex_player
+        animation = sex_combined
+        outfit_tags = {
+            no_headgear
+        }
+    }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        bno_has_bbc_priest_or_priestess = yes
+    }
+
+    immediate = {
+        bno_get_bbc_priest_or_priestess = yes
+        bno_sex_scene_start = {
+            PARTNER = scope:carn_sex_partner
+        }
+        sex_animations = yes
+    }
+
+    option = {
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_girl = yes }
+                        desc = bno_embrace_african_5.0009.a.female
+                    }
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_embrace_african_5.0009.a.male
+                    }
+                }
+            }
+        }
+        add_character_modifier = {
+			modifier = bno_primal_insight
+			months = 12
+		}
+        carn_sex_scene_is_cum_inside_effect = yes
+        bno_sex_scene_cleanup = yes
+    }
+}
+
+#fired from interaction to heal family diseases
+bno_embrace_african_5.0010 = {
+    type = character_event
+    #window = big_event_window
+    theme = healthcare
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:recipient = { is_adult = no is_a_girl = yes } }
+                desc = bno_embrace_african_5.0010.title.female_child
+            }
+            triggered_desc = {
+                trigger = { scope:recipient = { is_adult = no is_a_male = yes } }
+                desc = bno_embrace_african_5.0010.title.male_child
+            }
+            triggered_desc = {
+                trigger = { scope:recipient = { is_a_girl = yes } }
+                desc = bno_embrace_african_5.0010.title.female
+            }
+            triggered_desc = {
+                trigger = { scope:recipient = { is_a_male = yes } }
+                desc = bno_embrace_african_5.0010.title.male
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    scope:recipient = {
+                        is_adult = no
+                        is_a_girl = yes
+                    }
+                }
+                desc = bno_embrace_african_5.0010.desc.female_child
+            }
+            triggered_desc = {
+                trigger = {
+                    scope:recipient = {
+                        is_adult = no
+                        is_a_male = yes
+                    }
+                }
+                desc = bno_embrace_african_5.0010.desc.male_child
+            }
+            triggered_desc = {
+                trigger = { scope:recipient = { is_a_girl = yes } }
+                desc = bno_embrace_african_5.0010.desc.female
+            }
+            triggered_desc = {
+                trigger = { scope:recipient = { is_a_male = yes } }
+                desc = bno_embrace_african_5.0010.desc.male
+            }
+        }
+    }
+
+    override_background = {
+        reference = temple
+    }
+
+    left_portrait = {
+        character = scope:carn_sex_partner
+        triggered_animation = {
+            trigger = {
+                scope:recipient = {
+                    is_adult = yes
+                }
+            }
+            animation = sex_combined
+        }
+        triggered_animation = {
+            trigger = {
+                scope:recipient = {
+                    is_adult = no
+                }
+                scope:carn_sex_partner = {
+                    is_a_girl = yes
+                }
+            }
+            animation = ecstasy
+        }
+        triggered_animation = {
+            trigger = {
+                scope:recipient = {
+                    is_adult = no
+                }
+                scope:carn_sex_partner = {
+                    is_a_male = yes
+                }
+            }
+            animation = personality_content
+        }
+    }
+
+    right_portrait = {
+        character = scope:carn_sex_player
+        triggered_animation = {
+            trigger = {
+                scope:recipient = {
+                    is_adult = yes
+                }
+            }
+            animation = sex_combined
+        }
+        triggered_animation = {
+            trigger = {
+                scope:recipient = {
+                    is_adult = no
+                }
+            }
+            animation = drink_goblet
+        }
+    }
+
+    trigger = {
+        bno_has_embrace_african_5 = yes
+        bno_has_bbc_priest_or_priestess = yes
+    }
+
+    immediate = {
+        scope:recipient = {
+            if = {
+                limit = {
+                    is_a_girl = yes
+                }
+                root = {
+                    random_court_position_holder = {
+                        type = bno_bbc_priest_court_position
+                        save_scope_as = carn_sex_partner
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    is_a_male = yes
+                }
+                root = {
+                    random_court_position_holder = {
+                        type = bno_bbc_priestess_court_position
+                        save_scope_as = carn_sex_partner
+                    }
+                }
+            }
+        }
+        if = {
+            limit = {
+                scope:recipient = {
+                    is_adult = yes
+                    is_a_girl = yes
+                }
+            }
+            scope:recipient = {
+                bno_sex_scene_start = {
+                    PARTNER = scope:carn_sex_partner
+                }
+            }
+            standing_oral_animations = yes
+        }
+        else_if = {
+            limit = {
+                scope:recipient = {
+                    is_adult = yes
+                    is_a_male = yes
+                }
+            }
+            scope:recipient = {
+                bno_sex_scene_start = {
+                    PARTNER = scope:carn_sex_partner
+                }
+            }
+            cunnilingus_animations = yes
+        }
+    }
+
+    option = { # will show the cost of ritual and use show_as_unavailable if you dont have enough money
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { scope:recipient = { is_a_girl = yes is_adult = no } }
+                        desc = bno_embrace_african_5.0010.a.female_child
+                    }
+                    triggered_desc = {
+                        trigger = { scope:recipient = { is_a_male = yes is_adult = no } }
+                        desc = bno_embrace_african_5.0010.a.male_child
+                    }
+                    triggered_desc = {
+                        trigger = { scope:recipient = { is_a_girl = yes } }
+                        desc = bno_embrace_african_5.0010.a.female
+                    }
+                    triggered_desc = {
+                        trigger = { scope:recipient = { is_a_male = yes } }
+                        desc = bno_embrace_african_5.0010.a.male
+                    }
+                }
+            }
+        }
+        scope:recipient = {
+            switch = {
+                trigger = has_trait
+                lovers_pox = { bno_cure_disease_type = { SICKNESS = lovers_pox } }
+                ill = { bno_cure_disease_type = { SICKNESS = ill } }
+                pneumonic = { bno_cure_disease_type = { SICKNESS = pneumonic } }
+                early_great_pox = { bno_cure_disease_type = { SICKNESS = early_great_pox } }
+                leper = { bno_cure_disease_type = { SICKNESS = leper } }
+                gout_ridden = { bno_cure_disease_type = { SICKNESS = gout_ridden } }
+                consumption = { bno_cure_disease_type = { SICKNESS = consumption } }
+                cancer = { bno_cure_disease_type = { SICKNESS = cancer } }
+                typhus = { bno_cure_disease_type = { SICKNESS = typhus } }
+                bubonic_plague = { bno_cure_disease_type = { SICKNESS = bubonic_plague } }
+                smallpox = { bno_cure_disease_type = { SICKNESS = smallpox } }
+                measles = { bno_cure_disease_type = { SICKNESS = measles } }
+                dysentery = { bno_cure_disease_type = { SICKNESS = dysentery } }
+                ergotism = { bno_cure_disease_type = { SICKNESS = ergotism } }
+                sickly = { bno_cure_disease_type = { SICKNESS = sickly } }
+                great_pox = { bno_cure_disease_type = { SICKNESS = great_pox } }
+            }
+            if = {
+                limit = { NOT = { has_character_flag = bno_embrace_african_5.0008 } }
+                add_character_flag = bno_embrace_african_5.0008
+                trigger_event = {
+                    id = bno_embrace_african_5.0008
+                    days = 7
+                }
+            }
+        }
+        if = {
+            limit = {
+                is_adult = yes
+            }
+            carn_sex_scene_is_cum_inside_effect = yes
+            bno_sex_scene_cleanup = yes
+        }
+    }
+}
+
+bno_embrace_african_5.0011 = {
+    type = character_event
+    theme = faith
+    override_background = {
+        reference = bno_harvest_faithful
+    }
+
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0011.title.male
+            }
+            desc = bno_embrace_african_5.0011.title.female
+        }
+    }
+
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0011.desc.male
+            }
+            desc = bno_embrace_african_5.0011.desc.female
+        }
+    }
+
+    option = {
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_embrace_african_5.0011.a.male
+                    }
+                    desc = bno_embrace_african_5.0011.a.female
+                }
+            }
+        }
+        if = {
+            limit = { is_a_male = yes }
+            custom_tooltip = {
+                text = bno_embrace_african_5.0011.effect.male
+                bno_fuck_every_one_in_exchange_for_gold = {
+                    TRIGGER_KEY = is_faith_bbcs
+                }
+            }
+        }
+        else = {
+            custom_tooltip = {
+                text = bno_embrace_african_5.0011.effect.female
+                bno_fuck_every_one_in_exchange_for_gold = {
+                    TRIGGER_KEY = is_faith_bbcs
+                }
+            }
+        }
+    }
+}
+
+bno_embrace_african_5.0012 = {
+    type = character_event
+    theme = faith
+    override_background = {
+        reference = bno_brotherhood_bargain
+    }
+
+    title = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0012.title.male
+            }
+            desc = bno_embrace_african_5.0012.title.female
+        }
+    }
+
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { is_a_male = yes }
+                desc = bno_embrace_african_5.0012.desc.male
+            }
+            desc = bno_embrace_african_5.0012.desc.female
+        }
+    }
+
+    option = {
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { is_a_male = yes }
+                        desc = bno_embrace_african_5.0012.a.male
+                    }
+                    desc = bno_embrace_african_5.0012.a.female
+                }
+            }
+        }
+        if = {
+            limit = { is_a_male = yes }
+            custom_tooltip = {
+                text = bno_embrace_african_5.0012.effect.male
+                bno_fuck_every_one_in_exchange_for_gold = {
+                    TRIGGER_KEY = is_culture_bnoc
+                }
+            }
+        }
+        else = {
+            custom_tooltip = {
+                text = bno_embrace_african_5.0012.effect.female
+                bno_fuck_every_one_in_exchange_for_gold = {
+                    TRIGGER_KEY = is_culture_bnoc
+                }
+            }
+        }
+    }
+}

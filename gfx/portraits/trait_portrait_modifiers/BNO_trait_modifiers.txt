@@ -1,0 +1,165 @@
+﻿bno_blood = {
+	bno_full_black_portrait_modifier = {
+		trigger = {
+			NOT = { has_character_flag = bno_originally_african }
+		}
+		traits = {
+			bno_full_black
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = skin_color
+					mode = replace
+
+					x = 0.0
+					y = { 0.9 1 }
+				}
+			}
+		}
+	}
+	bno_mostly_black_portrait_modifier = {
+		trigger = {
+			NOT = { has_character_flag = bno_originally_african }
+		}
+		traits = {
+			bno_mostly_black
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = skin_color
+					mode = replace
+
+					x = 0.0
+					y = { 0.75 0.85 }
+				}
+			}
+		}
+	}
+	bno_mixed_portrait_modifier = {
+		trigger = {
+			NOT = { has_character_flag = bno_originally_african }
+		}
+		traits = {
+			bno_mixed
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = skin_color
+					mode = replace
+
+					x = 0.0
+					y = { 0.55 0.65 }
+				}
+			}
+		}
+	}
+	bno_barely_mixed_portrait_modifier = {
+		trigger = {
+			NOT = { has_character_flag = bno_originally_african }
+		}
+		traits = {
+			bno_barely_mixed
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = skin_color
+					mode = replace
+
+					x = 0.0
+					y = { 0.35 0.45 }
+				}
+			}
+		}
+	}
+}
+
+bno_white_girl = {
+	mindless_slut = {
+		traits = {
+			bno_mindless_bbc_slut
+		}
+		dna_modifiers = {
+			human = {
+				morph = {
+					mode = replace
+					gene = complexion
+					template = complexion_beauty_1
+					value = 1.0
+				}
+				color = { #changes hair color
+					gene = hair_color
+					mode = modify
+					
+					x = 0.1
+					y = 0
+				}
+				accessory = {
+            	    mode = add
+            	    gene = headgear
+            	    template = no_headgear
+            	    value = 1
+            	}
+			}		
+		}
+	}
+	queen_of_spades = {
+		traits = {
+			bno_qos
+			bno_mindless_bbc_slut
+		}
+		trigger = {
+			is_body_modification_ok = yes
+		}
+		dna_modifiers = {
+			human = {
+				color = { #changes hair color
+					gene = hair_color
+					mode = modify
+					x = 0.1
+					y = 0
+				}
+				accessory = { #high heels from cbo
+					mode = add
+					gene = shoes
+					template = ankle_boot_heels_03
+					value = 1.0
+				}
+				morph = { #pink lipstick
+					mode = add
+					gene = lipstick
+					template = pink_matte
+					value = 1.0
+				}
+			}
+		}
+	}
+}
+
+bno_pure_white_portrait_modifier = {
+	bno_pure_white_portrait_modifier = {
+		traits = {
+			bno_pure_white
+		}
+		dna_modifiers = {
+			human = {
+				color = {
+					gene = skin_color
+					mode = modify
+
+					x = 0.0
+					y = -0.4
+				}
+				color = {
+					gene = hair_color
+					mode = modify
+					x = -0.2
+					y = -0.6
+				}
+			}
+		}
+	}
+}

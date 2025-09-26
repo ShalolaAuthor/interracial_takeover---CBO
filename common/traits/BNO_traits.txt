@@ -1,0 +1,2174 @@
+﻿# trait descriptor file
+
+#WHITEBOY TRAITS
+
+# Level 1 — Cuck Tendencies
+bno_cuckish = {
+	group = bno_whiteboi
+	level = 1
+	attraction_opinion = -10
+	general_opinion = -8
+	spouse_opinion = 5
+	monthly_prestige = -0.30
+	martial = -1
+	prowess = -3
+	stress_gain_mult = 0.05
+	personal_scheme_phase_duration_add = 10
+	ruler_designer_cost = 0
+	track = {
+		33 = {
+			monthly_prestige = -0.05
+			prowess = -1
+		}
+		66 = {
+			martial = -1
+			stress_gain_mult = 0.05
+		}
+	}
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	compatibility = {
+	    bno_cuckish = 25
+	    bno_cuck = 50
+	    bno_beta = 75
+	    bno_jos = 50
+	    bno_caged = 75
+	    bno_castrated = 100
+
+		bno_pure_white = -75
+
+	    bno_bbc = -50
+	    bno_bull = -75
+	    bno_blacked = -25
+	    bno_snowbunny = -50
+	    bno_qos = -75
+	    bno_mindless_bbc_slut = -100
+	}
+
+}
+
+# Level 2 — Cuck
+bno_cuck = {
+	group = bno_whiteboi
+	level = 2
+	attraction_opinion = -15
+	general_opinion = -10
+	spouse_opinion = 8
+	monthly_prestige = -0.55
+	martial = -2
+	prowess = -4
+	stress_gain_mult = 0.10
+	dread_decay_mult = 0.10
+	personal_scheme_phase_duration_add = 20
+	track = {
+		33 = {
+			monthly_prestige = -0.10
+			prowess = -1
+		}
+		66 = {
+			martial = -2
+			max_personal_schemes_add = -1
+		}
+	}
+	ruler_designer_cost = -10
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	ai_sociability = high_negative_ai_value
+		compatibility = {
+	    bno_cuckish = 25
+	    bno_cuck = 50
+	    bno_beta = 75
+	    bno_jos = 50
+	    bno_caged = 75
+	    bno_castrated = 100
+
+		bno_pure_white = -75
+
+	    bno_bbc = -50
+	    bno_bull = -75
+	    bno_blacked = -25
+	    bno_snowbunny = -50
+	    bno_qos = -75
+	    bno_mindless_bbc_slut = -100
+	}
+
+}
+
+# Level 3 — Beta
+bno_beta = {
+	group = bno_whiteboi
+	level = 3
+	attraction_opinion = -25
+	general_opinion = -15
+	spouse_opinion = 12
+	monthly_prestige = -1.00
+	diplomacy = -2
+	martial = -4
+	prowess = -7
+	intrigue = 0
+	stewardship = -1
+	fertility = -0.90
+	stress_gain_mult = 0.15
+	levy_maintenance = 0.02
+	personal_scheme_phase_duration_add = 30
+	track = {
+		33 = {
+			monthly_prestige = -0.15
+			martial = -1
+		}
+		66 = {
+			prowess = -1
+			levy_maintenance = 0.01
+		}
+	}
+	ruler_designer_cost = -30
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	ai_sociability = high_negative_ai_value
+	compatibility = {
+	    bno_cuckish = 25
+	    bno_cuck = 50
+	    bno_beta = 75
+	    bno_jos = 50
+	    bno_caged = 75
+	    bno_castrated = 100
+
+		bno_pure_white = -75
+
+	    bno_bbc = -50
+	    bno_bull = -75
+	    bno_blacked = -25
+	    bno_snowbunny = -50
+	    bno_qos = -75
+	    bno_mindless_bbc_slut = -100
+	}
+
+}
+
+# Level 4 — JoS
+bno_jos = {
+	group = bno_whiteboi
+	level = 4
+	attraction_opinion = -40
+	general_opinion = -20
+	spouse_opinion = 20
+	monthly_prestige = -1.50
+	diplomacy = -3
+	martial = -5
+	prowess = -10
+	intrigue = -1
+	stewardship = -2
+	fertility = -1
+	stress_gain_mult = 0.20
+	knight_effectiveness_mult = -0.10
+	movement_speed = -0.05
+	personal_scheme_phase_duration_add = 45
+	track = {
+		33 = {
+			monthly_prestige = -0.25
+			martial = -1
+		}
+		66 = {
+			prowess = -1
+			knight_effectiveness_mult = -0.05
+		}
+	}
+	ruler_designer_cost = -40
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	ai_sociability = high_negative_ai_value
+	compatibility = {
+	    bno_cuckish = 25
+	    bno_cuck = 50
+	    bno_beta = 75
+	    bno_jos = 50
+	    bno_caged = 75
+	    bno_castrated = 100
+
+		bno_pure_white = -75
+	
+	    bno_bbc = -50
+	    bno_bull = -75
+	    bno_blacked = -25
+	    bno_snowbunny = -50
+	    bno_qos = -75
+	    bno_mindless_bbc_slut = -100
+	}
+}
+
+#Level 1 Chastity: Caged
+bno_caged = {
+	group = bno_chastity
+	level = 1
+
+	valid_sex = male
+	
+	physical = yes
+	
+	same_opinion = 25
+	
+	martial = -3
+	prowess = -8
+	intrigue = -3
+	diplomacy = 3
+	stewardship = 3
+	
+	fertility = -0.60
+	compatibility = {
+	    bno_cuckish = 25
+	    bno_cuck = 50
+	    bno_beta = 75
+	    bno_jos = 50
+	    bno_caged = 75
+	    bno_castrated = 100
+
+		bno_pure_white = -75
+	
+	    bno_bbc = -50
+	    bno_bull = -75
+	    bno_blacked = -25
+	    bno_snowbunny = -50
+	    bno_qos = -75
+	    bno_mindless_bbc_slut = -100
+	}
+}
+
+#Level 2 Chastity: Castrated
+bno_castrated = {
+	group = bno_chastity
+	level = 2
+
+	valid_sex = male
+	
+	physical = yes
+	
+	same_opinion = 25
+	
+	martial = -5
+	prowess = -8
+	intrigue = -3
+	stewardship = 3
+	diplomacy = 5
+	
+	fertility = -1
+	can_have_children = no
+	compatibility = {
+	    bno_cuckish = 25
+	    bno_cuck = 50
+	    bno_beta = 75
+	    bno_jos = 50
+	    bno_caged = 75
+	    bno_castrated = 100
+
+		bno_pure_white = -75
+	
+	    bno_bbc = -50
+	    bno_bull = -75
+	    bno_blacked = -25
+	    bno_snowbunny = -50
+	    bno_qos = -75
+	    bno_mindless_bbc_slut = -100
+	}
+}
+
+bno_caged_futa = {
+	group = bno_chastity_futa
+	level = 1
+	
+	valid_sex = female
+
+	physical = yes
+	
+	same_opinion = 25
+	
+	martial = -3
+	prowess = -8
+	intrigue = -3
+	diplomacy = 3
+	stewardship = 3
+}
+
+bno_castrated_futa = {
+	group = bno_chastity_futa
+	level = 2
+	
+	valid_sex = female
+	
+	physical = yes
+
+	same_opinion = 25
+	
+	martial = -5
+	prowess = -8
+	intrigue = -3
+	stewardship = 3
+	diplomacy = 5
+}
+
+#BBC TRAITS
+
+# Fame trait applied to religious converters
+bno_camp_leader = {
+	
+	category = fame
+	
+	same_opinion = 25
+	spouse_opinion = 15
+	attraction_opinion = 15
+	
+	martial = 3
+	prowess = 15
+	diplomacy = 3
+	intrigue = 3
+	stewardship = 3
+	monthly_martial_lifestyle_xp_gain_mult = 0.3
+	dread_baseline_add = 50
+	dread_decay_mult = -0.5
+	owned_personal_scheme_success_chance_max_add = 50
+	owned_hostile_scheme_success_chance_max_add = 10
+	max_hostile_schemes_add = 2
+	max_seduce_schemes_add = 2
+	owned_personal_scheme_success_chance_add = 50
+	ruler_designer_cost = 30
+	
+	fertility = 1.0
+	valid_sex = male
+	#number_of_spouses = 3
+	#number_of_consorts = 10
+	
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	
+	ai_honor = very_low_negative_ai_value
+	ai_greed = low_positive_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_zeal = very_low_negative_ai_value
+	ai_sociability = high_positive_ai_value
+	ai_amenity_target_baseline = 0.3
+	ai_amenity_spending = 0.15
+}
+
+bno_bbc = {
+	opposites = {
+		bno_whitegirl
+		bno_whiteboi
+		bno_chastity
+		bno_pussy_mileage
+	}
+	
+	same_opinion = 200
+	opposite_opinion = 200
+	general_opinion = -200
+	
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	different_culture_opinion = 10
+
+	compatibility = {
+	    bno_curious = 50
+	    bno_blacked = 100
+	    bno_snowbunny = 200
+	    bno_qos = 400
+	    bno_mindless_bbc_slut = 800
+		
+		bno_pussy_mileage_1 = 200
+    	bno_pussy_mileage_2 = 400
+    	bno_pussy_mileage_3 = 600
+    	bno_pussy_mileage_4 = 800
+    	bno_pussy_mileage_5 = 1000
+    	bno_pussy_mileage_6 = 1500
+
+	    bno_cuckish = -15
+	    bno_cuck = -30
+	    bno_beta = -50
+	    bno_jos = -75
+	    bno_caged = -75
+	    bno_castrated = -100
+
+	    bno_full_black = 100
+	    bno_mostly_black = 75
+	    bno_mixed = 50
+	    bno_barely_mixed = 25
+
+	    bno_pure_white = 150
+
+	    bno_full_black_slut = 100
+	    bno_mostly_black_slut = 75
+	    bno_mixed_slut = 50
+	    bno_barely_mixed_slut = 25
+	}
+
+
+	martial = 5
+	prowess = 15
+	intrigue = 5
+	monthly_martial_lifestyle_xp_gain_mult = 0.3
+	dread_baseline_add = 35
+	dread_decay_mult = -0.3
+	owned_personal_scheme_success_chance_max_add = 10
+	owned_hostile_scheme_success_chance_max_add = 10
+	max_personal_schemes_add = 1
+	max_murder_schemes_add = 1
+	#owned_personal_scheme_success_chance_add = 125
+	diplomatic_range_mult = 1.3
+	no_prowess_loss_from_age = yes
+
+	ruler_designer_cost = 100
+	
+	genetic = yes
+	physical = yes
+	good = yes
+
+	birth = 0
+	random_creation = 0
+	
+	fertility = 0.7
+	
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	flag = carn_no_consequences_for_extramarital_sex_with_me
+	
+	ai_honor = very_low_negative_ai_value
+	ai_greed = low_positive_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_zeal = very_low_negative_ai_value
+	ai_sociability = high_positive_ai_value
+	ai_amenity_target_baseline = 0.3
+	ai_amenity_spending = 0.15
+}
+
+#WHITEGIRL TRAITS
+
+bno_curious = {
+	category = lifestyle
+
+	#Validation
+	valid_sex = female
+
+	#Special Flags
+	physical = yes
+	child_inheritance_sex = female
+	shown_in_ruler_designer = yes
+	
+	#Special Opinion
+	general_opinion = -20
+	opposite_opinion = 200
+
+	#Trait Relation
+	compatibility = {
+	    bno_bbc = 50
+	    bno_bull = 75
+	    bno_blacked = 25
+	    bno_snowbunny = 10
+
+		bno_pure_white = 50
+
+	    bno_cuckish = -10
+	    bno_cuck = -15
+	    bno_beta = -20
+	    bno_castrated = -25
+	}
+
+	opposites = {
+		bno_bbc
+		bno_mindless_bbc_slut
+		bno_blacked
+		bno_snowbunny
+		bno_qos
+	}
+
+	#Groups
+	level = 1
+	group = bno_whitegirl
+
+	#Misc
+	ruler_designer_cost = 10
+
+	#Tracks
+	track = {
+		30 = {
+			seduce_scheme_phase_duration_add = -10
+			prowess = -1
+			knight_limit = 1
+		}
+		60 = {
+			seduce_scheme_phase_duration_add = -10
+			prowess = -1
+			knight_limit = 1
+		}
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_crime
+		female_only = yes
+		opinion_modifier = curious_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_shunned
+		female_only = yes
+		opinion_modifier = curious_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	triggered_opinion = {
+		parameter = adultery_female_accepted
+		female_only = yes
+		opinion_modifier = curious_accepted
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+
+	#Modifiers	
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+
+	#Flags
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	flag = carn_no_consequences_for_extramarital_sex_with_me
+	
+	#AI
+	ai_boldness = low_negative_ai_value
+	ai_sociability = low_positive_ai_value
+}
+
+bno_blacked = {
+	category = lifestyle
+
+	#Validation
+	valid_sex = female
+
+	#Special Flags
+	physical = yes
+	shown_in_ruler_designer = no
+	
+	#Special Opinion
+	general_opinion = -40
+	opposite_opinion = 225
+
+	#Trait Relation
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_curious = 25
+	    bno_snowbunny = 50
+	    bno_qos = 75
+
+		bno_pure_white = 100
+
+	    bno_cuckish = -25
+	    bno_cuck = -50
+	    bno_beta = -50
+	}
+	opposites = {
+		bno_bbc
+		bno_curious
+		bno_mindless_bbc_slut
+		bno_snowbunny
+		bno_qos
+	}
+
+	#Groups
+	level = 2
+	group = bno_whitegirl
+
+	#Tracks
+	track = {
+		30 = {
+			martial = -1
+			prowess = -1
+			diplomacy = 2
+			intrigue = 2
+			stress_gain_mult = -0.05
+			stress_loss_mult = 0.05
+		}
+		60 = {
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+			dread_baseline_add = -5
+			dread_decay_mult = 0.2
+			owned_personal_scheme_success_chance_add = 20
+		}
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_crime
+		female_only = yes
+		opinion_modifier = blacked_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_shunned
+		female_only = yes
+		opinion_modifier = blacked_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	triggered_opinion = {
+		parameter = adultery_female_accepted
+		female_only = yes
+		opinion_modifier = blacked_accepted
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	#Modifiers	
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	seduce_scheme_phase_duration_add = -10
+	prowess = -2
+	knight_limit = 2
+
+	#Flags
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	flag = carn_no_consequences_for_extramarital_sex_with_me
+	
+	#AI
+	ai_boldness = low_negative_ai_value
+	ai_sociability = low_positive_ai_value
+}
+
+bno_snowbunny = {
+	category = lifestyle
+
+	#Validation
+	valid_sex = female
+
+	#Special Flags
+	physical = yes
+	shown_in_ruler_designer = no
+	
+	#Special Opinion
+	general_opinion = -60
+	opposite_opinion = 250
+
+	#Trait Relation
+	compatibility = {
+	    bno_bbc = 200
+	    bno_bull = 300
+	    bno_blacked = 50
+	    bno_qos = 100
+	    bno_mindless_bbc_slut = 150
+
+		bno_pure_white = 150
+
+	    bno_cuckish = -50
+	    bno_cuck = -75
+	    bno_beta = -100
+	}
+
+	opposites = {
+		bno_bbc
+		bno_curious
+		bno_blacked
+		bno_mindless_bbc_slut
+		bno_qos
+	}
+
+	#Groups
+	level = 3
+	group = bno_whitegirl
+
+	#Tracks
+	track = {
+		30 = {
+			martial = -2
+			prowess = -2
+			diplomacy = 3
+			intrigue = 3
+			max_personal_schemes_add = 1
+			stress_gain_mult = -0.05
+			stress_loss_mult = 0.05
+		}
+		60 = {
+			dread_baseline_add = -5
+			dread_decay_mult = 0.1
+			owned_scheme_secrecy_add = 10
+		}
+	}
+
+	
+	triggered_opinion = {
+		parameter = adultery_female_crime
+		female_only = yes
+		opinion_modifier = snowbunny_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_shunned
+		female_only = yes
+		opinion_modifier = snowbunny_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+	
+	triggered_opinion = {
+		parameter = adultery_female_accepted
+		female_only = yes
+		opinion_modifier = snowbunny_accepted
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	#Modifiers
+	martial = -1
+	prowess = -1
+	diplomacy = 2
+	intrigue = 2
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	dread_baseline_add = -5
+	dread_decay_mult = 0.2
+	owned_personal_scheme_success_chance_add = 20
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	seduce_scheme_phase_duration_add = -20
+	knight_limit = 2
+	stress_gain_mult = -0.05
+	stress_loss_mult = 0.05
+
+	#Flags
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	flag = carn_no_consequences_for_extramarital_sex_with_me
+	
+	#AI
+	ai_boldness = medium_negative_ai_value
+	ai_sociability = medium_positive_ai_value
+}
+
+bno_qos = {
+	category = lifestyle
+
+	#Validation
+	valid_sex = female
+
+	#Special Flags
+	physical = yes
+	shown_in_ruler_designer = no
+	
+	#Special Opinion
+	general_opinion = -80
+	opposite_opinion = 275
+
+	#Trait Relation
+	compatibility = {
+	    bno_bbc = 400
+	    bno_bull = 600
+	    bno_snowbunny = 100
+	    bno_mindless_bbc_slut = 200
+
+		bno_pure_white = 200
+
+	    bno_cuckish = -75
+	    bno_cuck = -100
+	    bno_beta = -125
+	}
+
+	opposites = {
+		bno_bbc
+		bno_curious
+		bno_blacked
+		bno_snowbunny
+		bno_mindless_bbc_slut
+	}
+
+	#Groups
+	level = 4
+	group = bno_whitegirl
+
+	#Tracks
+	track = {
+		30 = {
+			fertility = 0.25
+			enemy_hostile_scheme_phase_duration_add = 20
+			stress_gain_mult = -0.1
+			stress_loss_mult = 0.1
+		}
+		60 = {
+			dread_baseline_add = -5
+			dread_decay_mult = 0.2
+			development_growth = 0.1
+		}
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_crime
+		female_only = yes
+		opinion_modifier = qos_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_shunned
+		female_only = yes
+		opinion_modifier = qos_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_accepted
+		female_only = yes
+		opinion_modifier = qos_accepted
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	#Modifiers
+	martial = -3
+	prowess = -3
+	diplomacy = 5
+	intrigue = 5
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	dread_baseline_add = -10
+	dread_decay_mult = 0.3
+	owned_personal_scheme_success_chance_add = 20
+	owned_scheme_secrecy_add = 10
+	max_personal_schemes_add = 1
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	seduce_scheme_phase_duration_add = -20
+	knight_limit = 2
+	stress_gain_mult = -0.1
+	stress_loss_mult = 0.1
+
+	#Flags
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	flag = carn_no_consequences_for_extramarital_sex_with_me
+	
+	#AI
+	ai_boldness = high_negative_ai_value
+	ai_sociability = high_positive_ai_value
+}
+
+bno_mindless_bbc_slut = {
+	category = lifestyle
+
+	#Validation
+	valid_sex = female
+
+	#Special Flags
+	physical = yes
+	shown_in_ruler_designer = no
+	
+	#Special Opinion
+	general_opinion = -100
+	opposite_opinion = 300
+
+	#Trait Relation
+	compatibility = {
+	    bno_bbc = 800
+	    bno_bull = 1200
+	    bno_qos = 200
+
+		bno_pure_white = 300
+
+	    bno_cuckish = -100
+	    bno_cuck = -150
+	    bno_beta = -200
+	}
+
+	opposites = {
+		bno_bbc
+		bno_curious
+		bno_blacked
+		bno_snowbunny
+		bno_qos
+	}
+
+	#Groups
+	level = 5
+	group = bno_whitegirl
+
+	#Tracks
+	track = {
+		30 = {
+			fertility = 0.25
+			development_growth = 0.1
+			development_growth_factor = 0.5
+			bnwo_armies_maintenance_mult = -0.5
+			bnwo_armies_recruitment_cost_mult = -0.5
+			men_at_arms_limit = 1
+			men_at_arms_cap = 1
+			dread_baseline_add = -10
+			dread_decay_mult = 1.0
+			stress_gain_mult = -0.3
+			stress_loss_mult = 0.3
+		}
+		80 = {
+			martial = -7
+			prowess = -7
+			diplomacy = -15
+			intrigue = -15
+		}
+	}
+	monthly_track_xp_degradation = {
+		min = 30
+		change = 10
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_crime
+		female_only = yes
+		opinion_modifier = mindless_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_shunned
+		female_only = yes
+		opinion_modifier = mindless_intolerant
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	triggered_opinion = {
+		parameter = adultery_female_accepted
+		female_only = yes
+		opinion_modifier = mindless_accepted
+		ignore_opinion_value_if_same_trait = yes
+	}
+
+	#Modifiers
+	martial = -3
+	prowess = -3
+	diplomacy = 5
+	intrigue = 5
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	dread_baseline_add = -15
+	dread_decay_mult = 0.5
+	development_growth = 0.1
+	owned_personal_scheme_success_chance_add = 20
+	enemy_hostile_scheme_phase_duration_add = 20
+	owned_scheme_secrecy_add = 10
+	max_personal_schemes_add = 1
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	seduce_scheme_phase_duration_add = -20
+	knight_limit = 2
+	fertility = 0.25
+	stress_gain_mult = -0.2
+	stress_loss_mult = 0.2
+	no_prowess_loss_from_age = yes
+	disables_combat_leadership = yes
+
+	#Flags
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	flag = carn_no_consequences_for_extramarital_sex_with_me
+	
+	#AI
+	ai_boldness = high_negative_ai_value
+	ai_sociability = high_positive_ai_value
+}
+
+bno_full_black = {
+	physical = yes
+
+	opposites = {
+		bno_pure_white
+		bno_slut_blood
+	}
+	
+	general_opinion = -100
+	same_opinion = 100
+	prowess = 2
+	
+	group = bno_blood
+	level = 4
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black = 100
+	    bno_mostly_black = 75
+	    bno_mixed = 50
+	    bno_barely_mixed = 25
+
+		bno_pure_white = 100
+
+	    
+	    bno_full_black_slut = 75
+	    bno_mostly_black_slut = 50
+	}
+
+}
+
+bno_mostly_black = {
+	physical = yes
+	
+	opposites = {
+		bno_pure_white
+		bno_slut_blood
+	}
+
+	general_opinion = -100
+	same_opinion = 100
+
+	group = bno_blood
+	level = 3
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black = 100
+	    bno_mostly_black = 75
+	    bno_mixed = 50
+	    bno_barely_mixed = 25
+
+		bno_pure_white = 100
+	
+	    
+	    bno_full_black_slut = 75
+	    bno_mostly_black_slut = 50
+	}
+}
+
+bno_mixed ={
+	physical = yes
+	
+	opposites = {
+		bno_pure_white
+		bno_slut_blood
+	}
+
+	general_opinion = -100
+	same_opinion = 100
+
+	group = bno_blood
+	level = 2
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black = 100
+	    bno_mostly_black = 75
+	    bno_mixed = 50
+	    bno_barely_mixed = 25
+
+		bno_pure_white = 100
+	
+	    
+	    bno_full_black_slut = 75
+	    bno_mostly_black_slut = 50
+	}
+}
+
+bno_barely_mixed = {
+	physical = yes
+	
+	opposites = {
+		bno_pure_white
+		bno_slut_blood
+	}
+
+	general_opinion = -100
+	same_opinion = 100
+
+	group = bno_blood
+	level = 1
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black = 100
+	    bno_mostly_black = 75
+	    bno_mixed = 50
+	    bno_barely_mixed = 25
+
+		bno_pure_white = 100
+	
+	    
+	    bno_full_black_slut = 75
+	    bno_mostly_black_slut = 50
+	}
+}
+
+bno_full_black_slut = {
+	physical = yes
+	opposites = {
+		bno_blood
+	}
+	opposite_opinion = 100
+	group = bno_slut_blood
+	shown_in_ruler_designer = no
+	level = 4
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black_slut = 100
+	    bno_mostly_black_slut = 75
+	    bno_mixed_slut = 50
+	    bno_barely_mixed_slut = 25
+		bno_pure_white = 100
+	    bno_cuck = -25
+	    bno_beta = -25
+	}
+
+}
+
+bno_mostly_black_slut = {
+	physical = yes
+	opposites = {
+		bno_blood
+	}
+	opposite_opinion = 100
+	group = bno_slut_blood
+	shown_in_ruler_designer = no
+	level = 3
+	
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black_slut = 100
+	    bno_mostly_black_slut = 75
+	    bno_mixed_slut = 50
+	    bno_barely_mixed_slut = 25
+
+		bno_pure_white = 100
+
+	    
+	    bno_cuck = -25
+	    bno_beta = -25
+	}
+}
+
+bno_mixed_slut ={
+	physical = yes
+	opposites = {
+		bno_blood
+	}
+	opposite_opinion = 100
+	group = bno_slut_blood
+	shown_in_ruler_designer = no
+	level = 2
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black_slut = 100
+	    bno_mostly_black_slut = 75
+	    bno_mixed_slut = 50
+	    bno_barely_mixed_slut = 25
+
+		bno_pure_white = 100
+
+	    
+	    bno_cuck = -25
+	    bno_beta = -25
+	}
+}
+
+bno_barely_mixed_slut = {
+	physical = yes
+	opposites = {
+		bno_blood
+	}
+	opposite_opinion = 100
+	group = bno_slut_blood
+	shown_in_ruler_designer = no
+	level = 1
+	compatibility = {
+	    bno_bbc = 100
+	    bno_bull = 150
+	    bno_full_black_slut = 100
+	    bno_mostly_black_slut = 75
+	    bno_mixed_slut = 50
+	    bno_barely_mixed_slut = 25
+
+		bno_pure_white = 100
+
+	    
+	    bno_cuck = -25
+	    bno_beta = -25
+	}
+}
+
+bno_pure_white = {
+	opposites = {
+		bno_bbc
+		bno_blood
+	}
+	
+	same_opinion = 50
+	spouse_opinion = 50
+	attraction_opinion = 50
+	opposite_opinion = 100
+	
+	genetic = yes
+	physical = yes
+	good = yes
+
+	birth = 0
+	random_creation = 0
+
+	shown_in_ruler_designer = yes
+	ruler_designer_cost = 50
+	
+	diplomacy_lifestyle_xp_gain_mult = 0.1
+	martial_lifestyle_xp_gain_mult = 0.1
+	stewardship_lifestyle_xp_gain_mult = 0.1
+	intrigue_lifestyle_xp_gain_mult = 0.1
+	learning_lifestyle_xp_gain_mult = 0.1
+	wanderer_lifestyle_xp_gain_mult = 0.1
+	health = 1.0
+	fertility = 1.0
+	
+	valid_sex = female
+
+	compatibility = {
+		bno_bbc = 1000
+	}
+	
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	
+	ai_sociability = high_positive_ai_value
+	ai_boldness = high_negative_ai_value
+}
+
+bno_lovers_pox_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	dread_baseline_add = 2.5
+	attraction_opinion = 10
+
+	opposites = {
+		lovers_pox
+	}
+}
+
+bno_ill_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	health = 0.5
+	elderly_health = 0.5
+	prowess = 2
+	fertility = 0.1
+	dread_baseline_add = 5
+	dread_loss_mult = -0.5
+
+	opposites = {
+		ill
+	}
+
+	ai_energy = 12.5
+}
+
+bno_pneumonic_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	stewardship = 1
+	martial = 1
+	intrigue = 1
+	learning = 1
+	health = 1.5
+	elderly_health = 1
+	prowess = 4
+	fertility = 0.25
+	dread_baseline_add = 5
+	dread_loss_mult = -0.5
+
+	opposites = {
+		pneumonic
+	}
+
+	ai_energy = 25
+}
+
+bno_early_great_pox_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	dread_baseline_add = 2.5
+	attraction_opinion = 10
+
+	opposites = {
+		early_great_pox
+	}
+}
+
+bno_leper_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	health = 0.75
+	prowess = 4
+	fertility = 0.5
+	dread_baseline_add = 10
+	dread_loss_mult = -0.5
+
+	attraction_opinion = 17.5
+	general_opinion = 5
+
+	opposites = {
+		leper
+	}
+
+	ai_energy = 7.5
+}
+
+bno_gout_ridden_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	martial = 1
+	prowess = 1
+	health = 0.5
+	dread_baseline_add = 2.5
+
+	attraction_opinion = 7.5
+
+	opposites = {
+		gout_ridden
+	}
+
+	ai_energy = 7.5
+}
+
+bno_consumption_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	stewardship = 1
+	intrigue = 1
+	prowess = 1
+	health = 1.25
+	child_health = 0.5
+	elderly_health = 1
+	dread_baseline_add = 5
+	dread_loss_mult = -0.5
+
+	attraction_opinion = 5
+
+	opposites = {
+		consumption
+	}
+
+	ai_energy = 25
+}
+
+bno_cancer_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	dread_baseline_add = 7.5
+	dread_loss_mult = -0.5
+	health = 1.5
+	elderly_health = 0.5
+	fertility = 0.1
+
+	opposites = {
+		cancer
+	}
+
+	ai_energy = 12.5
+}
+
+bno_typhus_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+	prowess = 2
+	health = 2.25
+	elderly_health = 0.5
+	fertility = 0.1
+	dread_baseline_add = 7.5
+	dread_loss_mult = -0.5
+
+	attraction_opinion = 5
+
+	opposites = {
+		typhus
+	}
+
+	ai_energy = 25
+}
+
+bno_bubonic_plague_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	martial = 1.5
+	stewardship = 1
+	intrigue = 1.5
+	learning = 1
+	prowess = 5
+	health = 3.5
+	elderly_health = 1
+	fertility = 0.25
+	dread_baseline_add = 15
+	dread_loss_mult = -0.5
+
+	attraction_opinion = 15
+
+	opposites = {
+		bubonic_plague
+	}
+
+	ai_energy = 37.5
+}
+
+bno_smallpox_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	stewardship = 1
+	learning = 1
+	prowess = 5
+	health = 2.25
+	elderly_health = 0.75
+	fertility = 0.125
+	dread_baseline_add = 7.5
+	dread_loss_mult = -0.5
+
+	attraction_opinion = 5
+
+	opposites = {
+		smallpox
+	}
+
+	ai_energy = 37.5
+}
+
+bno_measles_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+	prowess = 2
+	health = 1.5
+	child_health = 1.5
+	dread_baseline_add = 2.5
+
+	attraction_opinion = 5
+
+	opposites = {
+		measles
+	}
+
+	ai_energy = 37.5
+}
+
+bno_dysentery_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	martial = 1
+	intrigue = 1
+	prowess = 4
+	health = 1.75
+	elderly_health = 1
+	dread_baseline_add = 25
+
+	attraction_opinion = 2.5
+
+	opposites = {
+		dysentery
+	}
+
+	ai_energy = 37.5
+}
+
+bno_ergotism_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 3
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+	health = 1.75
+	dread_baseline_add = 12.5
+
+	attraction_opinion = 5
+
+	opposites = {
+		ergotism
+	}
+
+	ai_energy = 37.5
+}
+
+bno_sickly_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	child_health = 1.25
+	dread_baseline_add = 10
+	dread_loss_mult = -0.5
+
+	opposites = {
+		sickly
+	}
+
+	ai_energy = 15
+}
+
+bno_great_pox_immunity = {
+	category = health
+	good = yes
+	shown_in_ruler_designer = no
+	inherit_chance = 10
+
+	# Effects
+	diplomacy = 1
+	stewardship = 1
+	martial = 1
+	intrigue = 1
+	learning = 1
+	health = 1
+	fertility = 0.1
+	dread_baseline_add = 10
+	dread_loss_mult = -0.5
+
+	attraction_opinion = 5
+
+	opposites = {
+		great_pox
+	}
+
+	ai_energy = 7.5
+}
+
+bno_lifestyle_bbc_priestess = {
+    category = lifestyle
+
+    # Validation
+    valid_sex = female
+
+    # Modifiers
+    physical = yes
+    flag = can_not_marry
+    can_have_children = no
+    learning = 10
+
+    track = {
+        50 = { learning = 20 }
+        100 = { learning = 30 }
+    }
+
+    shown_in_ruler_designer = no
+
+    # AI
+    ai_rationality = 10
+
+    # Loc (female-only keys)
+    name = {
+        first_valid = {
+            triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_lifestyle_bbc_priestess }
+            triggered_desc = {
+                trigger = { exists = this has_trait_xp = { trait = bno_lifestyle_bbc_priestess value >= 100 } }
+                desc = bno_lifestyle_bbc_priestess_3.female
+            }
+            triggered_desc = {
+                trigger = { exists = this has_trait_xp = { trait = bno_lifestyle_bbc_priestess value >= 50 } }
+                desc = bno_lifestyle_bbc_priestess_2.female
+            }
+            triggered_desc = { trigger = { exists = this } desc = bno_lifestyle_bbc_priestess_1.female }
+        }
+    }
+
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_lifestyle_bbc_priestess_desc }
+            triggered_desc = {
+                trigger = { has_trait_xp = { trait = bno_lifestyle_bbc_priestess value >= 100 } }
+                desc = bno_lifestyle_bbc_priestess_3_character_desc.female
+            }
+            triggered_desc = {
+                trigger = { has_trait_xp = { trait = bno_lifestyle_bbc_priestess value >= 50 } }
+                desc = bno_lifestyle_bbc_priestess_2_character_desc.female
+            }
+            triggered_desc = { trigger = { always = yes } desc = bno_lifestyle_bbc_priestess_1_character_desc.female }
+        }
+    }
+
+    icon = {
+        first_valid = {
+            triggered_desc = { trigger = { NOT = { exists = this } } desc = "bno_lifestyle_bbc_priestess.dds" }
+            triggered_desc = { trigger = { always = yes } desc = "bno_lifestyle_bbc_priestess.dds" }
+        }
+    }
+
+    compatibility = {
+        bno_bbc = 20
+        bno_curious = 20
+        bno_blacked = 20
+        bno_snowbunny = 20
+        bno_qos = 20
+        bno_mindless_bbc_slut = 20
+        bno_full_black = 20
+        bno_mostly_black = 20
+        bno_mixed = 20
+        bno_barely_mixed = 20
+    }
+}
+
+bno_lifestyle_bbc_priest = {
+    category = lifestyle
+
+    # Validation
+    valid_sex = male
+
+    # Modifiers
+    physical = yes
+    flag = can_not_marry
+    can_have_children = no
+    learning = 10
+
+    track = {
+        50 = { learning = 20 }
+        100 = { learning = 30 }
+    }
+
+    shown_in_ruler_designer = no
+
+    # AI
+    ai_rationality = 10
+
+    # Loc (male-only keys)
+    name = {
+        first_valid = {
+            triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_lifestyle_bbc_priest }
+            triggered_desc = {
+                trigger = { exists = this has_trait_xp = { trait = bno_lifestyle_bbc_priest value >= 100 } }
+                desc = bno_lifestyle_bbc_priest_3.male
+            }
+            triggered_desc = {
+                trigger = { exists = this has_trait_xp = { trait = bno_lifestyle_bbc_priest value >= 50 } }
+                desc = bno_lifestyle_bbc_priest_2.male
+            }
+            triggered_desc = { trigger = { exists = this } desc = bno_lifestyle_bbc_priest_1.male }
+        }
+    }
+
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_lifestyle_bbc_priest_desc }
+            triggered_desc = {
+                trigger = { has_trait_xp = { trait = bno_lifestyle_bbc_priest value >= 100 } }
+                desc = bno_lifestyle_bbc_priest_3_character_desc.male
+            }
+            triggered_desc = {
+                trigger = { has_trait_xp = { trait = bno_lifestyle_bbc_priest value >= 50 } }
+                desc = bno_lifestyle_bbc_priest_2_character_desc.male
+            }
+            triggered_desc = { trigger = { always = yes } desc = bno_lifestyle_bbc_priest_1_character_desc.male }
+        }
+    }
+
+    icon = {
+        first_valid = {
+            triggered_desc = { trigger = { NOT = { exists = this } } desc = "bno_lifestyle_bbc_priest.dds" }
+            triggered_desc = { trigger = { always = yes } desc = "bno_lifestyle_bbc_priest.dds" }
+        }
+    }
+
+    compatibility = {
+        bno_bbc = 20
+        bno_curious = 20
+        bno_blacked = 20
+        bno_snowbunny = 20
+        bno_qos = 20
+        bno_mindless_bbc_slut = 20
+        bno_full_black = 20
+        bno_mostly_black = 20
+        bno_mixed = 20
+        bno_barely_mixed = 20
+    }
+}
+
+
+bno_pussy_mileage_1 = {
+	category = lifestyle
+	group = bno_pussy_mileage
+	level = 1
+	shown_in_ruler_designer = no
+	physical = yes
+	opposites = {
+		bno_bbc
+	}
+	attraction_opinion = 50
+	spouse_opinion = 50
+	track = {
+		1 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+		30 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+		60 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+	}
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_1.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_1 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_1.4 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_1 value >= 30 } } desc = bno_pussy_mileage_1.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_1 value >= 1 } } desc = bno_pussy_mileage_1.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_1.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_1.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_1 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_1.desc.4 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_1 value >= 30 } } desc = bno_pussy_mileage_1.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_1 value >= 1 } } desc = bno_pussy_mileage_1.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_1.desc.1 }
+		}
+	}
+}
+
+bno_pussy_mileage_2 = {
+	category = lifestyle
+	group = bno_pussy_mileage
+	level = 2
+	shown_in_ruler_designer = no
+	physical = yes
+	opposites = {
+		bno_bbc
+	}
+	opposite_opinion = 40
+	attraction_opinion = 35
+	spouse_opinion = 35
+	fertility = -0.3
+	compatibility = {
+	    bno_bbc = 400
+	}
+	track = {
+		30 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+		60 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+	}
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_2.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_2 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_2.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_2 value >= 30 } } desc = bno_pussy_mileage_2.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_2.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_2.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_2 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_2.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_2 value >= 30 } } desc = bno_pussy_mileage_2.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_2.desc.1 }
+		}
+	}
+}
+
+bno_pussy_mileage_3 = {
+	category = lifestyle
+	group = bno_pussy_mileage
+	level = 3
+	shown_in_ruler_designer = no
+	physical = yes
+	opposites = {
+		bno_bbc
+	}
+	opposite_opinion = 60
+	attraction_opinion = 25
+	spouse_opinion = 25
+	fertility = -0.5
+	compatibility = {
+	    bno_bbc = 600
+	}
+	track = {
+		30 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+		60 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+	}
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_3.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_3 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_3.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_3 value >= 30 } } desc = bno_pussy_mileage_3.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_3.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_3.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_3 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_3.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_3 value >= 30 } } desc = bno_pussy_mileage_3.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_3.desc.1 }
+		}
+	}
+}
+
+bno_pussy_mileage_4 = {
+	category = lifestyle
+	group = bno_pussy_mileage
+	level = 4
+	shown_in_ruler_designer = no
+	physical = yes
+	opposites = {
+		bno_bbc
+	}
+	opposite_opinion = 80
+	attraction_opinion = 15
+	spouse_opinion = 15
+	fertility = -0.7
+	compatibility = {
+	    bno_bbc = 800
+	}
+	track = {
+		30 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+		60 = { attraction_opinion = -5 spouse_opinion = -5 fertility = -0.1 }
+	}
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_4.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_4 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_4.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_4 value >= 30 } } desc = bno_pussy_mileage_4.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_4.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_4.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_4 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_4.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_4 value >= 30 } } desc = bno_pussy_mileage_4.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_4.desc.1 }
+		}
+	}
+}
+
+bno_pussy_mileage_5 = {
+	category = lifestyle
+	group = bno_pussy_mileage
+	level = 5
+	shown_in_ruler_designer = no
+	physical = yes
+	opposites = {
+		bno_bbc
+	}
+	opposite_opinion = 100
+	attraction_opinion = 5
+	spouse_opinion = 5
+	fertility = -0.9
+	compatibility = {
+	    bno_bbc = 1000
+	}
+	track = {
+		30 = { attraction_opinion = -30 spouse_opinion = -30 fertility = -0.05 general_opinion = -25 courtier_and_guest_opinion = -25 }
+		60 = { attraction_opinion = -25 spouse_opinion = -25 fertility = -0.05 general_opinion = -25 courtier_and_guest_opinion = -25 }
+	}
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_5.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_5 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_5.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_5 value >= 30 } } desc = bno_pussy_mileage_5.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_5.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_pussy_mileage_5.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_5 value >= 60 } is_a_girl = yes } desc = bno_pussy_mileage_5.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_pussy_mileage_5 value >= 30 } } desc = bno_pussy_mileage_5.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_pussy_mileage_5.desc.1 }
+		}
+	}
+}
+
+bno_pussy_mileage_6 = {
+	category = lifestyle
+	group = bno_pussy_mileage
+	level = 6
+	physical = yes
+	opposites = {
+		bno_bbc
+	}
+	compatibility = {
+	    bno_bbc = 1500
+	}
+	opposite_opinion = 200
+	shown_in_ruler_designer = no
+	attraction_opinion = -50
+	spouse_opinion = -50
+	general_opinion = -50
+	courtier_and_guest_opinion = -50
+	fertility = -1
+}
+
+
+bno_bbc_whore_1 = {
+	category = lifestyle
+	group = bno_bbc_whore
+	level = 1
+	physical = yes
+	
+	shown_in_ruler_designer = no
+
+	valid_sex = female
+
+	attraction_opinion = 10
+	spouse_opinion = 5
+	general_opinion = -5
+
+	diplomacy = 1
+	intrigue = 1
+
+	monthly_lifestyle_xp_gain_mult = 0.05
+	owned_personal_scheme_success_chance_add = 10
+	owned_scheme_secrecy_add = 5
+	personal_scheme_phase_duration_add = -10
+	stress_loss_mult = 0.05
+
+	track = {
+		1 = { general_opinion = -5 }
+		30 = { attraction_opinion = 5 owned_personal_scheme_success_chance_add = 5 }
+		60 = { intrigue = 1 owned_scheme_secrecy_add = 5 }
+	}
+	monthly_track_xp_degradation = { change = 0.25 }
+
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_bbc_whore_1.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_1 value >= 60 } is_a_girl = yes } desc = bno_bbc_whore_1.4 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_1 value >= 30 } } desc = bno_bbc_whore_1.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_1 value >= 1 } } desc = bno_bbc_whore_1.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_bbc_whore_1.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_bbc_whore_1.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_1 value >= 60 } is_a_girl = yes } desc = bno_bbc_whore_1.desc.4 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_1 value >= 30 } } desc = bno_bbc_whore_1.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_1 value >= 1 } } desc = bno_bbc_whore_1.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_bbc_whore_1.desc.1 }
+		}
+	}
+
+	ai_sociability = low_positive_ai_value
+}
+
+bno_bbc_whore_2 = {
+	category = lifestyle
+	group = bno_bbc_whore
+	level = 2
+	physical = yes
+
+	shown_in_ruler_designer = no
+
+	valid_sex = female
+
+	attraction_opinion = 15
+	spouse_opinion = 10
+	general_opinion = -10
+
+	diplomacy = 2
+	intrigue = 2
+
+	monthly_lifestyle_xp_gain_mult = 0.10
+	owned_personal_scheme_success_chance_add = 15
+	owned_scheme_secrecy_add = 10
+	max_personal_schemes_add = 1
+	personal_scheme_phase_duration_add = -15
+	stress_gain_mult = -0.05
+	stress_loss_mult = 0.10
+
+	track = {
+		30 = { attraction_opinion = 5 owned_personal_scheme_success_chance_add = 5 }
+		60 = { diplomacy = 1 owned_scheme_secrecy_add = 5 }
+	}
+	monthly_track_xp_degradation = { change = 0.25 }
+
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_bbc_whore_2.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_2 value >= 60 } is_a_girl = yes } desc = bno_bbc_whore_2.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_2 value >= 30 } } desc = bno_bbc_whore_2.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_bbc_whore_2.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_bbc_whore_2.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_2 value >= 60 } is_a_girl = yes } desc = bno_bbc_whore_2.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_2 value >= 30 } } desc = bno_bbc_whore_2.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_bbc_whore_2.desc.1 }
+		}
+	}
+	ai_sociability = medium_positive_ai_value
+}
+
+bno_bbc_whore_3 = {
+	category = lifestyle
+	group = bno_bbc_whore
+	level = 3
+	physical = yes
+
+	shown_in_ruler_designer = no
+
+	valid_sex = female
+
+	attraction_opinion = 20
+	spouse_opinion = 15
+	general_opinion = -15
+
+	diplomacy = 3
+	intrigue = 2
+
+	monthly_lifestyle_xp_gain_mult = 0.20
+	owned_personal_scheme_success_chance_add = 20
+	owned_hostile_scheme_success_chance_max_add = 10
+	owned_scheme_secrecy_add = 15
+	max_personal_schemes_add = 1
+	personal_scheme_phase_duration_add = -20
+	stress_gain_mult = -0.10
+	stress_loss_mult = 0.15
+
+	track = {
+		30 = { attraction_opinion = 5 owned_personal_scheme_success_chance_add = 5 }
+		60 = { intrigue = 1 owned_scheme_secrecy_add = 5 general_opinion = -5 }
+	}
+	monthly_track_xp_degradation = { change = 0.25 }
+
+	name = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_bbc_whore_3.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_3 value >= 60 } is_a_girl = yes } desc = bno_bbc_whore_3.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_3 value >= 30 } } desc = bno_bbc_whore_3.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_bbc_whore_3.1 }
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = { trigger = { NOT = { exists = this } } desc = bno_bbc_whore_3.desc.1 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_3 value >= 60 } is_a_girl = yes } desc = bno_bbc_whore_3.desc.3 }
+			triggered_desc = { trigger = { exists = this has_trait_xp = { trait = bno_bbc_whore_3 value >= 30 } } desc = bno_bbc_whore_3.desc.2 }
+			triggered_desc = { trigger = { exists = this } desc = bno_bbc_whore_3.desc.1 }
+		}
+	}
+	ai_sociability = high_positive_ai_value
+}
+
+bno_bbc_whore_4 = {
+	category = fame
+	group = bno_bbc_whore
+	level = 4
+	physical = yes
+
+	shown_in_ruler_designer = no
+
+	valid_sex = female
+
+	attraction_opinion = 25
+	spouse_opinion = 20
+	general_opinion = -20
+
+	diplomacy = 3
+	intrigue = 3
+	monthly_lifestyle_xp_gain_mult = 0.25
+	owned_personal_scheme_success_chance_add = 25
+	owned_hostile_scheme_success_chance_max_add = 15
+	owned_scheme_secrecy_add = 20
+	max_personal_schemes_add = 1
+	personal_scheme_phase_duration_add = -20
+	stress_gain_mult = -0.12
+	stress_loss_mult = 0.18
+
+	ai_sociability = very_high_positive_ai_value
+}
+
+bno_slave = {
+	flag = can_not_marry
+	flag = can_not_be_granted_titles
+	flag = can_not_leave_court_voluntarily
+	flag = no_headgear
+	flag = no_headwear
+	inheritance_blocker = all
+	claim_inheritance_blocker = all
+	
+	inherit_chance = 100
+	parent_inheritance_sex = female
+	
+	shown_in_ruler_designer = no
+}
+
+bno_bull = {
+    category = personality
+
+    physical = yes
+	random_creation_weight = 0
+    shown_in_ruler_designer = no
+
+    levy_size = 0.25 
+    men_at_arms_limit = 2
+    bnwo_armies_max_size_mult = 0.25
+    bnwo_armies_maintenance_mult = -0.15
+    knight_effectiveness_mult = 0.20
+
+    prowess = 4
+    martial = 2
+	intrigue = 2
+
+	compatibility = {
+	    bno_curious = 75
+	    bno_blacked = 150
+	    bno_snowbunny = 300
+	    bno_qos = 600
+	    bno_mindless_bbc_slut = 1200
+
+	    bno_cuckish = -25
+	    bno_cuck = -50
+	    bno_beta = -75
+	    bno_jos = -100
+	    bno_caged = -100
+	    bno_castrated = -150
+
+	    bno_full_black = 150
+	    bno_mostly_black = 100
+	    bno_mixed = 75
+	    bno_barely_mixed = 50
+	    
+
+	    bno_full_black_slut = 150
+	    bno_mostly_black_slut = 100
+	    bno_mixed_slut = 50
+	    bno_barely_mixed_slut = 25
+	}
+
+}

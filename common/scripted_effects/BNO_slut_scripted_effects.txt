@@ -1,0 +1,1848 @@
+﻿convert_to_bbc_religion = {
+	if = {
+		limit = {
+			has_game_rule = bno_religion_yes
+			NOT = { faith.religion = religion:bnonr_religion }
+			is_bno_mindless_bbc_slut = yes
+		}
+		if = {
+			limit = {
+				NOT = { exists = var:recent_sex_partner }
+			}
+			bno_conversion_effect = {
+				FAITH = faith:bbcs
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { var:recent_sex_partner.faith.religion = religion:bnonr_religion }
+			}
+			bno_conversion_effect = {
+				FAITH = faith:bbcs
+			}
+		}
+		else = {
+			bno_conversion_effect = {
+				FAITH = var:recent_sex_partner.faith
+			}
+		}
+	}
+}
+
+bno_conversion_effect = {
+	if = {
+		limit = {
+			exists = top_liege
+		}
+		set_character_faith_with_conversion = $FAITH$
+	}
+	else = {
+		set_character_faith = $FAITH$
+	}
+}
+
+bno_add_prowess_per_sex = {
+	if = {
+		limit = {
+			exists = dynasty
+			dynasty ?= {
+				has_dynasty_perk = bno_embrace_african_5
+			}
+		}
+		add_character_modifier = bno_cum_for_glory
+		if = {
+			limit = {
+				exists = var:bno_cum_for_glory_count
+			}
+			change_variable = {
+				name = bno_cum_for_glory_count
+				add = 1
+			}
+		}
+		else = {
+			set_variable = {
+				name = bno_cum_for_glory_count
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				var:bno_cum_for_glory_count >= 100
+			}
+			send_interface_message = {
+				title = {
+					first_valid = {
+						triggered_desc = {
+							trigger = {	is_a_girl = yes }
+							desc = bno_cum_for_glory.glorified.title.female
+						}
+						triggered_desc = {
+							trigger = { is_a_male = yes }
+							desc = bno_cum_for_glory.glorified.title.male
+						}
+					}
+				}
+				desc = {
+					first_valid = {
+						triggered_desc = {
+							trigger = { is_a_girl = yes }
+							desc = bno_cum_for_glory.glorified.desc.female
+						}
+						triggered_desc = {
+							trigger = { is_a_male = yes }
+							desc = bno_cum_for_glory.glorified.desc.male
+						}
+					}
+				}
+				type = bno_blacked_events
+				left_icon = this
+				add_character_modifier = bno_cum_for_glory_glorified
+				remove_all_character_modifier_instances = bno_cum_for_glory
+			}
+			change_variable = {
+				name = bno_cum_for_glory_count
+				subtract = 100
+			}
+		}
+	}
+}
+
+bno_becoming_lustful_effect = {
+	switch = {
+		trigger = has_trait
+		chaste = {
+			remove_trait = chaste
+			add_trait = lustful
+		}
+		fallback = { add_trait = lustful }
+	}
+}
+
+get_wandering_male_scope = {
+	random_pool_character = {
+		province = root.location
+		limit = {
+			is_a_male = yes
+			is_elligible_partner = yes
+		}
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+find_5_sex_partner = {
+	get_wandering_male_scope = {
+		SCOPE_NAME = bbc_1
+	}
+	get_wandering_male_scope = {
+		SCOPE_NAME = bbc_2
+	}
+	get_wandering_male_scope = {
+		SCOPE_NAME = bbc_3
+	}
+	get_wandering_male_scope = {
+		SCOPE_NAME = bbc_4
+	}
+	get_wandering_male_scope = {
+		SCOPE_NAME = bbc_5
+	}
+}
+
+sex_with_5_sex_partner = {
+	bno_prostitution = {
+		TARGET = scope:bbc_1
+	}
+	bno_prostitution = {
+		TARGET = scope:bbc_2
+	}
+	bno_prostitution = {
+		TARGET = scope:bbc_3
+	}
+	bno_prostitution = {
+		TARGET = scope:bbc_4
+	}
+	bno_prostitution = {
+		TARGET = scope:bbc_5
+	}
+}
+
+bno_prostitution = {
+	save_temporary_scope_as = temp
+	bno_have_sex_with_effects = {
+		PARTNER = $TARGET$
+	}
+	$TARGET$ = {
+		pay_short_term_gold = {
+			target = scope:temp
+			gold = minor_gold_value
+		}
+	}
+}
+
+bno_steal_white_husband_gold_effect = {
+	save_temporary_scope_as = temp
+	add_character_modifier = {
+		modifier = bno_wife_stealing_cucks_gold
+		months = 12
+	}
+	$VICTIM$ = {
+		remove_short_term_gold = minor_gold_value
+		add_prestige = minor_prestige_loss
+		send_interface_message = {
+			type = bno_blacked_events
+			title = bno_bull_0010_notification.title
+			right_icon = root
+			desc = bno_bull_0010_notification.desc
+		}
+	}
+	$TARGET$ = {
+		add_gold = minor_gold_value
+		add_prestige = minor_prestige_gain
+		bno_have_sex_with_effects = {
+			PARTNER = scope:temp
+		}
+	}
+}
+
+bno_reveal_secret_effect = {
+	save_temporary_scope_as = temp
+	every_spouse = {
+		limit = {
+			is_ai_white_guy = yes
+		}
+		every_secret = {
+			reveal_to = root
+		}
+		every_secret = {
+			reveal_to = $TARGET$
+		}
+		send_interface_message = {
+			type = bno_blacked_events
+			title = bno_bull_0012_notification.title
+			right_icon = scope:temp
+			left_icon = root
+			desc = bno_bull_0012_notification.desc
+		}
+	}
+	add_character_modifier = {
+		modifier = bno_cant_keep_mouth_shut
+		years = 2
+	}
+	every_secret = {
+		reveal_to = root
+	}
+	every_secret = {
+		reveal_to = $TARGET$
+	}
+	$TARGET$ = {
+		bno_have_sex_with_effects = {
+			PARTNER = scope:temp
+		}
+		add_opinion = {
+			modifier = bno_good_slut
+			target = scope:temp
+		}
+	}
+}
+
+bno_no_sex_stress_impact = {
+	stress_impact = {
+		bno_curious = major_stress_impact_gain
+		bno_blacked = major_stress_impact_gain
+		bno_snowbunny = major_stress_impact_gain
+		bno_qos = major_stress_impact_gain
+		bno_mindless_bbc_slut = major_stress_impact_gain
+	}
+}
+
+bno_sex_stress_impact_huge = {
+	stress_impact = {
+		bno_curious = major_stress_impact_loss
+		bno_blacked = major_stress_impact_loss
+		bno_snowbunny = major_stress_impact_loss
+		bno_qos = major_stress_impact_loss
+		bno_mindless_bbc_slut = major_stress_impact_loss
+	}
+}
+
+bno_sex_stress_impact_small = {
+	stress_impact = {
+		bno_curious = minor_stress_impact_loss
+		bno_blacked = minor_stress_impact_loss
+		bno_snowbunny = minor_stress_impact_loss
+		bno_qos = minor_stress_impact_loss
+		bno_mindless_bbc_slut = minor_stress_impact_loss
+	}
+}
+
+get_something_related = {
+	random_close_family_member = {
+		limit = {
+			$TRIGGER_KEY$ = yes
+		}
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+get_something_above = {
+	random_liege_or_above = {
+		limit = {
+			$TRIGGER_KEY$ = yes
+		}
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+get_qos_girl_that_has_blackbull_husband_scope = {
+	get_something_above = {
+		TRIGGER_KEY = is_qos_has_blackbull_husband
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_mom_scope = {
+	get_something_related = {
+		TRIGGER_KEY = is_mother_blacked
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_siblings_scope = {
+	get_something_related = {
+		TRIGGER_KEY = is_sibling_blacked
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_caged_or_castrated_male_scope = {
+	get_something = {
+		TRIGGER_KEY = is_caged_or_castrated_male
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+bno_influence_random_pure_courtier = {
+	hidden_effect = {
+		random_courtier_or_guest = {
+			limit = {
+				is_pure_whitegirl = yes
+			}
+			bno_increase_sluttyness = yes
+		}
+		random_vassal = {
+			limit = {
+				is_pure_whitegirl = yes
+			}
+			bno_increase_sluttyness = yes
+		}
+	}
+}
+
+bno_marriage_effect = {
+	save_temporary_scope_as = temp
+	if = {
+		limit = {
+			is_married = yes
+			any_spouse = {
+				is_alive = yes
+			}
+		}
+		$TARGET$ = {
+			add_character_modifier = {
+				modifier = bno_stole_married_white_wife
+				years = 15
+			}
+			add_prestige = 150
+		}
+		every_spouse = {
+			limit = {
+				is_ai_white_guy = yes
+			}
+			add_opinion = {
+				modifier = forced_divorce_opinion
+				target = $TARGET$
+			}
+			add_character_modifier = {
+				modifier = bno_wife_stolen_by_bbc
+			}
+			add_character_modifier = {
+				modifier = bno_happy_cuck_husband
+			}
+			bno_increase_cuckiness = yes
+			add_prestige = -500
+			save_scope_as = husband_temp
+			scope:temp = {
+				add_opinion = {
+					modifier = previous_cuck_husband
+					target = scope:husband_temp
+				}
+				divorce = scope:husband_temp
+			}
+		}
+	}
+	else = {
+		$TARGET$ = {
+			add_character_modifier = {
+				modifier = bno_took_unmarried_white_wife
+				years = 15
+			}
+		}
+	}
+	set_sexuality = heterosexual
+	betrothed ?= {
+		break_betrothal = scope:temp
+	}
+	if = {
+		limit = {
+			scope:temp = {
+				can_marry_character_trigger = {
+					CHARACTER = $TARGET$
+				}
+			}
+		}
+		marry = $TARGET$
+		become_lover_with_target = {
+			TARGET = $TARGET$
+			LOCATION = location
+		}
+		add_opinion = {
+			modifier = stolen_by_new_bull_master
+			target = $TARGET$
+		}
+		add_character_modifier = {
+			modifier = bno_stolen_as_bbc_wife
+			years = 15
+		}
+		bno_get_all_gold = {
+			TARGET = $TARGET$
+		}
+	}
+}
+
+bno_get_all_gold = {
+	if = { #bbc takes all of wife's gold if she had any
+		limit = { gold > 0 }
+		pay_short_term_gold = {
+			target = $TARGET$
+			gold = this.gold
+		}
+	}
+}
+
+bno_bbc_divorce_effect = {
+	save_temporary_scope_as = divorcer_temp
+	get_old_wife_or_wife_with_bad_trait = {
+		SCOPE_NAME = divorced_wife
+	}
+	scope:divorced_wife = {
+		add_character_modifier = {
+			modifier = bno_no_longer_black_breedable
+			years = 1
+		}
+		bno_get_all_gold = {
+			TARGET = scope:divorcer_temp
+		}
+	}
+	add_character_modifier = {
+		modifier = bno_divorced_worthless_wife
+	}
+	every_relation = {
+		type = lover
+		limit = { this = scope:divorced_wife }
+		remove_relation_lover = scope:divorced_wife
+	}
+	divorce = scope:divorced_wife
+}
+
+get_married_pure_girl_scope = {
+	get_something_foreign = {
+		TRIGGER_KEY = is_married_ai_pure_white_girl_has_white_husband
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_girl_married_to_a_ruler_scope = {
+	get_something = {
+		TRIGGER_KEY = is_blacked_girl_married_to_a_ruler
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_something_foreign = {
+	clear_variable_list = temp
+    every_neighboring_and_across_water_top_liege_realm_owner = {
+        if = { # Top Liege
+            limit = {
+                $TRIGGER_KEY$ = yes
+            }
+            root = {
+				add_to_variable_list = {
+					name = temp
+					target = prev
+				}
+			}
+        }
+
+        every_courtier_or_guest = { # Top Liege Courtier
+            limit = {
+                $TRIGGER_KEY$ = yes
+            }
+            root = {
+				add_to_variable_list = {
+					name = temp
+					target = prev
+				}
+			}
+        }
+
+        every_vassal_or_below = {
+            if = { # Top Liege Vassal
+                limit = {
+                    $TRIGGER_KEY$ = yes
+                }
+                root = {
+					add_to_variable_list = {
+						name = temp
+						target = prev
+					}
+				}
+            }
+
+            if = { # Top Liege Vassal Court
+                limit = {
+                    highest_held_title_tier >= tier_county
+                }
+                every_courtier_or_guest = {
+                    limit = {
+                        $TRIGGER_KEY$ = yes
+                    }
+                    root = {
+						add_to_variable_list = {
+							name = temp
+							target = prev
+						}
+					}
+                }
+            }
+        }
+    }
+    
+    random_in_list = {
+        variable = temp
+        save_scope_as = $SCOPE_NAME$
+    }
+}
+
+get_foreign_married_blacked_girl_scope = {
+	get_something_foreign = {
+		TRIGGER_KEY = does_blacked_ai_girl_has_white_guy_husband
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_foreign_unmarried_pure_white_girl_scope = {
+	get_something_foreign = {
+		TRIGGER_KEY = is_unmarried_ai_pure_white_girl
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_secret_haver_scope = {
+	get_something = {
+		TRIGGER_KEY = does_blacked_girl_white_husband_has_secret
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_unmarried_pure_white_girl_scope = {
+	get_something = {
+		TRIGGER_KEY = is_unmarried_ai_pure_white_girl
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_peasant_scope = {
+	get_something = {
+		TRIGGER_KEY = is_ai_blacked_peasant
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_noble_scope = {
+	get_something = {
+		TRIGGER_KEY = is_ai_blacked_noble
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_pure_whitegirl_scope = {
+	get_something = {
+		TRIGGER_KEY = is_ai_pure_white_girl
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_unmarried_bbc_scope = {
+	get_something = {
+		TRIGGER_KEY = is_unmarried_ai_blackbull
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_bbc_scope = {
+	get_something = {
+		TRIGGER_KEY = is_ai_blackbull
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_girl_scope = {
+	get_something = {
+		TRIGGER_KEY = is_ai_blacked
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_girl_with_eating_disorder_scope = {
+	get_something = {
+		TRIGGER_KEY = is_ai_blacked_has_eating_disorder
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_just_or_zealous_bbc_scope = {
+	get_something = {
+		TRIGGER_KEY = is_ai_blackbull_just_or_zealous
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_something = {
+	random_courtier_or_guest = {
+		limit = {
+			$TRIGGER_KEY$ = yes
+		}
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+get_something_backup = {
+	clear_saved_scope = $SCOPE_NAME$
+	every_courtier_or_guest = { # Player's Court
+        limit = {
+            $TRIGGER_KEY$ = yes
+        }
+        root = {
+			add_to_variable_list = { 	
+				name = temp
+				target = prev
+			}
+		}
+    }
+	every_vassal_or_below = { # Player's Vassal
+        limit = {
+            $TRIGGER_KEY$ = yes
+        }
+        root = {
+			add_to_variable_list = {
+				name = temp
+				target = prev
+			}
+		}
+    }
+	every_vassal_or_below = { # Player's Vassal Court
+        limit = { 
+            highest_held_title_tier >= tier_county
+        }
+        every_courtier_or_guest = {
+            limit = {
+                $TRIGGER_KEY$ = yes
+            }
+            root = {
+				add_to_variable_list = {
+					name = temp
+					target = prev
+				}
+			}
+        }
+    }
+	if = {
+		limit = {
+			liege ?= {
+				$TRIGGER_KEY$ = yes
+			}
+		}
+    	liege = { # Liege
+    	    root = {
+				add_to_variable_list = {
+					name = temp
+					target = prev
+				}
+			}
+		}
+	}
+	liege ?= { # Liege Court
+		every_courtier_or_guest = {
+            limit = {
+                $TRIGGER_KEY$ = yes
+            }
+            root = {
+				add_to_variable_list = {
+					name = temp
+					target = prev
+				}
+			}
+        }
+	}
+	liege ?= { # Liege Vassal
+		every_vassal_or_below = { # Liege Vassal
+            limit = {
+                $TRIGGER_KEY$ = yes
+            }
+            root = {
+				add_to_variable_list = {
+					name = temp
+					target = prev
+				}
+			}
+        }
+	}
+	liege ?= { # Liege's Vassal's Court
+		every_vassal_or_below = { 
+            limit = { 
+                highest_held_title_tier >= tier_county
+            }
+            every_courtier_or_guest = {
+                limit = {
+                    $TRIGGER_KEY$ = yes
+                }
+                root = {
+					add_to_variable_list = {
+						name = temp
+						target = prev
+					}
+				}
+            }
+        }
+	}
+	random_in_list = {
+		variable = temp
+		save_scope_as = $SCOPE_NAME$
+	}
+	clear_variable_list = temp 
+}
+
+get_wandering_curious_whitegirl_scope = {
+	random_pool_character = {
+		province = location
+		limit = {
+			is_curious = yes
+		}
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+service_fee = {
+	pay_gold = yes
+	pay_piety = yes
+	pay_prestige = yes
+}
+
+pay_gold = {
+	scope:local_bbc = {
+		if = {
+			limit = {
+				gold > 1
+			}
+			pay_short_term_gold = {
+				target = root
+				gold = {
+					value = minor_gold_value
+				}
+			}
+		}
+	}
+}
+
+pay_piety = {
+	scope:local_bbc = {
+		if = {
+			limit = {
+				piety > 1
+			}
+			add_piety = {
+				value = minor_piety_loss
+			}
+		}
+	}
+}
+
+pay_prestige = {
+	scope:local_bbc = {
+		if = {
+			limit = {
+				prestige > 1
+			}
+			add_prestige = {
+				value = minor_prestige_loss
+			}
+		}
+	}
+}
+
+create_bbc = {
+	save_temporary_scope_as = bno_creator
+	create_character = {
+		gender = male
+		save_scope_as = $SCOPE_NAME$
+		location = scope:bno_creator.location
+		age = $age$
+		
+		dynasty = none
+		random_traits = yes
+		faith = faith:bbcs
+		culture = culture:bnoc
+		prowess = {
+			min_template_decent_skill
+			max_template_decent_skill
+		}
+		martial = {
+			min_template_decent_skill
+			max_template_decent_skill
+		}
+		after_creation = {
+			set_sexuality = heterosexual
+			add_gold = minor_gold_value
+			bno_add_bbc_trait_effect = yes
+			add_trait = bno_full_black
+			add_trait = dick_big_good_3
+			add_trait = lustful
+			if = {
+				limit = {
+					scope:bno_creator = {
+						is_faith_bbcs = yes
+					}
+				}
+				set_character_faith = scope:bno_creator.faith
+			}
+			if = {
+				limit = {
+					scope:bno_creator = {
+						is_culture_bnoc = yes
+					}
+				}
+				set_culture = scope:bno_creator.culture
+			}
+			remove_bad_traits = yes
+		}
+	}
+}
+
+create_blacked_european_girls = {
+	create_character_with_european_heritage_with_parents_template_and_location = {
+		SCOPE_NAME = $SCOPE$
+		CREATE_CHARACTER = create_character_blacked_slut
+		TEMPLATE = $TEMPLATE$
+		LOCATION = $LOCATION$
+	}
+}
+
+create_slut = {
+	create_character_with_european_heritage_with_parents = {
+		CREATE_CHARACTER = create_character_slut
+		age = $age$
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+create_character_with_european_heritage_with_parents = {
+	random_character_with_royal_court = {
+		limit = {
+			bno_culture_has_european_heritage_pillar_trigger = yes
+		}
+		save_scope_as = european
+	}
+	$CREATE_CHARACTER$ = {
+		SCOPE_NAME = $SCOPE_NAME$
+		age = $age$
+	}
+}
+
+create_character_with_european_heritage_with_parents_template_and_location = {
+	random_character_with_royal_court = {
+		limit = {
+			bno_culture_has_european_heritage_pillar_trigger = yes
+		}
+		save_scope_as = european
+	}
+	$CREATE_CHARACTER$ = {
+		SCOPE_NAME = $SCOPE_NAME$
+		TEMPLATE = $TEMPLATE$
+		LOCATION = $LOCATION$
+	}
+}
+
+create_character_slut = {
+	save_scope_as = creator
+	create_character = {
+		gender = female
+		save_scope_as = $SCOPE_NAME$
+		ethnicities = {
+			caucasian = {}
+			caucasian_blond = {}
+			caucasian_northern_blond = {}
+			caucasian_ginger = {}
+			caucasian_northern_ginger = {}
+			caucasian_brown_hair = {}
+			caucasian_northern_brown_hair = {}
+			caucasian_dark_hair = {}
+			caucasian_northern_dark_hair = {}
+		}
+		location = scope:creator.capital_province
+		age = $age$
+		dynasty = scope:european.dynasty
+		dynasty_house = scope:european.house
+		random_traits = yes
+		faith = scope:european.faith
+		culture = scope:european.culture
+		diplomacy = {
+			min_template_decent_skill
+			max_template_decent_skill
+		}
+		learning = {
+			min_template_decent_skill
+			max_template_decent_skill
+		}
+		intrigue = {
+			min_template_decent_skill
+			max_template_decent_skill
+		}
+		after_creation = {
+			add_trait = lustful
+			bno_maybe_get_a_rare_trait = {
+				TRAIT = bno_curious
+			}
+			bno_maybe_get_a_rare_trait = {
+				TRAIT = bno_pure_white
+			}
+			bno_maybe_get_a_rare_trait = {
+				TRAIT = fecund
+			}
+			bno_get_a_leveled_trait = {
+				TRAIT = beauty_good
+			}
+			bno_get_a_leveled_trait = {
+				TRAIT = tits_big_good
+			}
+			set_sexuality = heterosexual
+			remove_bad_traits = yes
+		}
+	}
+}
+
+create_character_blacked_slut = {
+	save_scope_as = creator
+	create_character = {
+		template = $TEMPLATE$
+		ethnicities = {
+			caucasian = {}
+			caucasian_blond = {}
+			caucasian_northern_blond = {}
+			caucasian_ginger = {}
+			caucasian_northern_ginger = {}
+			caucasian_brown_hair = {}
+			caucasian_northern_brown_hair = {}
+			caucasian_dark_hair = {}
+			caucasian_northern_dark_hair = {}
+		}
+		dynasty = scope:european.dynasty
+		dynasty_house = scope:european.house
+		culture = scope:european.culture
+		faith = scope:european.faith
+		location = $LOCATION$
+		save_scope_as = $SCOPE_NAME$
+		after_creation = {
+			add_character_flag = no_headgear
+			if = {
+				limit = {
+					scope:creator = {
+						is_culture_bnoc = yes
+					}
+				}
+				set_culture = scope:creator.culture
+			}
+			else = {
+				set_culture = culture:bnoc
+			}
+			if = {
+				limit = {
+					scope:creator = {
+						is_faith_bbcs = yes
+					}
+				}
+				set_character_faith = scope:creator.faith
+			}
+			else = {
+				set_character_faith = faith:bbcs
+			}
+			remove_bad_traits = yes
+		}
+	}
+}
+
+bno_maybe_get_a_rare_trait = {
+	random_list = {
+		4 = {}
+		1 = { add_trait = $TRAIT$ }
+	}
+}
+
+bno_get_a_leveled_trait = {
+	random_list = {
+		4 = { add_trait = $TRAIT$_1 }
+		2 = { add_trait = $TRAIT$_2 }
+		1 = { add_trait = $TRAIT$_3 }
+	}
+}
+
+bno_get_between_normal_and_rare_trait = {
+	random_list = {
+		2 = { add_trait = $TRAIT_NORMAL$ }
+		1 = { add_trait = $TRAIT_RARE$ }
+	}
+}
+
+bno_get_between_common_uncommon_and_rare_trait = {
+	random_list = {
+		4 = { add_trait = $TRAIT_COMMON$ }
+		2 = { add_trait = $TRAIT_UNCOMMON$ }
+		1 = { add_trait = $TRAIT_RARE$ }
+	}
+}
+
+bno_kill_character = {
+	$TARGET$ = {
+		death = {
+			death_reason = death_disappearance
+		}
+	}
+}
+
+bno_kill_bbc_1_to_3 = {
+	bno_kill_character = {
+		TARGET = scope:bbc_1
+	}
+	bno_kill_character = {
+		TARGET = scope:bbc_2
+	}
+	bno_kill_character = {
+		TARGET = scope:bbc_3
+	}
+}
+
+remove_bad_traits = {
+	remove_trait = scaly
+	remove_trait = clubfooted
+	remove_trait = dwarf
+	remove_trait = giant
+	remove_trait = hunchbacked
+	remove_trait = spindly
+	remove_trait = albino
+	remove_trait = infertile
+	remove_trait = wheezing
+	remove_trait = bleeder
+	remove_trait = depressed_genetic
+	remove_trait = depressed_1
+	remove_trait = lunatic_genetic
+	remove_trait = lunatic_1
+	remove_trait = possessed_genetic
+	remove_trait = possessed_1
+	remove_trait = lisping
+	remove_trait = stuttering
+	remove_trait = beauty_bad_1
+	remove_trait = beauty_bad_2
+	remove_trait = beauty_bad_3
+	remove_trait = intellect_bad_1
+	remove_trait = intellect_bad_2
+	remove_trait = intellect_bad_3
+	remove_trait = physique_bad_1
+	remove_trait = physique_bad_2
+	remove_trait = physique_bad_3
+	make_trait_inactive = futa
+	make_trait_inactive = futa_genetic
+	
+	add_character_flag = {
+		flag = no_headgear
+		years = 1
+	}
+}
+
+bno_remove_blood_traits = {
+	switch = {
+		trigger = has_trait
+		bno_full_black  = {	remove_trait = bno_full_black }
+		bno_mostly_black  = { remove_trait = bno_mostly_black }
+		bno_mixed  = { remove_trait = bno_mixed }
+		bno_barely_mixed  = { remove_trait = bno_barely_mixed }
+	}
+}
+
+bno_bbc_sex = {
+	save_scope_as = initiator
+	if = {
+		limit = {
+			is_bbc = yes
+			$PARTNER$ ?= {
+				is_african = no
+			}
+		}
+		bno_slut_sex_after_effects = {
+			PARTNER = $PARTNER$
+		}
+		$PARTNER$ = {
+			bno_bbc_sex_after_effects = {
+				PARTNER = scope:initiator
+			}
+		}
+		if = {
+			limit = {
+				$PARTNER$ ?= {
+					is_married = yes
+					any_spouse = {
+						is_white_guy = yes
+					}
+				}
+			}
+			$PARTNER$ = {
+				every_spouse = {
+					limit = {
+						is_white_guy = yes
+					}
+					bno_cuck_sex_after_effects = {
+						PARTNER = $PARTNER$
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				$PARTNER$ = {
+					is_spouse_of = scope:initiator
+				}
+			}
+			$PARTNER$ = {
+				add_opinion = {
+					modifier = bull_husband_takes_me
+					target = scope:initiator
+				}
+			}
+		}
+	}
+}
+
+bno_bbc_sex_after_effects = {
+	bno_sex_increase_dynasty_prestige = yes
+	bno_add_prowess_per_sex = yes
+	bno_increase_sluttyness = yes
+	bno_sex_stats = yes
+	stress_impact = {
+		bno_curious = -10
+		bno_blacked = -20
+		bno_snowbunny = -30
+		bno_qos = -40
+		bno_mindless_bbc_slut = -50
+	}
+	add_character_flag = {
+		flag = bno_naked
+		months = 1
+	}
+	add_character_flag = {
+		flag = bno_cum_shot
+		months = 1
+	}
+	add_character_modifier = {
+		modifier = bno_slut_stress_relieved
+		years = 1
+	}
+	add_character_modifier = {
+		modifier = bno_cumstuffed
+		months = 6
+	}
+	add_opinion = {
+		modifier = bno_bull_fucks_me
+		target = $PARTNER$
+	}
+}
+
+bno_slut_sex_after_effects = {
+	bno_add_prowess_per_sex = yes
+	bno_sex_increase_dynasty_prestige = yes
+	bno_sex_stats = yes
+	stress_impact = {
+		bno_bbc = -50
+	}
+	add_character_modifier = {
+		modifier = bno_stress_relieved
+		years = 2
+	}
+	add_opinion = {
+		modifier = bno_slut_fucks_me
+		target = $PARTNER$
+	}
+}
+
+bno_cuck_sex_after_effects = {
+	bno_increase_cuckiness = yes
+	send_interface_message = {
+		type = bno_blacked_events
+		title = bno_happy_wife.0001.title
+		right_icon = $PARTNER$
+		desc = bno_happy_wife.0001.desc
+	}
+	stress_impact = {
+		bno_cuckish = -10
+		bno_cuck = -20
+		bno_beta = -30
+		bno_jos = -40
+	}
+}
+
+bno_sex_stats = {
+	if = {
+		limit = {
+			NOT = { exists = var:bno_sex_counter }
+		}
+		set_variable = {
+			name = bno_sex_counter
+			value = 1
+		}
+	}
+	else = {
+		change_variable = {
+			name = bno_sex_counter
+			add = 1
+		}
+	}
+}
+
+gain_blacked_cum_slut_status_from_eating_disorder_effect = {
+	bno_have_sex_with_effects = {
+		PARTNER = $TARGET$
+	}
+	add_learning_lifestyle_perk_points = 1
+	add_stress = -20
+	if = {
+		limit = {
+			NOT = { has_trait = temperate }
+		}
+		add_trait = temperate
+	}
+	give_nickname = nick_bcm
+	add_character_modifier = {
+		modifier = bno_cumstuffed
+		years = 10
+	}
+	add_opinion = {
+		modifier = bno_fed_me_cum
+		target = $TARGET$
+	}
+}
+
+bno_remove_eating_disorder = {
+	save_temporary_scope_as = temp
+	add_stress = -40
+	remove_trait = drunkard
+	remove_trait = gluttonous
+	remove_trait = inappetetic
+	remove_trait = comfort_eater
+	add_opinion = {
+		modifier = bno_fed_me_cum
+		target = $TARGET$
+	}
+	if = {
+		limit = {
+			is_married = yes
+			any_spouse = {
+				is_ai_white_guy = yes
+			}
+		}
+		every_spouse = {
+			limit = {
+				is_ai_white_guy = yes
+			}
+			send_interface_message = {
+				type = bno_blacked_events
+				title = bno_bull_0004_notification.title
+				right_icon = scope:temp
+				desc = bno_bull_0004_notification.desc
+			}
+		}
+	}
+}
+
+bno_remove_stress = {
+	add_stress = -100
+	remove_trait = drunkard
+	remove_trait = rakish
+	remove_trait = reclusive
+	remove_trait = flagellant
+	remove_trait = improvident
+	remove_trait = contrite
+	remove_trait = inappetetic
+	remove_trait = comfort_eater
+	remove_trait = profligate
+}
+
+bno_father_or_mother = {
+	if = {
+		limit = {
+			is_a_girl = yes
+		}
+		save_scope_as = mother
+	}
+	else_if = {
+		limit = {
+			is_a_male = yes
+		}
+		save_scope_as = father
+	}
+}
+
+get_hated_non_black_courtier_scope = {
+	random_courtier_or_guest = {
+		limit = {
+			is_ai_white_guy = yes
+			reverse_opinion = {
+				target = root
+				value < 0
+			}
+			NOT = { has_trait = bno_castrated }
+			NOT = { has_trait = bno_chastity }
+		}
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+bno_have_sex_with_effects = {
+	add_character_flag = was_recently_suspected_of_adultery
+	$PARTNER$ = { add_character_flag = was_recently_suspected_of_adultery }
+	
+	save_scope_as = bno_sex_initiator
+	carn_sex_scene_character_is_giving_player_effect = yes
+	carn_sex_scene_is_consensual_effect = yes
+	carn_sex_scene_is_vaginal_effect = yes
+	carn_sex_scene_is_cum_inside_effect = yes
+	if = {
+		limit = {
+			OR = {
+				is_mindless_bbc_slut = yes
+				$PARTNER$ = { is_mindless_bbc_slut = yes }
+			}
+		}
+		carn_sex_scene_no_drama_effect = yes
+	}
+
+	if = {
+		limit = {
+			trigger_if = {
+				limit = { is_cum_slave = yes }
+				any_relation = {
+					type = bno_cum_slave_owner
+					this = $PARTNER$
+				}
+			}
+			trigger_else = { always = yes }
+			trigger_if = {
+				limit = {
+					$PARTNER$ = {
+						is_cum_slave = yes
+					}
+				}
+				$PARTNER$ = {
+					any_relation = {
+						type = bno_cum_slave_owner
+						this = scope:bno_sex_initiator
+					}
+				}
+			}
+			trigger_else = { always = yes }
+		}
+		carn_had_sex_with_effect_v2 = {
+			PARTNER = $PARTNER$
+		}
+	}
+
+	#Clean Up Flags
+	if = {
+		limit = { NOT = { exists = scope:carn_sex_scene } }
+		carn_sex_scene_clean_up_flags_effect = yes
+		carn_sex_scene_clean_up_character_flags_effect = yes
+		$PARTNER$ = {
+			carn_sex_scene_clean_up_character_flags_effect = yes
+		}
+	}
+	trigger_event = {
+		on_action = bno_after_sex
+	}
+}
+
+bno_remove_whitegirl_traits = {
+	remove_trait = bno_curious
+	remove_trait = bno_blacked
+	remove_trait = bno_snowbunny
+	remove_trait = bno_qos
+	remove_trait = bno_mindless_bbc_slut
+}
+
+bno_add_gold_faith = {
+	add_gold = bno_gold_amount
+}
+
+prostitution = {
+	scope:whore = {
+		if = {
+			limit = {
+				faith = { has_doctrine = doctrine_adultery_women_crime }
+			}
+			add_piety = {
+				value = minor_piety_gain
+				add = { 5 10 }
+				add = { 1 5 }
+			}
+		}
+		else = {
+			add_piety = {
+				value = minor_piety_gain
+			}
+			add_prestige = {
+				value = minor_prestige_gain
+			}
+		}
+	}
+}
+
+get_valid_whore_list = {
+	every_character_to_title_neighboring_county = {
+        holder ?= {
+            add_to_list = bno_neighbor_list
+        }
+    }
+    every_in_list = {
+        list = bno_neighbor_list
+        every_courtier_or_guest = {
+            limit = { is_rich_ai_blackbull = yes }
+            add_to_list = $LIST_NAME$
+        }
+        every_vassal_or_below = {
+            limit = { is_rich_ai_blackbull = yes }
+            add_to_list = $LIST_NAME$
+        }
+        every_vassal_or_below = {
+            limit = { highest_held_title_tier >= tier_county }
+            every_courtier_or_guest = {
+                limit = { is_rich_ai_blackbull = yes }
+                add_to_list = $LIST_NAME$
+            }
+        }
+    }
+    liege ?= {
+        every_courtier_or_guest = {
+            limit = { is_rich_ai_blackbull = yes }
+            add_to_list = $LIST_NAME$
+        }
+        every_vassal_or_below = {
+            limit = { is_rich_ai_blackbull = yes }
+            add_to_list = $LIST_NAME$
+        }
+        every_vassal_or_below = {
+            limit = { highest_held_title_tier >= tier_county }
+            every_courtier_or_guest = {
+                limit = { is_rich_ai_blackbull = yes }
+                add_to_list = $LIST_NAME$
+            }
+        }
+    }
+}
+
+fuck_random_local_bbc = {
+	get_valid_whore_list = {
+		LIST_NAME = local_bbc_list
+	}
+	if = {
+		limit = {
+			list_size = {
+				name = local_bbc_list
+				value > 0
+			}
+		}
+		ordered_in_list = {
+			list = local_bbc_list
+			limit = {
+				is_alive = yes
+			}
+			order_by = gold
+			save_scope_as = local_bbc
+		}
+		if = {
+			limit = {
+				scope:local_bbc ?= {
+					is_alive = yes
+				}
+				scope:whore ?= {
+					is_alive = yes
+				}
+			}
+			if = {
+				limit = {
+					is_playable_character = yes
+				}
+				send_interface_message = {
+					type = bno_blacked_events
+					title = bno_slut_0015_notification.title
+					right_icon = root
+					bno_prostitution_effect = yes
+					desc = bno_slut_0015_notification.desc
+				}
+			}
+			else = {
+				bno_prostitution_effect = yes
+			}
+		}
+	}
+}
+
+bno_prostitution_effect = {
+	service_fee = yes
+	prostitution = yes
+	carn_sex_scene_no_pregnancy_effect = yes
+	carn_sex_scene_no_drama_effect = yes
+	bno_have_sex_with_effects = {
+		PARTNER = scope:local_bbc
+	}
+	bno_increase_whore_level = yes
+}
+
+be_smartest = {
+	remove_trait = intellect_good_1
+	remove_trait = intellect_good_2
+	remove_trait = intellect_bad_1
+	remove_trait = intellect_bad_2
+	remove_trait = intellect_bad_3
+	add_trait = intellect_good_3
+}
+
+be_prettiest = {
+	remove_trait = beauty_good_1
+	remove_trait = beauty_good_2
+	remove_trait = beauty_bad_1
+	remove_trait = beauty_bad_2
+	remove_trait = beauty_bad_3
+	add_trait = beauty_good_3
+}
+
+be_strongest = {
+	remove_trait = physique_good_1
+	remove_trait = physique_good_2
+	remove_trait = physique_bad_1
+	remove_trait = physique_bad_2
+	remove_trait = physique_bad_3
+	add_trait = physique_good_3
+}
+
+be_stronger = {
+	switch = {
+		trigger = has_trait
+		physique_good_1 = {  }
+	}
+}
+
+get_white_vassal_with_non_blacked_wife_scope = { 
+	if = {
+		limit = {
+			liege ?= {
+				is_white_guy_with_pure_wife = yes
+			}
+		}
+		liege = {
+			add_to_temporary_list = temp
+			every_vassal_or_below = {
+				limit = {
+					NOT = { this = root }
+					is_white_guy_with_pure_wife = yes
+				}
+				add_to_temporary_list = temp
+			}
+		}
+	}
+	every_vassal_or_below = {
+		limit = {is_white_guy_with_pure_wife = yes}
+		add_to_temporary_list = temp
+	}
+	random_in_list = {
+		list = temp
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+get_random_cuck_scope = {
+	random_courtier_or_guest = {
+		limit = {
+			NOT = { is_spouse_of = root }
+			is_ai_white_guy = yes
+		}
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+become_lover_with_target = {
+	if = {
+		limit = {
+			NOT = { has_relation_lover = $TARGET$ }
+		}
+		set_relation_lover = {
+			target = $TARGET$
+			reason = bbc_too_good
+			province = $LOCATION$
+		}
+	}
+}
+
+become_friend_with_target = {
+	if = {
+		limit = {
+			NOT  = { has_relation_friend = $TARGET$ }
+		}
+		set_relation_friend = {
+			target = $TARGET$
+			reason = $REASON$
+			province = $PROVINCE$
+		}
+	}
+}
+
+slut_whoring = {
+	save_temporary_scope_as = temp
+	if = {
+		limit = {
+			is_married = yes
+			any_spouse = {
+				is_ai_white_guy = yes
+			}
+		}
+		every_spouse = {
+			limit = {
+				is_ai_white_guy = yes
+			}
+			send_interface_message = {
+				type = bno_blacked_events
+				title = bno_bull_0008_notification.title
+				right_icon = scope:temp
+				desc = bno_bull_0008_notification.desc
+			}
+		}
+	}
+	if = {
+		limit = {
+			exists = liege
+			liege = $TARGET$
+		}
+		add_character_modifier = {
+			modifier = bno_whore_for_liege
+			months = 12
+		}
+	}
+	if = {
+		limit = {
+			has_trait = beauty_good
+		}
+		add_character_modifier = {
+			modifier = bno_pretty_whore_for_bbc
+			months = 12
+		}
+		add_character_modifier = {
+			modifier = bno_pretty_slut_pimped
+			months = 12
+		}
+		add_gold = major_gold_value
+		add_prestige = major_prestige_gain
+	}
+	else = {
+		add_character_modifier = {
+			modifier = bno_whore_for_bbc
+			months = 12
+		}
+		add_character_modifier = {
+			modifier = bno_slut_pimped
+			months = 12
+		}
+		add_gold = tiny_gold_value
+		add_prestige = minor_prestige_gain
+	}
+}
+
+bbc_pimping = {
+	if = {
+		limit = {
+			$TARGET$ = {
+				is_lowborn = yes
+			}
+		}
+		add_character_modifier = {
+			modifier = bno_pimping_lowborn_white_whores
+			months = 12
+		}
+		add_gold = tiny_gold_value
+		add_prestige = minor_prestige_gain
+	}
+	else_if = {
+		limit = {
+			$TARGET$ = {
+				is_lowborn = no
+			}
+		}
+		add_character_modifier = {
+			modifier = bno_pimping_noble_white_whores
+			months = 12
+		}
+		add_gold = major_gold_value
+		add_prestige = major_prestige_gain
+	}
+	if = {
+		limit = {
+			is_ruler = yes
+		}
+		$TARGET$ = {
+			add_character_modifier = {
+				modifier = bno_pretty_whore_for_liege
+				months = 12
+			}
+		}
+	}
+}
+
+get_spouse_scope = {
+	random_spouse = {
+		limit = { $TRIGGER_KEY$ = yes }
+		save_scope_as = $SCOPE_NAME$
+	}
+}
+
+get_not_blacked_enough_spouse = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_not_blacked_enough
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_blacked_wife_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_blacked
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_curious_wife_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_curious
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_white_wife_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_white_girl
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_mindless_wife_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_mindless
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_bbc_husband_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_blackbull
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_rich_white_husband_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_white_guy_rich
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_white_husband_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_white_guy
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_qos_wife_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_qos
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_snowbunny_wife_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_snowbunny
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_white_husband_with_secret_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_white_guy_has_secret
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_pure_wife_scope = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_ai_pure_white_girl
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+get_old_wife_or_wife_with_bad_trait = {
+	get_spouse_scope = {
+		TRIGGER_KEY = is_old_or_has_bad_trait
+		SCOPE_NAME = $SCOPE_NAME$
+	}
+}
+
+bno_sex_scene_start = {
+	save_scope_as = carn_sex_player
+	$PARTNER$ = {
+		save_scope_as = carn_sex_partner
+	}
+	carn_sex_scene_start = yes
+	bno_sex_scene_sex = yes
+}
+
+bno_sex_scene_sex = {
+	scope:carn_sex_player = {
+		bno_have_sex_with_effects = {
+			PARTNER = scope:carn_sex_partner
+		}
+	}
+}
+
+bno_sex_scene_cleanup = {
+	bno_sex_scene_sex = yes
+	carn_sex_scene_cleanup = yes
+}
+
+bno_make_futa_inactive = {
+	switch = {
+		trigger = has_trait
+		futa = { make_trait_inactive = futa }
+		futa_genetic = { make_trait_inactive = futa_genetic }
+	}
+}

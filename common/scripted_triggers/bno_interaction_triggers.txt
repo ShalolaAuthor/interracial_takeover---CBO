@@ -1,0 +1,71 @@
+﻿bno_prisoner_interaction_trigger = {
+    scope:recipient = {
+        is_imprisoned_by = scope:actor
+        is_bbc = no
+        is_adult = yes
+    }
+    scope:actor = {
+        bno_prisoner_is_valid_actor_trigger = yes
+    }
+}
+
+bno_prisoner_is_valid_actor_trigger = {
+    bno_basic_interaction_valid_actor = yes
+    trigger_if = {
+        limit = {
+            is_a_girl = yes
+        }
+        bno_is_there_any_bbc_in_the_court_trigger = yes
+    }
+    trigger_else = {
+        always = yes
+    }
+}
+
+bno_basic_interaction_valid_actor = {
+    is_adult = yes
+    OR = {
+        is_slut = yes
+        is_bbc = yes
+    }
+}
+
+bno_adult_bbc_actor_trigger = {
+    is_bbc = yes
+    is_adult = yes
+    is_a_male = yes
+}
+
+bno_male_prisoner_interaction_trigger = {
+    bno_prisoner_interaction_trigger = yes
+    scope:recipient = {
+        is_a_male = yes
+    }
+}
+
+bno_is_there_any_bbc_in_the_court_trigger = {
+    OR = {
+        any_courtier_or_guest = {
+            bno_adult_bbc_actor_trigger = yes
+        }
+        any_spouse = {
+            bno_adult_bbc_actor_trigger = yes
+        }
+    }
+}
+
+bno_is_there_any_bbc_courtier = {
+    save_temporary_scope_as = temp_actor
+    any_courtier = {
+        NOT = { is_spouse_of = scope:temp_actor }
+        bno_adult_bbc_actor_trigger = yes
+        count > 1
+    }
+}
+
+bno_female_prisoner_interaction_trigger = {
+    bno_prisoner_interaction_trigger = yes
+    scope:recipient = {
+        is_a_girl = yes
+    }
+}

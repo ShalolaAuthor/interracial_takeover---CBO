@@ -1,0 +1,26 @@
+﻿on_title_gain = {
+	on_actions = {
+		bno_king_title_gain
+		bno_emp_title_gain
+	}
+}
+
+bno_king_title_gain = {
+	trigger = {
+		has_game_rule = bno_mod_status_on
+		scope:title.tier = tier_kingdom
+	}
+	events = {
+		bno_events.0002
+	}
+}
+
+bno_emp_title_gain = {
+	trigger = {
+		has_game_rule = bno_mod_status_on
+		scope:title.tier = tier_empire
+	}
+	events = {
+		bno_events.0003
+	}
+}

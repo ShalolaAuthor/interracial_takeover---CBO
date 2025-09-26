@@ -1,0 +1,73 @@
+﻿bno_bbc_commander = {
+    type = commander
+
+    is_valid = {
+        exists = root
+        is_bbc = yes
+        NOT = { has_character_flag = bno_bbc_commander_cooldown }
+    }
+
+    chance = {
+        base = 1000
+        modifier = {
+            add = 1000
+            is_ai = no
+        } 
+    }
+
+    effect = {
+        save_scope_as = bbc_commander
+        scope:combat_side.enemy_side = {
+            if = {
+                limit = {
+                    any_side_commander = {
+                        is_bbc = no
+                        is_ai = yes
+                        is_a_male = yes
+                        NOT = { has_trait = bno_chastity }
+                    }
+                }
+                random_side_commander = {
+                    limit = {
+                        is_bbc = no
+                        is_ai = yes
+                        is_a_male = yes
+                        NOT = { has_trait = bno_chastity }
+                    }
+                    save_scope_as = bbc_enemy_commander
+                }
+                scope:bbc_commander = {
+                    trigger_event = bno_combat.0001
+                    add_character_flag = {
+                        flag = bno_bbc_commander_cooldown
+                        months = 1
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    any_side_commander = {
+                        is_ai = yes
+                        is_a_girl = yes
+                        NOT = { has_trait = bno_full_black }
+                    }
+                }
+                random_side_commander = {
+                    limit = {
+                        is_ai = yes
+                        is_a_girl = yes
+                        NOT = { has_trait = bno_full_black }
+                    }
+                    save_scope_as = bbc_enemy_female_commander
+                }
+                scope:bbc_commander = {
+                    trigger_event = bno_combat.0002
+                    add_character_flag = {
+                        flag = bno_bbc_commander_cooldown
+                        months = 1
+                    }
+                }
+            }
+        }
+    }
+}

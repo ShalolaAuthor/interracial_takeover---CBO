@@ -1,0 +1,16 @@
+﻿is_bno_faith = {
+    group = "special"
+
+    is_available_on_create = {
+        has_doctrine = special_doctrine_is_bno_faith
+    }
+
+    special_doctrine_is_bno_faith = {
+        parameters = {
+            hostility_override_tenet_bno_syncretism = 1
+            bno_syncretic_recipient_opinion_active = yes
+            opinion_of_bno_syncretic_actor_opinion_active = 30
+            bbcs_faith = yes
+        }
+    }
+}

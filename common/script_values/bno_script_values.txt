@@ -1,0 +1,177 @@
+﻿bno_prostitution_interval = {
+  switch = {
+    trigger = has_game_rule
+    bno_interval_three_months = { value = 3 }
+    bno_interval_six_months = { value = 6 }
+    fallback = { value = 1 }
+  }
+}
+
+bno_ai_events_chance = {
+	switch = {
+		trigger = has_game_rule
+		bno_ai_events_chance_rare = { value = 75 }
+		bno_ai_events_chance_uncommon = { value = 50 }
+		fallback = { value = 25 }
+	}
+}
+
+bno_gold_amount = {
+	every_ruler = {
+		limit = {
+			faith = root.faith
+		}
+		add = 1
+	}
+}
+
+bno_bbc_marriage_perk_reward = {
+  value = { 25 50 }
+}
+
+bno_bbc_marriage_prestige_perk_reward = {
+  value = { 500 1000 }
+}
+
+bno_random_xp_positive = {
+	switch = {
+		trigger = has_game_rule
+		bno_xp_gain_low = {
+			value = {
+				integer_range = {
+					min = 1
+					max = 5
+				}
+			}
+		}
+		bno_xp_gain_med = {
+			value = {
+				integer_range = {
+					min = 5
+					max = 10
+				}
+			}
+		}
+		bno_xp_gain_high = {
+			value = {
+				integer_range = {
+					min = 10
+					max = 15
+				}
+			}
+		}
+	}
+}
+
+bno_random_xp_negative = {
+	value = {
+		integer_range = {
+			min = -5
+			max = -1
+		}
+	}
+}
+
+bno_cum_addiction_random_xp_positive = {
+	value = bno_random_xp_positive
+	multiply = 2
+	max = 20
+}
+
+#negative is blonder
+hair_color_x = {
+	value = {
+		integer_range = {
+			min = -1
+			max = 1
+		}
+   	}
+   	multiply = var:bno_becoming_dark
+   	multiply = 0.1
+	min = -1
+	max = 1
+}
+#negative is lighter
+hair_color_y = {
+   	value = -1
+   	multiply = var:bno_becoming_dark
+   	multiply = 0.1
+	min = -1
+}
+
+skin_color_x = {
+  value = { -0.125 -0.1 }
+  multiply = var:bno_becoming_dark
+}
+
+skin_color_y = {
+  value = { 0.1 0.125 }
+  multiply = var:bno_becoming_dark
+}
+
+bno_younger_adult = {
+  value = { 18 23 }
+}
+
+bno_young_adult = {
+  value = { 23 39 }
+}
+
+bno_bbc_trait_occurrence_dicksize_modifier = { # Represents % chance of BBC occuring based on dicksize
+  switch = {
+    trigger = has_trait
+    dick_big_good_3 = { value = bno_bbc_big_dick_good_3_chance }
+    dick_big_good_2 = { value = bno_bbc_big_dick_good_2_chance }
+    dick_big_good_1 = { value = bno_bbc_big_dick_good_1_chance }
+	dick_small_bad_1 = { value = bno_bbc_small_dick_bad_1_chance }
+	dick_small_bad_2 = { value = bno_bbc_small_dick_bad_2_chance }
+	dick_small_bad_3 = { value = bno_bbc_small_dick_bad_3_chance }
+    fallback = { value = 0 }
+  }
+}
+
+bno_secrecy_base_value = {
+	add = {
+		value = 20
+		desc = BASE
+	}
+	# Reduce by the target's scheme discovery chance, if appropriate.
+	if = {
+		limit = {
+			# Scheme has to exist already.
+			exists = this
+			# We gotta be facing a character.
+			is_scheme_target_type = character
+			# Do they have a spymaster...
+			scheme_target_character.cp:councillor_spymaster ?= {
+				# ... who is performing the appropriate task...
+				is_performing_council_task = task_disrupt_schemes
+				NOR = {
+					# ... who _isn't_ the scheme owner...
+					this = scope:owner
+					# ... or an agent in the scheme.
+					save_temporary_scope_as = char_temp
+					root = {
+						any_scheme_agent_character = { this = scope:char_temp }
+					}
+				}
+			}
+		}
+		add = {
+			value = scope:target.cp:councillor_spymaster.spymaster_disrupt_schemes_total_modifier
+			multiply = -1
+			desc = secrecy.scheme_owner.spymaster.disrupt_schemes
+		}
+	}
+}
+
+bno_becoming_dark_value = {
+	value = 0
+	if = {
+		limit = {
+			is_body_modification_ok = yes
+			exists = var:bno_becoming_dark
+		}
+		add = var:bno_becoming_dark
+	}
+}

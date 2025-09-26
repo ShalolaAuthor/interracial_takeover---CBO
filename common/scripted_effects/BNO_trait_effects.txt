@@ -1,0 +1,1022 @@
+﻿### Helper Effect ###
+#bno_generic_xp_increase
+#bno_add_random_xp_to_leveled_down_trait
+#bno_increase_trait_level
+#bno_decrease_trait_level
+#bno_generic_rank_increase
+#bno_generic_rank_decrease
+###
+
+bno_generic_xp_increase = {
+	add_trait_xp = {
+		trait = $TRAIT_NAME$
+		value = $XP$
+	}
+}
+
+bno_add_random_xp_to_leveled_down_trait = {
+	add_trait_xp = {
+		trait = $TRAIT$
+		value = {
+			integer_range = {
+				min = 90
+				max = 99
+			}
+		}
+	}
+}
+
+bno_increase_trait_level = {
+	if = {
+		limit = {
+			has_trait = $TRAIT_NAME$
+		}
+		bno_generic_xp_increase = {
+			TRAIT_NAME = $TRAIT_NAME$
+			XP = $XP$
+		}
+		if = {
+			limit = {
+				has_trait_xp = {
+					trait = $TRAIT_NAME$
+					value >= 100
+				}
+			}
+			$LEVEL_UP_EFFECT$ = yes
+		}
+	}
+}
+
+bno_decrease_trait_level = {
+	if = {
+		limit = {
+			has_trait = $TRAIT_NAME$
+			has_trait_xp = {
+				trait = $TRAIT_NAME$
+				value <= 100
+			}
+		}
+		add_trait_xp = {
+			trait = $TRAIT_NAME$
+			value = bno_random_xp_negative
+		}
+		if = {
+			limit = {
+				has_trait_xp = {
+					trait = $TRAIT_NAME$
+					value <= 0
+				}
+			}
+			$LEVEL_DOWN_EFFECT$ = yes
+		}
+	}
+}
+
+bno_generic_rank_increase = {
+	change_trait_rank = {
+		trait = $TRAIT_GROUP$
+		rank = 1
+	}
+}
+
+bno_generic_rank_decrease = {
+	change_trait_rank = {
+		trait = $TRAIT_GROUP$
+		rank = -1
+	}
+}
+
+### African Traits ###
+#becoming_african
+###
+
+become_more_african = {
+	bno_generic_rank_increase = {
+		TRAIT_GROUP = bno_slut_blood
+	}
+}
+
+becoming_african = {
+	switch = {
+		trigger = has_trait
+		bno_full_black = { remove_trait = bno_full_black }
+		bno_mostly_black = { remove_trait = bno_mostly_black }
+		bno_mixed = { remove_trait = bno_mixed }
+		bno_barely_mixed = { remove_trait = bno_barely_mixed }
+	}
+	switch = {
+		trigger = has_trait
+		bno_mostly_black_slut = { become_more_african = yes }
+		bno_mixed_slut = { become_more_african = yes }
+		bno_barely_mixed_slut = { become_more_african = yes }
+		fallback = { add_trait = bno_barely_mixed_slut }
+	}
+}
+
+### Slut Traits ###
+#become_more_slut
+#become_less_slut
+#bno_increase_sluttyness <
+#bno_decrease_sluttyness <
+###
+
+become_more_slut = {
+	bno_generic_rank_increase = {
+		TRAIT_GROUP = bno_whitegirl
+	}
+}
+
+become_less_slut = {
+	if = {
+		limit = {
+			has_trait_rank = {
+				trait = bno_whitegirl
+				rank > 1
+			}
+		}
+		bno_generic_rank_decrease = {
+			TRAIT_GROUP = bno_whitegirl
+		}
+		switch = {
+			trigger = has_trait
+			bno_curious = {
+				bno_add_random_xp_to_leveled_down_trait = {
+					TRAIT = bno_curious
+				}
+			}
+			bno_blacked = {
+				bno_add_random_xp_to_leveled_down_trait = {
+					TRAIT = bno_blacked
+				}
+			}
+			bno_snowbunny = {
+				bno_add_random_xp_to_leveled_down_trait = {
+					TRAIT = bno_snowbunny
+				}
+			}
+			bno_qos = {
+				bno_add_random_xp_to_leveled_down_trait = {
+					TRAIT = bno_qos
+				}
+			}
+		}
+	}
+}
+
+bno_increase_sluttyness = {
+	if = {
+		limit = {
+			AND = {
+				NOT = { has_trait = bno_whitegirl }
+				NOT = { has_trait = bno_full_black }
+			}
+		}
+		add_trait = bno_curious
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_curious
+		LEVEL_UP_EFFECT = become_more_slut
+		XP = bno_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_blacked
+		LEVEL_UP_EFFECT = become_more_slut
+		XP = bno_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_snowbunny
+		LEVEL_UP_EFFECT = become_more_slut
+		XP = bno_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_qos
+		LEVEL_UP_EFFECT = become_more_slut
+		XP = bno_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_mindless_bbc_slut
+		LEVEL_UP_EFFECT = become_more_slut
+		XP = bno_random_xp_positive
+	}
+}
+
+bno_decrease_sluttyness = {
+	if = {
+		limit = {
+			has_trait = bno_whitegirl
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_mindless_bbc_slut
+			LEVEL_DOWN_EFFECT = become_less_slut
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_qos
+			LEVEL_DOWN_EFFECT = become_less_slut
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_snowbunny
+			LEVEL_DOWN_EFFECT = become_less_slut
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_blacked
+			LEVEL_DOWN_EFFECT = become_less_slut
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_curious
+			LEVEL_DOWN_EFFECT = become_less_slut
+		}
+	}
+}
+
+### Cuck Traits ###
+#become_more_cuck_effect
+#become_less_cuck_effect
+#bno_increase_cuckiness <
+#bno_decrease_cuckiness <
+###
+
+become_more_cuck_effect = {
+	bno_generic_rank_increase = {
+		TRAIT_GROUP = bno_whiteboi
+	}
+}
+
+become_less_cuck_effect = {
+	if = {
+		limit = {
+			has_trait_rank = {
+				trait = bno_whiteboi
+				rank > 1
+			}
+		}
+		bno_generic_rank_decrease = {
+			TRAIT_GROUP = bno_whiteboi
+		}
+		switch = {
+			trigger = has_trait
+			bno_cuckish = {
+				bno_add_random_xp_to_leveled_down_trait = {
+					TRAIT = bno_cuckish
+				}
+			}
+			bno_cuck = {
+				bno_add_random_xp_to_leveled_down_trait = {
+					TRAIT = bno_cuck
+				}
+			}
+			bno_beta = {
+				bno_add_random_xp_to_leveled_down_trait = {
+					TRAIT = bno_beta
+				}
+			}
+		}
+	}
+}
+
+bno_increase_cuckiness = {
+	if = {
+		limit = {
+			AND = {
+				NOT = { has_trait = bno_whiteboi }
+				NOT = { has_trait = bno_bbc }
+			}
+		}
+		add_trait = bno_cuckish
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_cuckish
+		LEVEL_UP_EFFECT = become_more_cuck_effect
+		XP = bno_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_cuck
+		LEVEL_UP_EFFECT = become_more_cuck_effect
+		XP = bno_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_beta
+		LEVEL_UP_EFFECT = become_more_cuck_effect
+		XP = bno_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_jos
+		LEVEL_UP_EFFECT = become_more_cuck_effect
+		XP = bno_random_xp_positive
+	}
+}
+
+bno_decrease_cuckiness = {
+	if = {
+		limit = {
+			has_trait = bno_whiteboi
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_jos
+			LEVEL_DOWN_EFFECT = become_less_cuck_effect
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_beta
+			LEVEL_DOWN_EFFECT = become_less_cuck_effect
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_cuck
+			LEVEL_DOWN_EFFECT = become_less_cuck_effect
+		}
+		bno_decrease_trait_level = {
+			TRAIT_NAME = bno_cuckish
+			LEVEL_DOWN_EFFECT = become_less_cuck_effect
+		}
+	}
+}
+
+### Chastity Traits ###
+#bno_castrated_effect <
+#bno_remove_lustful_and_fecund
+#bno_caged_effect <
+###
+
+bno_castrated_effect = {
+	bno_remove_lustful_and_fecund = yes
+	if = {
+		limit = { is_male = yes }
+		switch = {
+			trigger = has_trait
+			bno_caged = {
+				bno_generic_rank_increase = {
+					TRAIT_GROUP = bno_chastity
+				}
+			}
+			fallback = { add_trait = bno_castrated }
+		}
+	}
+	else = {
+		switch = {
+			trigger = has_trait
+			bno_caged_futa = {
+				bno_generic_rank_increase = {
+					TRAIT_GROUP = bno_chastity_futa
+				}
+			}
+			fallback = { add_trait = bno_castrated_futa }
+		}
+		bno_make_futa_inactive = yes
+	}
+	add_prestige = -500
+}
+
+bno_remove_lustful_and_fecund = {
+	if = {
+		limit = {
+			has_trait = lustful
+		}
+		remove_trait = lustful
+	}
+	if = {
+		limit = {
+			has_trait = fecund
+		}
+		remove_trait = fecund
+	}
+	if = {
+		limit = {
+			NOT = { has_trait = chaste }
+		}
+		add_trait = chaste
+	}
+	if = {
+		limit = {
+			NOT = { has_trait = celibate }
+		}
+		add_trait = celibate
+	}
+}
+
+bno_caged_effect = {
+	bno_remove_lustful_and_fecund = yes
+	if = {
+		limit = { is_male = yes }
+		if = {
+			limit = {
+				NOT = { has_trait = bno_chastity }
+			}
+			add_trait = bno_caged
+		}
+	}
+	else = {
+		if = {
+			limit = {
+				NOT = { has_trait = bno_chastity_futa }
+			}
+			add_trait = bno_caged_futa
+		}
+	}
+	bno_create_artifact_bno_chastity_cage_effect = {
+		CAGER = $CAGER$
+	}
+	add_prestige = -250
+}
+
+### Body Parts Traits ###
+#decrease_dick_size
+#become_smaller_dick_effect <
+#increase_breast_size
+#become_bigger_tits_effect <
+###
+
+decrease_dick_size = {
+	if = {
+		limit = {
+			has_trait = dick_big_good
+		}
+		bno_generic_rank_decrease = {
+			TRAIT_GROUP = dick_big_good
+		}
+	}
+	else_if = {
+		limit = {
+			has_trait = dick_small_bad
+		}
+		bno_generic_rank_increase = {
+			TRAIT_GROUP = tits_small_bad
+		}
+	}
+}
+
+become_smaller_dick_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = dick_big_good
+				has_trait = dick_small_bad
+			}
+			NOT = { has_trait = bno_castrated }
+		}
+		bno_lottery_dick_size = yes
+	}
+	switch = {
+		trigger = has_trait
+		dick_big_good_3 = { decrease_dick_size = yes }
+		dick_big_good_2 = { decrease_dick_size = yes }
+		dick_big_good_1 = { 
+			remove_trait = dick_big_good_1
+			add_trait = dick_small_bad_1	
+		}
+		dick_small_bad_1 = { decrease_dick_size = yes }
+		dick_small_bad_2 = { decrease_dick_size = yes }
+	}
+}
+
+increase_breast_size = {
+	if = {
+		limit = {
+			has_trait = tits_big_good
+		}
+		bno_generic_rank_increase = {
+			TRAIT_GROUP = tits_big_good
+		}
+	}
+	else_if = {
+		limit = {
+			has_trait = tits_small_bad
+		}
+		bno_generic_rank_decrease = {
+			TRAIT_GROUP = tits_small_bad
+		}
+	}
+}
+
+become_bigger_tits_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = tits_big_good
+				has_trait = tits_small_bad
+			}
+		}
+		bno_lottery_tits_size = yes
+	}
+	switch = {
+		trigger = has_trait
+		tits_small_bad_3 = { increase_breast_size = yes }
+		tits_small_bad_2 = { increase_breast_size = yes }
+		tits_small_bad_1 = { 
+			remove_trait = tits_small_bad_1
+			add_trait = tits_big_good_1	
+		}
+		tits_big_good_1 = { increase_breast_size = yes }
+		tits_big_good_2 = { increase_breast_size = yes }
+	}
+}
+
+### Vanilla Traits
+#increase_trait_rank
+#increase_intellect
+#increase_physique
+#increase_beauty
+#bno_level_a_vanilla_trait
+#become_smarter <
+#become_stronger <
+#become_prettier <
+###
+
+increase_trait_rank = {
+	if = {
+		limit = {
+			has_trait = $TRAIT_GROUP$_bad_1
+		}
+		remove_trait = $TRAIT_GROUP$_bad_1
+		add_trait = $TRAIT_GROUP$_good_1
+	}
+	else = {
+		if = {
+			limit = {
+				has_trait = $TRAIT_GROUP$_good
+			}
+			bno_generic_rank_increase = {
+				TRAIT_GROUP = $TRAIT_GROUP$_good
+			}
+		}
+		else_if = {
+			limit = {
+				has_trait = $TRAIT_GROUP$_bad
+			}
+			bno_generic_rank_decrease = {
+				TRAIT_GROUP = $TRAIT_GROUP$_bad
+			}
+		}
+	}
+}
+
+increase_intellect = {
+	increase_trait_rank = {
+		TRAIT_GROUP = intellect
+	}
+}
+
+increase_physique = {
+	increase_trait_rank = {
+		TRAIT_GROUP = physique
+	}
+}
+
+increase_beauty = {
+	increase_trait_rank = {
+		TRAIT_GROUP = beauty
+	}
+}
+
+bno_level_a_vanilla_trait = {
+	switch = {
+		trigger = has_trait
+		$TRAIT_GROUP$_bad_3 = { increase_$TRAIT_GROUP$ = yes }
+		$TRAIT_GROUP$_bad_2 = { increase_$TRAIT_GROUP$ = yes }
+		$TRAIT_GROUP$_bad_1 = { increase_$TRAIT_GROUP$ = yes }
+		$TRAIT_GROUP$_good_1 = { increase_$TRAIT_GROUP$ = yes }
+		$TRAIT_GROUP$_good_2 = { increase_$TRAIT_GROUP$ = yes }
+		$TRAIT_GROUP$_good_3 = {  }
+		fallback = { add_trait = $TRAIT_GROUP$_good_1 }
+	}
+}
+
+become_smarter = {
+	bno_level_a_vanilla_trait = {
+		TRAIT_GROUP = intellect
+	}
+}
+
+become_stronger = {
+	bno_level_a_vanilla_trait = {
+		TRAIT_GROUP = physique
+	}
+}
+
+become_prettier = {
+	bno_level_a_vanilla_trait = {
+		TRAIT_GROUP = beauty
+	}
+}
+
+### Pussy Wear Traits ###
+#increase_pussy_wear
+#bno_increase_pussy_wear_effect
+#bno_increase_pussy_wear <
+#bno_bbc_pussy_wear_effect
+###
+
+increase_pussy_wear = {
+    bno_generic_rank_increase = {
+        TRAIT_GROUP = bno_pussy_mileage
+    }
+}
+
+bno_increase_pussy_wear_effect = {
+    $GIRL_SCOPE$ = {
+        if = {
+            limit = {
+                is_a_girl = yes
+                NOT = { has_trait = bno_pussy_mileage_6 }
+            }
+            if = {
+                limit = {
+                    NOT = { has_trait = bno_pussy_mileage }
+                }
+                add_trait = bno_pussy_mileage_1
+            }
+            #if partner non bbc stop adding xp after 58
+            if = {
+                limit = {
+                    has_trait = bno_pussy_mileage_1
+                    $BOY_SCOPE$ = {
+                        is_a_male = yes
+                        is_bbc = no
+                    }
+                }
+                if = {
+                    limit = {
+                        has_trait_xp = {
+                            trait = bno_pussy_mileage_1
+                            value < 59
+                        }
+                    }
+                    add_trait_xp = {
+                        trait = bno_pussy_mileage_1
+                        value = 1
+                    }
+                }
+            }
+            #if partner bbc
+            if = {
+                limit = {
+                    $BOY_SCOPE$ = {
+                        is_a_male = yes
+                        is_bbc = yes
+                    }
+                }
+                switch = {
+                    trigger = has_trait
+                    bno_pussy_mileage_1 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_1
+                        }
+                    }
+                    bno_pussy_mileage_2 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_2
+                        }
+                    }
+                    bno_pussy_mileage_3 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_3
+                        }
+                    }
+                    bno_pussy_mileage_4 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_4
+                        }
+                    }
+                    bno_pussy_mileage_5 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_5
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+bno_increase_pussy_wear = {
+	save_scope_as = initiator
+    if = {
+		limit = {
+			exists = scope:carn_sex_partner
+		}
+		bno_increase_pussy_wear_effect = {
+    	    GIRL_SCOPE = scope:initiator
+    	    BOY_SCOPE = scope:carn_sex_partner
+    	}
+    	bno_increase_pussy_wear_effect = {
+    	    GIRL_SCOPE = scope:carn_sex_partner
+    	    BOY_SCOPE = scope:initiator
+    	}
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:carn_sex_partner }
+			exists = scope:mother
+		}
+		scope:mother = {
+			if = {
+                limit = {
+                    has_trait_xp = {
+                        trait = bno_pussy_mileage_1
+                        value < 49
+                    }
+					scope:real_father = {
+						is_bbc = no
+					}
+                }
+                add_trait_xp = {
+                    trait = bno_pussy_mileage_1
+                    value = bno_random_xp_positive
+                }
+            }
+			if = {
+                limit = {
+					scope:real_father = {
+						is_bbc = yes
+					}
+                }
+				switch = {
+                    trigger = has_trait
+                    bno_pussy_mileage_1 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_1
+                        }
+                    }
+                    bno_pussy_mileage_2 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_2
+                        }
+                    }
+                    bno_pussy_mileage_3 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_3
+                        }
+                    }
+                    bno_pussy_mileage_4 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_4
+                        }
+                    }
+                    bno_pussy_mileage_5 = {
+                        bno_bbc_pussy_wear_effect = {
+                            PUSSY_WEAR_TRAIT = bno_pussy_mileage_5
+                        }
+                    }
+                }
+            }
+		}
+	}
+}
+
+bno_bbc_pussy_wear_effect = {
+    add_trait_xp = {
+        trait = $PUSSY_WEAR_TRAIT$
+        value = bno_random_xp_positive
+    }
+    if = {
+        limit = {
+            has_trait_xp = {
+                trait = $PUSSY_WEAR_TRAIT$
+                value >= 100
+            }
+        }
+        increase_pussy_wear = yes
+    }
+}
+
+### BBC Whore Traits ###
+#become_more_whorish
+#bno_increase_whore_level <
+#bno_whore_level_effect
+###
+
+become_more_whorish = {
+	bno_generic_rank_increase = {
+		TRAIT_GROUP = bno_bbc_whore
+	}
+}
+
+bno_increase_whore_level = {
+	switch = {
+		trigger = has_trait
+		bno_bbc_whore_1 = {
+			bno_whore_level_effect = {
+				WHORE_TRAIT = bno_bbc_whore_1
+			}
+		}
+		bno_bbc_whore_2 = {
+			bno_whore_level_effect = {
+				WHORE_TRAIT = bno_bbc_whore_2
+			}
+		}
+		bno_bbc_whore_3 = {
+			bno_whore_level_effect = {
+				WHORE_TRAIT = bno_bbc_whore_3
+			}
+		}
+		fallback = { add_trait = bno_bbc_whore_1 }
+	}
+}
+
+bno_whore_level_effect = {
+	add_trait_xp = {
+        trait = $WHORE_TRAIT$
+        value = bno_random_xp_positive
+    }
+    if = {
+        limit = {
+            has_trait_xp = {
+                trait = $WHORE_TRAIT$
+                value >= 100
+            }
+        }
+        become_more_whorish = yes
+    }
+}
+
+### Cum Addiction Traits ###
+#become_more_cum_addict
+#bno_increase_cum_addiction_level <
+#bno_cum_addiction_rank_increase
+###
+
+become_more_cum_addict = {
+	bno_generic_rank_increase = {
+		TRAIT_GROUP = bno_cum_addiction
+	}
+}
+
+bno_increase_cum_addiction_level = {
+	if = {
+		limit = {
+			NOT = { has_trait = bno_cum_addiction }
+		}
+		add_trait = bno_cum_addiction_1
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_cum_addiction_1
+		LEVEL_UP_EFFECT = become_more_cum_addict
+		XP = bno_cum_addiction_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_cum_addiction_2
+		LEVEL_UP_EFFECT = become_more_cum_addict
+		XP = bno_cum_addiction_random_xp_positive
+	}
+	bno_increase_trait_level = {
+		TRAIT_NAME = bno_cum_addiction_3
+		LEVEL_UP_EFFECT = become_more_cum_addict
+		XP = bno_cum_addiction_random_xp_positive
+	}
+}
+
+### Trait Inheritance ###
+#bno_flag_inheritance
+#bno_normal_african_inheritance
+#bno_abnormal_african_inheritance
+###
+
+bno_flag_inheritance = {
+	#Flag Inheritance
+	if = {
+		limit = {
+			AND = {
+				scope:mother ?= { has_character_flag = bno_originally_african }
+				scope:real_father ?= { has_character_flag = bno_originally_african }
+			}
+		}
+		bno_seed_originally_african_flag = yes
+	}
+}
+
+bno_normal_african_inheritance = {
+	#African Trait
+	if = {
+		limit = {
+			exists = scope:mother
+			exists = scope:real_father
+			OR = {
+				AND = {
+					scope:mother = { has_trait = bno_full_black }
+					scope:real_father = { has_trait = bno_full_black }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_full_black }
+					scope:real_father = { has_trait = bno_mostly_black }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mostly_black }
+					scope:real_father = { has_trait = bno_full_black }
+				}
+			}
+		}
+		add_trait = bno_full_black
+	}
+	else_if = {
+		limit = {
+			exists = scope:mother
+			exists = scope:real_father
+			OR = {
+				AND = {
+					scope:mother = { has_trait = bno_mostly_black }
+					scope:real_father = { has_trait = bno_mostly_black }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mixed }
+					scope:real_father = { has_trait = bno_full_black }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_full_black }
+					scope:real_father = { has_trait = bno_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mostly_black }
+					scope:real_father = { has_trait = bno_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mixed }
+					scope:real_father = { has_trait = bno_mostly_black }
+				}
+			}
+		}
+		add_trait = bno_mostly_black
+	}
+	else_if = {
+		limit = {
+			exists = scope:mother
+			exists = scope:real_father
+			OR = {
+				AND = {
+					scope:mother = { has_trait = bno_mixed }
+					scope:real_father = { has_trait = bno_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_full_black }
+					scope:real_father = { has_trait = bno_barely_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_barely_mixed }
+					scope:real_father = { has_trait = bno_full_black }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mostly_black }
+					scope:real_father = { has_trait = bno_barely_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_barely_mixed }
+					scope:real_father = { has_trait = bno_mostly_black }
+				}
+				AND = {
+					NOT = { scope:mother = { has_trait = bno_blood } }
+					scope:real_father = { has_trait = bno_full_black }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_full_black }
+					NOT = { scope:real_father = { has_trait = bno_blood } }
+				}
+			}
+		}
+		add_trait = bno_mixed
+	}
+	else_if = {
+		limit = {
+			exists = scope:mother
+			exists = scope:real_father
+			OR = {
+				AND = {
+					scope:mother = { has_trait = bno_barely_mixed }
+					scope:real_father = { has_trait = bno_barely_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mixed }
+					scope:real_father = { has_trait = bno_barely_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_barely_mixed }
+					scope:real_father = { has_trait = bno_mixed }
+				}
+				AND = {
+					NOT = { scope:mother = { has_trait = bno_blood } }
+					scope:real_father = { has_trait = bno_mostly_black }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mostly_black }
+					NOT = { scope:real_father = { has_trait = bno_blood } }
+				}
+				AND = {
+					NOT = { scope:mother = { has_trait = bno_blood } }
+					scope:real_father = { has_trait = bno_mixed }
+				}
+				AND = {
+					scope:mother = { has_trait = bno_mixed }
+					NOT = { scope:real_father = { has_trait = bno_blood } }
+				}
+			}
+		}
+		add_trait = bno_barely_mixed
+	}
+}
+
+bno_abnormal_african_inheritance = {
+	if = {
+		limit = { scope:real_father = { is_bbc = yes } }
+		add_trait = bno_full_black
+		bno_add_bbc_trait_effect = yes
+	}
+	else = {
+		bno_normal_african_inheritance = yes
+	}
+	bno_make_bbc_trait_inactive = yes
+}

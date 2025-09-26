@@ -1,0 +1,78 @@
+﻿bno_only_you_and_neighbour_on_actions = {
+    #Player
+    bno_on_actions_function = {
+        bno_on_actions_in_script = $bno_on_actions$
+    }
+    #Player's Courtier
+    every_courtier_or_guest = {
+        limit = {
+            is_elligible_partner = yes
+        }
+        bno_on_actions_function = {
+            bno_on_actions_in_script = $bno_on_actions$
+        }
+    }
+    #Player's Vassal
+    every_vassal_or_below = {
+        limit = {
+            is_alive = yes
+        }
+        bno_on_actions_function = {
+            bno_on_actions_in_script = $bno_on_actions$
+        }
+        every_courtier_or_guest = {
+            limit = {
+                is_elligible_partner = yes
+            }
+            bno_on_actions_function = {
+                bno_on_actions_in_script = $bno_on_actions$
+            }
+        }
+    }
+    #Player's Neighbour
+    every_neighboring_top_liege_realm_owner = {
+        limit = {
+            is_alive = yes
+        }
+        bno_on_actions_function = {
+            bno_on_actions_in_script = $bno_on_actions$
+        }
+        every_courtier_or_guest = {
+            limit = {
+                is_elligible_partner = yes
+            }
+            bno_on_actions_function = {
+                bno_on_actions_in_script = $bno_on_actions$
+            }
+        }
+        every_vassal_or_below = {
+            limit = {
+                is_alive = yes
+            }
+            bno_on_actions_function = {
+                bno_on_actions_in_script = $bno_on_actions$
+            }
+            every_courtier_or_guest = {
+                limit = {
+                    is_elligible_partner = yes
+                }
+                bno_on_actions_function = {
+                    bno_on_actions_in_script = $bno_on_actions$
+                }
+            }
+        }
+    }
+}
+
+bno_on_actions_function = {
+    trigger_event = {
+        on_action = $bno_on_actions_in_script$
+        days = { 1 90 }
+    }
+}
+
+bno_game_rule_inversed_gender_equality_effect = {
+    culture:bnoc = {
+        set_culture_pillar = martial_custom_male_only
+    }
+} 

@@ -1,0 +1,103 @@
+﻿# on_action assigning availability (ors and if/else's) to RANDOM events
+
+#yearly pulse for bno events
+random_yearly_everyone_pulse = {
+	on_actions = {
+		bno_trait_maintenance_pulse
+		bno_religion_maintenance
+	}
+}
+#5 year pulse for chance for bbc chars to force title changes
+five_year_everyone_pulse = {
+	on_actions = {
+		bno_title_change_pulse
+	}
+}
+
+#yearly pulse for bno marriage events
+random_yearly_everyone_pulse = {
+	on_actions = {
+		bno_yearly_marry_pulse
+		bno_yearly_divorce_pulse
+	}
+}
+
+bno_religion_maintenance = {
+	trigger = {
+		has_game_rule = bno_mod_status_on
+		has_game_rule = bno_religion_yes
+	}
+	effect = {
+		if = {
+			limit = {
+				is_ai = yes
+				is_bbc = yes
+				any_religion_global = {
+					any_faith = {
+						NOT = { religious_head = root }
+					}
+				}
+				NOT = {
+					faith = faith:bbcs
+				}
+			}
+			set_character_faith = faith:bbcs
+		}
+	}
+}
+
+# effect trigger_event = { on_action = bno_random_yearly_random_pulse }
+
+bno_yearly_marry_pulse = {
+	trigger = {
+		has_game_rule = bno_mod_status_on
+	}
+	random_events = {
+		chance_to_happen = 10
+		1 = bno_marriage.0001 #bull takes rando unmarried courtier as wife
+		1 = bno_marriage.0002 #bull takes married slut as wife
+		1 = bno_marriage.0004 #unmarried bbc looks to other realms for single woman
+		1 = bno_marriage.0005 #bull steals foreign slut wife
+	}
+}
+
+bno_yearly_divorce_pulse = {
+	trigger = {
+		has_game_rule = bno_mod_status_on
+	}
+	events = {
+		bno_marriage.0003 #bull divorces old or sick wife
+		delay = { days = { 0 90 } } #delay below events randomly 0-90 days
+		bno_marriage.0006
+	}
+}
+
+bno_title_change_pulse = {
+	trigger = {
+		has_game_rule = bno_mod_status_on
+	}
+	random_events = {
+		chance_to_happen = 45
+		1 = bno_title_change.0001 #BBC courtier force buys county title
+		1 = bno_title_change.0002 #bbc courtier pays for AI vassal's title, cuck player informed
+		1 = bno_title_change.0003 #bbc uses prestige to force vassal to give up title
+		1 = bno_title_change.0004 #high intrigue BBC courtier + AI vassal's slut wife kill vassal, take all title for themself, get married. cuck player informed
+		1 = bno_title_change.0005 #fully blacked wife takes all cuck players titles
+		1 = bno_title_change.0006 #ruler bbc takes slut liege's titles , don't know if i've tested this yet?
+	}
+}
+
+bno_trait_maintenance_pulse = {
+	trigger = {
+		has_game_rule = bno_mod_status_on
+	}
+	events = {
+		bno_trait_maintenance.0001
+	}
+}
+
+on_guest_arrived_from_pool = {
+	on_actions = {
+		bno_trait_maintenance_pulse
+	}
+}

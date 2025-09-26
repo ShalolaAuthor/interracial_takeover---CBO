@@ -1,0 +1,110 @@
+﻿bno_embrace_african_pulse = {
+    on_actions = {
+        bno_embrace_african_yearly_initial_pulse
+        bno_embrace_african_yearly_global_random_pulse
+    }
+}
+
+bno_embrace_african_yearly_initial_pulse = {
+    trigger = {
+        is_ai = no
+        is_elligible_partner = yes
+    }
+    random_events = {
+        1 = bno_embrace_african_1_events.0001
+        1 = bno_embrace_african_2_events.0001
+        1 = bno_embrace_african_5_events.0001
+    }
+}
+
+bno_yearly_embrace_african_1_pulse = {
+    trigger = {
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_1
+        }
+    }
+    random_events = {
+        chance_to_happen = 100
+        chance_of_no_event = {
+            value = 0
+            if = {
+                limit = { is_ai = yes }
+                add = bno_ai_events_chance
+            }
+        }
+        1 = bno_embrace_african_1.0001
+        1 = bno_embrace_african_1.0002
+        1 = bno_embrace_african_1.0003
+        1 = bno_embrace_african_1.0004
+        1 = bno_embrace_african_1.0005
+        1 = bno_embrace_african_1.0006
+    }
+}
+
+bno_yearly_embrace_african_2_pulse = {
+    trigger = {
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_2
+        }
+    }
+    random_events = {
+        chance_to_happen = 100
+        chance_of_no_event = {
+            value = 0
+            if = {
+                limit = { is_ai = yes }
+                add = bno_ai_events_chance
+            }
+        }
+        1 = bno_embrace_african_2.0001
+        1 = bno_embrace_african_2.0002
+        1 = bno_embrace_african_2.0003
+    }
+}
+
+bno_yearly_embrace_african_5_pulse = {
+    trigger = {
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_5
+        }
+    }
+    random_events = {
+        chance_to_happen = 100
+        chance_of_no_event = {
+            value = 0
+            if = {
+                limit = { is_ai = yes }
+                add = bno_ai_events_chance
+            }
+        }
+        1 = bno_embrace_african_5.0002
+        1 = bno_embrace_african_5.0003
+        1 = bno_embrace_african_5.0004
+        1 = bno_embrace_african_5.0005
+        1 = bno_embrace_african_5.0007
+    }
+}
+
+bno_embrace_african_yearly_global_random_pulse = {
+    trigger = {
+        has_game_rule = bno_global_bbc_activities_yes
+        is_elligible_partner = yes
+    }
+    random_on_action = {
+        1 = bno_yearly_embrace_african_1_pulse
+        1 = bno_yearly_embrace_african_2_pulse
+        1 = bno_yearly_embrace_african_5_pulse
+    }
+}
+
+bno_on_siege_completion = {
+    events = {
+        bno_embrace_african_1.2007
+    }
+}
+
+on_siege_completion = {
+    on_actions = {
+        bno_on_siege_completion
+    }
+}

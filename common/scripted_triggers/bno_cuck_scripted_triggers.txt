@@ -1,0 +1,86 @@
+﻿is_whiteboi = {
+	has_trait = bno_whiteboi
+}
+
+is_cuckish = {
+	has_trait = bno_cuckish
+}
+
+is_cuckish_guy = {
+	is_white_guy = yes
+	is_bno_cuckish_and_up = yes
+}
+
+is_cuck = {
+	has_trait = bno_cuck
+}
+
+is_cuck_guy = {
+	is_white_guy = yes
+	is_bno_cuck_and_up = yes
+}
+
+is_beta = {
+	has_trait = bno_beta
+}
+
+is_beta_guy = {
+	is_white_guy = yes
+	is_bno_beta_and_up = yes
+}
+
+is_jos = {
+	has_trait = bno_jos
+}
+
+is_jos_guy = {
+	is_white_guy = yes
+	is_jos = yes
+}
+
+is_bno_cuckish_and_up = {
+	is_whiteboi = yes
+}
+
+is_bno_cuck_and_up = {
+	OR = {
+		is_whiteboi = yes
+		is_beta = yes
+		is_jos = yes
+	}
+}
+
+is_bno_beta_and_up = {
+	OR = {
+		is_beta = yes
+		is_jos = yes
+	}
+}
+
+is_spouse_curious = {
+	any_spouse = {
+		is_ai_curious = yes
+	}
+}
+
+is_spouse_white = {
+	any_spouse = {
+		is_ai_white_girl = yes
+	}
+}
+
+is_spouse_blacked = {
+	any_spouse = {
+		is_ai_blacked = yes
+	}
+}
+
+is_ai_not_married_blackbull = {
+	is_ai_blackbull = yes
+	is_married = no
+}
+
+is_ai_snowbunny = {
+	is_snowbunny = yes
+	is_ai = yes
+}

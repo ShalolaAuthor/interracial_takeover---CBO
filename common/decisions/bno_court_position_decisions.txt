@@ -1,0 +1,283 @@
+﻿bno_recruit_court_position_decision = {
+    ai_check_interval = 6
+    #Placeholder Picture
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+    }
+    sort_order = 100
+	decision_group_type = bno_decision_group
+
+    is_shown = {
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_2
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        is_imprisoned = no
+    }
+
+    widget = {
+        gui = "decision_view_widget_option_list_generic"
+        controller = decision_option_list_controller
+        decision_to_second_step_button = "CHOOSE_CHARACTER_ROLE_DECISION_NEXT_STEP_BUTTON"
+        show_from_start = yes
+
+        item = { # BBC Worshipper
+            value = hire_bbc_worshipper_decision
+            is_shown = {
+                is_ruler = yes
+            }
+            is_valid = {
+                custom_tooltip = {
+                    text = recruit_bbc_worshipper_cooldown_tt
+                    NOT = { has_character_flag = recruit_bbc_worshipper_cooldown }
+                }
+                any_court_position_holder = {
+                    type = bno_bbc_worshipper_court_position
+                    count < 3
+                }
+            }
+            current_description = hire_bbc_worshipper_decision
+            localization = hire_bbc_worshipper_decision
+            #Placeholder
+            icon = "gfx/interface/icons/court_position_types/bno_bbc_worshipper_court_position.dds"
+            ai_chance = {
+                value = 0
+                switch = {
+                    trigger = has_trait
+                    bno_bbc = { add = 100 }
+                    bno_curious = { add = 20 }
+                    bno_blacked = { add = 40 }
+                    bno_snowbunny = { add = 60 }
+                    bno_qos = { add = 80 }
+                    bno_mindless_bbc_slut = { add = 100 }
+                }
+            }
+        }
+    }
+
+    effect = {
+        custom_tooltip = bno_recruit_court_position_decision_tt
+        hidden_effect = {
+            custom_tooltip = recruit_court_position_decision_tooltip
+            if = { # BBC Worshipper
+                limit = { scope:hire_bbc_worshipper_decision = yes }
+                set_variable = {
+                    name = recruit_bbc_worshipper_cooldown
+                    years = 1
+                }
+                trigger_event = {
+                    id = bno_events.0007
+                    days = { 7 14 }
+                }
+            }
+        }
+    }
+    ai_potential = {
+        dynasty ?= {
+            has_dynasty_perk = bno_embrace_african_2
+        }
+        any_court_position_holder = {
+            type = bno_bbc_worshipper_court_position
+            count < 3
+        }
+        NOT = { has_character_flag = recruit_bbc_worshipper_cooldown }
+    }
+    ai_will_do = {
+        base = 0
+        bno_decision_modifier = yes
+    }
+}
+
+bno_build_bbc_church = {
+    #Place Holder
+    picture = { 
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = bno_build_bbc_church.desc
+    selection_tooltip = bno_build_bbc_church.tooltip
+    decision_group_type = bno_decision_group
+
+    ai_check_interval = 1
+
+    is_shown = {
+        bno_has_embrace_african_5 = yes
+    }
+
+    is_valid = {
+        is_independent_ruler = yes
+        any_held_county = {
+			any_in_de_jure_hierarchy = {
+                bno_is_barony_valid_for_church_foundation = {
+                    HOLDER = root
+                }
+			}
+		}
+        custom_description = {
+            text = is_king_or_emperor
+            highest_held_title_tier >= tier_kingdom
+        }
+        piety_level >= 3
+        is_faith_bbcs = yes
+    }
+    is_valid_showing_failures_only = {
+        is_available_adult = yes
+        is_at_war = no
+    }
+
+    cooldown = {
+		months = 12
+	}
+    widget = {
+        controller = create_holy_order
+        barony_valid = {
+            trigger_if = {
+                limit = { exists = this }
+                bno_is_barony_valid_for_church_foundation = {
+                    HOLDER = scope:ruler
+                }
+            }
+            trigger_else = {
+                custom_description = { 
+                    text = has_holy_order_barony_selected 
+                    always = no 
+                }
+            }
+        }
+    }
+
+    cost = {
+        #can change later if too cheap
+        gold = { value = holy_order_gold_cost  }
+        piety = { value = holy_order_piety_cost }
+    }
+    effect = {
+        send_interface_toast = {
+            type = event_toast_effect_good
+            title = bno_build_bbc_church.toast
+            scope:barony ?= {
+                title_province = {
+                    add_special_building_slot = bbc_church_01
+                    add_special_building = bbc_church_01
+                }
+            }
+        }
+    }
+
+    ai_potential = {
+        highest_held_title_tier >= tier_kingdom
+        bno_has_embrace_african_5 = yes
+        is_playable_character = yes
+        any_held_county = {
+			any_in_de_jure_hierarchy = {
+                bno_is_barony_valid_for_church_foundation = {
+                    HOLDER = root
+                }
+			}
+		}
+    }
+
+    ai_will_do = {
+        base = 1000
+        modifier = {
+            add = -950
+            any_held_county = {
+				any_in_de_jure_hierarchy = {
+					title_province = {
+						has_building_or_higher = bbc_church_01
+					}
+				}
+			}
+        }
+    }
+}
+
+bno_found_bbc_church_holy_order = {
+    #Place Holder
+    picture = { 
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = bno_found_bbc_church_holy_order.desc
+    selection_tooltip = bno_found_bbc_church_holy_order.tooltip
+    decision_group_type = bno_decision_group
+
+    ai_check_interval = 1
+
+    is_shown = {
+        bno_has_embrace_african_5 = yes
+    }
+
+    is_valid = {
+        is_independent_ruler = yes
+        custom_description = {
+            text = is_king_or_emperor
+            highest_held_title_tier >= tier_kingdom
+        }
+        any_held_county = {
+			any_in_de_jure_hierarchy = {
+                bno_is_barony_valid_for_bbc_holy_order = {
+                    HOLDER = root
+                }
+			}
+		}
+        piety_level >= 3
+        is_faith_bbcs = yes
+    }
+
+    is_valid_showing_failures_only = {
+        is_available_adult = yes
+        is_at_war = no
+    }
+    cooldown = {
+		months = 12
+	}
+    widget = {
+        controller = create_holy_order
+        barony_valid = {
+            trigger_if = {
+                limit = { exists = this }
+                bno_is_barony_valid_for_bbc_holy_order = {
+                    HOLDER = scope:ruler
+                }
+            }
+            trigger_else = {
+                custom_description = { 
+                    text = has_holy_order_barony_selected 
+                    always = no 
+                }
+            }
+        }
+    }
+
+    cost = {
+        #can change later if too cheap
+        gold = { value = holy_order_gold_cost  }
+        piety = { value = holy_order_piety_cost }
+    }
+
+    effect = {
+        custom_tooltip = bno_found_bbc_church_holy_order.effect_tooltip
+        
+        trigger_event = {
+            id = bno_embrace_african_5.0006
+        }
+    }
+
+    ai_potential = {
+        is_independent_ruler = yes
+        highest_held_title_tier >= tier_kingdom
+        bno_has_embrace_african_5 = yes
+        any_held_county = {
+			any_in_de_jure_hierarchy = {
+                bno_is_barony_valid_for_bbc_holy_order = {
+                    HOLDER = root
+                }
+			}
+		}
+    }
+
+    ai_will_do = {
+        base = 100
+    }
+}

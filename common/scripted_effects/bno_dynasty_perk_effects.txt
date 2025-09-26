@@ -1,0 +1,509 @@
+﻿#bno_sex_increase_dynasty_prestige
+#bno_bbc_marriage_effect
+#bno_increase_county_control
+#bno_decrease_county_control
+#bno_dismiss_local_bbc
+#bno_get_local_bbc
+#bno_get_local_whore
+#bno_dismiss_local_whore
+#bno_setup_peasant_leader_effect
+#bno_fuck_a_bbc_5_times
+#bno_give_development_buff_to_target_title
+#bno_get_really_local_bbc
+#bno_travel_to_local_bbc
+#bno_apply_bno_local_bbc_unsatisfied
+#bno_cure_disease
+
+bno_sex_increase_dynasty_prestige = {
+    if = {
+        limit = {
+            dynasty ?= {
+                has_dynasty_perk = bno_embrace_african_3
+            }
+        }
+        dynasty ?= {
+            add_dynasty_prestige = bno_random_xp_positive
+        }
+    }
+}
+
+bno_bbc_marriage_effect = {
+    dynast = {
+        send_interface_message = {
+	    	type = bno_blacked_events
+	    	title = {
+				first_valid = {
+					triggered_desc = {
+						trigger = {
+							$SOURCE$ = root
+						}
+						desc = bno_marriage.0007.notifications.title.root
+					}
+					desc = bno_marriage.0007.notifications.title.spouse
+				}
+			}
+	    	right_icon = $SOURCE$
+	    	desc = {
+				first_valid = {
+					triggered_desc = {
+						trigger = {
+							$SOURCE$ = {
+                                is_a_male = yes
+                            }
+						}
+						desc = bno_marriage.0007.notifications.desc.male
+					}
+					desc = bno_marriage.0007.notifications.desc.female
+				}
+			}
+	    	$SOURCE$ = {
+                dynasty ?= {
+	    	    	add_dynasty_prestige = bno_bbc_marriage_perk_reward
+	    	    }
+                if = {
+                    limit = {
+                        has_legitimacy = yes
+                    }
+	    	        add_legitimacy = bno_bbc_marriage_prestige_perk_reward
+                }
+	    	    add_prestige = bno_bbc_marriage_prestige_perk_reward
+            }	
+	    }
+    }
+}
+
+bno_increase_county_control = {
+    scope:target_location = {
+        barony = {
+            county = {
+                change_county_control = {
+                    value = {
+                        integer_range = {
+                            min = 5
+                            max = 15
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+bno_decrease_county_control = {
+    scope:target_location = {
+        barony = {
+            county = {
+                change_county_control = {
+                    value = {
+                        integer_range = {
+                            min = -15
+                            max = -5
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+bno_dismiss_people = {
+    trigger_event = {
+        id = bno_kill_temporary_character.0001
+        days = 2
+        delayed = yes
+    }
+}
+
+bno_dismiss_local_bbc = {
+	if = {
+        limit = {
+            local_var:local_bbc = no
+        }
+        scope:bbc = {
+            bno_dismiss_people = yes
+        }
+    }
+}
+
+bno_get_local_bbc = {
+    #get real wandering local bbc
+    set_local_variable = {
+        name = local_bbc
+        value = yes
+    }
+    every_realm_province = {
+        save_scope_as = province_temp
+        every_pool_character = {
+            province = scope:province_temp
+            limit = {
+                is_bbc = yes
+            }
+            add_to_temporary_list = local_bbc
+        }
+    }
+    random_in_list = {
+        list = local_bbc
+        save_scope_as = bbc
+    }
+    #fallback create bbc
+    if = {
+        limit = {
+            NOT = { exists = scope:bbc }
+        }
+        create_bbc = {
+            SCOPE_NAME = bbc
+            age = bno_young_adult
+        }
+        set_local_variable = {
+            name = local_bbc
+            value = no
+        }
+    }
+    scope:bbc = {
+        location = {
+            save_scope_as = target_location
+        }
+    }
+}
+
+bno_get_local_whore = {
+    #get real wandering local bbc
+    set_local_variable = {
+        name = local_whore
+        value = yes
+    }
+    every_realm_province = {
+        every_pool_character = {
+            province = prev
+            limit = {
+                is_white_girl = yes
+            }
+            add_to_temporary_list = local_whore
+        }
+    }
+    random_in_list = {
+        list = local_whore
+        save_scope_as = whore
+    }
+    if = {
+        limit = {
+            NOT = { exists = scope:whore }
+        }
+        create_slut = {
+            SCOPE_NAME = whore
+            age = bno_younger_adult
+        }
+        set_local_variable = {
+            name = local_whore
+            value = no
+        }
+    }
+}
+
+bno_dismiss_local_whore = {
+	if = {
+        limit = {
+            local_var:local_whore = no
+        }
+        scope:whore = {
+            bno_dismiss_people = yes
+        }
+    }
+}
+
+bno_fuck_a_bbc_5_times = {
+    bno_have_sex_with_effects = {
+        PARTNER = scope:bbc
+    }
+    hidden_effect = {
+        bno_have_sex_with_effects = {
+            PARTNER = scope:bbc
+        }
+        bno_have_sex_with_effects = {
+            PARTNER = scope:bbc
+        }
+        bno_have_sex_with_effects = {
+            PARTNER = scope:bbc
+        }
+        bno_have_sex_with_effects = {
+            PARTNER = scope:bbc
+        }
+    }
+}
+
+bno_give_development_buff_to_target_title = {
+    scope:bno_target_title = {
+        if = {
+            limit = {
+                has_county_modifier = bno_bbc_angered
+            }
+            remove_county_modifier = bno_bbc_angered
+        }
+        county = {
+            add_county_modifier = {
+                modifier = bno_bbc_appeased
+                months = 18
+            }
+        }
+    }
+}
+
+bno_get_really_local_bbc = {
+    set_local_variable = {
+        name = local_bbc
+        value = yes
+    }
+    every_realm_province = {
+        save_scope_as = province_temp
+        every_pool_character = {
+            province = scope:province_temp
+            limit = {
+                is_blackbull = yes
+            }
+            add_to_temporary_list = local_bbc
+        }
+    }
+    random_in_list = {
+        list = local_bbc
+        save_scope_as = bbc
+        set_local_variable = {
+            name = local_bbc_location
+            value = scope:bbc.location
+        }
+    }
+    #Backup
+    if = {
+        limit = {
+            NOT = { exists = scope:bbc }
+        }
+        create_bbc = {
+            SCOPE_NAME = bbc
+            age = bno_young_adult
+        }
+        random_realm_province = {
+            save_scope_as = random_province
+        }
+        hidden_effect = {
+            add_courtier = scope:bbc
+            remove_courtier_or_guest = {
+                character = scope:bbc
+                new_location = scope:random_province
+            }
+            set_local_variable = {
+                name = local_bbc_location
+                value = scope:bbc.location
+            }
+        }
+        set_local_variable = {
+            name = local_bbc
+            value = no
+        }
+    }
+}
+
+bno_travel_to_local_bbc = {
+    start_travel_plan = {
+        destination = local_var:local_bbc_location
+        return_trip = $RETURN_TRIP$
+        on_arrival_event = $ON_ARRIVAL_EVENT$
+        can_cancel_planning = no
+        on_arrival_destinations = all_but_last
+    }
+}
+
+bno_apply_bno_local_bbc_unsatisfied = {
+    add_county_modifier = {
+        modifier = bno_local_bbc_unsatisfied
+        years = 2
+    }
+}
+
+bno_get_random_non_bbc_african_county = {
+    random_held_title = {
+        limit = {
+            tier = tier_county
+            NOT = { is_culture_bnoc = yes }
+            NOT = { faith = faith:bbcs }
+        }
+        save_scope_as = random_target_title
+    }
+}
+
+bno_apply_bno_local_bbc_unsatisfied_to_random_target_title = {
+    scope:random_target_title ?= {
+        county = {
+            bno_apply_bno_local_bbc_unsatisfied = yes
+        }
+    }
+}
+
+bno_cure_disease = {
+    switch = {
+        trigger = var:bno_disease_type
+        flag:disease_type_lovers_pox = { bno_cure_disease_type = { SICKNESS = lovers_pox } }
+        flag:disease_type_ill = { bno_cure_disease_type = { SICKNESS = ill } }
+        flag:disease_type_pneumonic = { bno_cure_disease_type = { SICKNESS = pneumonic } }
+        flag:disease_type_early_great_pox = { bno_cure_disease_type = { SICKNESS = early_great_pox } }
+        flag:disease_type_leper = { bno_cure_disease_type = { SICKNESS = leper } }
+        flag:disease_type_gout_ridden = { bno_cure_disease_type = { SICKNESS = gout_ridden } }
+        flag:disease_type_consumption = { bno_cure_disease_type = { SICKNESS = consumption } }
+        flag:disease_type_cancer = { bno_cure_disease_type = { SICKNESS = cancer } }
+        flag:disease_type_typhus = { bno_cure_disease_type = { SICKNESS = typhus } }
+        flag:disease_type_bubonic_plague = { bno_cure_disease_type = { SICKNESS = bubonic_plague } }
+        flag:disease_type_smallpox = { bno_cure_disease_type = { SICKNESS = smallpox } }
+        flag:disease_type_measles = { bno_cure_disease_type = { SICKNESS = measles } }
+        flag:disease_type_dysentery = { bno_cure_disease_type = { SICKNESS = dysentery } }
+        flag:disease_type_ergotism = { bno_cure_disease_type = { SICKNESS = ergotism } }
+        flag:disease_type_sickly = { bno_cure_disease_type = { SICKNESS = sickly } }
+        flag:disease_type_great_pox = { bno_cure_disease_type = { SICKNESS = great_pox } }
+    }
+}
+
+bno_cure_disease_type = {
+    remove_trait = $SICKNESS$
+    add_trait = bno_$SICKNESS$_immunity
+}
+
+bno_get_wanderer_scope = {
+    random_list = {
+        50 = {
+            create_character = {
+                template = bbc_noble_template
+                location = root.capital_province
+                after_creation = {
+                    if = {
+                        limit = {
+                            root = {
+                                is_faith_bbcs = yes
+                            }
+                        }
+                        set_character_faith = root.faith
+                    }
+                    if = {
+                        limit = {
+                            root = {
+                                is_culture_bnoc = yes
+                            }
+                        }
+                        set_culture = root.culture
+                    }
+                }
+                save_scope_as = wanderer
+            }
+        }
+        50 = {
+            random_list = {
+                50 = {
+                    create_blacked_european_girls = {
+                        TEMPLATE = bbc_worshipper_high_character_template
+                        LOCATION = root.capital_province
+                        SCOPE = wanderer
+                    }
+                }
+                50 = {
+                    create_blacked_european_girls = {
+                        TEMPLATE = bbc_worshipper_excellent_character_template
+                        LOCATION = root.capital_province
+                        SCOPE = wanderer
+                    }
+                }
+            }
+        }
+    }
+}
+
+bno_kill_wanderer_scope = {
+    scope:wanderer = {
+        trigger_event = {
+            id = bno_kill_temporary_character.0001
+            days = { 7 14 }
+        }
+    }
+}
+
+bno_get_bbc_priest_or_priestess = {
+    if = {
+        limit = {
+            is_a_girl = yes
+        }
+        root = {
+            random_court_position_holder = {
+                type = bno_bbc_priest_court_position
+                save_scope_as = carn_sex_partner
+                save_scope_as = priestess
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            is_a_male = yes
+        }
+        root = {
+            random_court_position_holder = {
+                type = bno_bbc_priestess_court_position
+                save_scope_as = carn_sex_partner
+                save_scope_as = priestess
+            }
+        }
+    }
+}
+
+bno_disease_immunity = {
+    send_interface_message = {
+        type = bno_blacked_events
+        title = bno_embrace_african_5.0008.immunity.title
+        desc = bno_embrace_african_5.0008.immunity.desc
+        right_icon = root
+
+        remove_trait = $TRAIT$
+    }
+}
+
+bno_fuck_every_one_in_exchange_for_gold = {
+    if = {
+		limit = {
+			is_bbc = yes
+		}
+        if = {
+            limit = {
+                has_variable = bno_trade_prestige_for_gold
+            }
+            random_spouse = {
+                limit = {
+                    is_slut = yes
+                }
+                save_scope_as = bno_whore
+            }
+            remove_variable = bno_trade_prestige_for_gold
+        }
+        else = {
+		    random_court_position_holder = {
+		    	type = bno_bbc_priestess_court_position
+		    	save_scope_as = bno_whore
+		    }
+        }
+	}
+	else = {
+		save_scope_as = bno_whore
+	}
+    every_living_character = {
+        limit = {
+            is_adult = yes
+            is_a_male = yes
+            is_bbc = yes
+            $TRIGGER_KEY$ = yes
+        }
+        bno_have_sex_with_effects = {
+            PARTNER = scope:bno_whore
+        }
+    }
+    every_living_character = {
+        limit = {
+            $TRIGGER_KEY$ = yes
+        }
+        pay_short_term_gold = {
+            target = root
+            gold = { 1 2 }
+        }
+    }
+}

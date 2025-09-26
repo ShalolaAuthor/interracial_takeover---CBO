@@ -1,0 +1,83 @@
+﻿bbc_worshipper_low_character_template = {
+    age = { 18 20 }
+    gender = female
+
+    #Traits
+    random_traits = yes
+
+    #Skills
+    learning = {
+        min_template_decent_skill
+        max_template_decent_skill
+    }
+    after_creation = {
+        add_trait = bno_bbc_whore_1
+        bno_get_between_normal_and_rare_trait = {
+            TRAIT_NORMAL = bno_blacked
+            TRAIT_RARE = bno_snowbunny
+        }
+        bno_get_a_leveled_trait = {
+			TRAIT = tits_big_good
+		}
+        bno_get_a_leveled_trait = {
+			TRAIT = beauty_good
+		}
+        remove_bad_traits = yes
+    }
+}
+
+bbc_worshipper_high_character_template = {
+    age = { 18 20 }
+    gender = female
+
+    #Traits
+    random_traits = yes
+
+    #Skills
+    learning = {
+        min_template_medium_skill
+        max_template_medium_skill
+    }
+    after_creation = {
+        add_trait = bno_bbc_whore_2
+        bno_get_between_normal_and_rare_trait = {
+            TRAIT_NORMAL = bno_snowbunny
+            TRAIT_RARE = bno_qos
+        }
+        bno_get_a_leveled_trait = {
+			TRAIT = tits_big_good
+		}
+        bno_get_a_leveled_trait = {
+			TRAIT = beauty_good
+		}
+        remove_bad_traits = yes
+    }
+}
+
+bbc_worshipper_excellent_character_template = {
+    age = { 18 20 }
+    gender = female
+
+    #Traits
+    random_traits = yes
+
+    #Skills
+    learning = {
+        min_template_high_skill
+        max_template_high_skill
+    }
+    after_creation = {
+        add_trait = bno_bbc_whore_3
+        bno_get_between_normal_and_rare_trait = {
+            TRAIT_NORMAL = bno_qos
+            TRAIT_RARE = bno_mindless_bbc_slut
+        }
+        bno_get_a_leveled_trait = {
+			TRAIT = tits_big_good
+		}
+        bno_get_a_leveled_trait = {
+			TRAIT = beauty_good
+		}
+        remove_bad_traits = yes
+    }
+}

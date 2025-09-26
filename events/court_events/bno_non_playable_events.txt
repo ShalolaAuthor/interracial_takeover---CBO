@@ -1,0 +1,56 @@
+﻿namespace = bno_non_playable
+
+#landless bbc will steal playable gold
+bno_non_playable.0001 = {
+    hidden = yes
+    trigger = {
+        is_playable_character = no
+        is_bbc = yes
+        is_adult = yes
+        liege ?= {
+            NOT = { has_character_flag = bno_non_playable.0001 }
+            is_playable_character = yes
+            trigger_if = {
+                limit = {
+                    is_a_male = yes
+                }
+                is_bbc = no
+            }
+            trigger_else_if = {
+                limit = {
+                    is_a_girl = yes
+                }
+                is_slut = no
+            }
+            trigger_else = {
+                always = yes
+            }
+            gold > major_gold_value
+            any_councillor = {
+                has_council_position = councillor_steward
+            }
+        }
+    }
+    immediate = {
+        liege = {
+            add_character_flag = {
+                flag = bno_non_playable.0001
+                months = { 12 18 }
+            }
+            random_councillor = {
+                limit = {
+                    has_council_position = councillor_steward
+                }
+                save_scope_as = cp_steward
+            }
+            send_interface_message = {
+                title = bno_non_playable.0001.title
+                desc = bno_non_playable.0001.desc
+                remove_short_term_gold = minor_gold_value
+            }
+        }
+        hidden_effect = {
+            add_gold = minor_gold_value
+        }
+    }
+}

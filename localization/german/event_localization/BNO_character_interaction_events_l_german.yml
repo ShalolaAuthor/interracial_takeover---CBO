@@ -1,0 +1,10 @@
+﻿l_german:
+ #Influence Child
+ #success
+ bno_character_interaction_0001.title: "Die Vögel und die Bienen" # AI Tags
+ bno_character_interaction_0001.desc: "Die Anbetung einer überlegenen Rasse kommt nicht von Natur aus. Obwohl, dank deiner 'Beteiligung' mit den afrikanischen Völkern, die dein Reich überflutet haben, konntest du deinen Daugther davon überzeugen, dass es vollkommen in Ordnung ist, an dem zu interessiert zu sein, was sie will. Während Sie Ihren Wunsch geäußert haben, dass sie jemanden mit höherem Status heiraten, haben Sie den Gedanken an ungelandete Leibeigenen und vor allem die dunkleren gehäutet ermutigt. Wenn du mit ihr aus dem Garten gehst, kannst du nicht anders, als zu hoffen, dass das neue Motto deiner Dynastie das der Förderung einer gemischten Zukunft ist." # AI Tags
+ bno_character_interaction_0001.a: "Holen wir uns was zu trinken." # AI Tags
+ #failure
+ bno_character_interaction_0002.title: "Die Vögel und die Bienen" # AI Tags
+ bno_character_interaction_0002.desc: "Deine eigene Familie scheint im Denken verloren zu sein, im Tagträumen von anderen Dingen, während du die Rolle von gelandeten und unbelandeten Völkern, arrangierten Ehen, Abstammung und dergleichen erklärst. Nichts davon scheint zu bleiben, auch nicht mit der angehenden Reife Ihrer Tochter. Wenn du frustriert wirst, weil dein Kind kein Verständnis hat, entscheidest du dich, das Thema zu ändern, in der Hoffnung, das sei zum Besseren." # AI Tags
+ bno_character_interaction_0002.a: "Lass uns etwas trinken, schätze ich." # AI Tags
